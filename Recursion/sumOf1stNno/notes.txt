@@ -1,0 +1,44 @@
+what mistake i have done
+i have to count the sum of n number i though i have to make a variable and add sum in it no wrong [ let count=count+sum(n-1) ]
+
+sol:- correct is direct return no need of variable
+return n+sum(n-1)
+
+SumN(5)
+= n + SumN(n-1)
+= 5 + SumN(4)
+= 5 + 4 + SumN(3)
+= 5 + 4 + 3 + SumN(2)
+= 5 + 4 + 3 + 2 + SumN(1)
+= 5 + 4 + 3 + 2 + 1 + SumN(0)
+= 5 + 4 + 3 + 2 + 1 + 0
+= 15
+
+how to solve with backtracking
+
+✅ Normal Recursion (what you did)
+return n + SumN(n-1);
+👉 Values are returned while coming back (bottom → up)
+
+🔥 Backtracking Style
+👉 You carry state forward and update it
+👉 No need to depend on return value
+
+Recursion:
+“Give me answer of smaller problem”
+
+Backtracking:
+“I’ll carry answer with me”
+
+Backtracking is a recursive technique where we explore a path, maintain state, and then undo (backtrack)
+the state when returning to try other possibilities
+state is important in backtracking
+
+function SumN(n, sum){
+    if(n === 0){
+        console.log(sum);
+        return;
+    }
+    SumN(n - 1, sum + n);
+}
+SumN(5, 0);
