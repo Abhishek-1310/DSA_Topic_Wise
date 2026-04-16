@@ -1,0 +1,22 @@
+Subsets
+Given an integer array nums of unique elements, return all possible subsets (the power set).
+The solution set must not contain duplicate subsets. Return the solution in any order.
+Example 1:
+Input: nums = [1,2,3]
+Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+
+
+
+Array Reference vs Copy:- In JavaScript, arrays are passed by reference, NOT by value
+this means:- result.push(path)   => does NOT store a new array It stores the same memory reference
+Problem in backtracking recursion:
+path.push(...)
+path.pop()
+👉 You keep modifying the SAME array at last what will happen is result will be look like this
+result=[[],[],[],[],[],[],[]] all array become empty because of path.pop() 
+
+solution is pass copy(snap shot) of the array not original array (how to do that with help of spread operator)
+result.push([...path]) ✅ it will push copy not exact array so later if array chnge it will not affect this
+
+and solution is same as print all subsequence elemnt 
+

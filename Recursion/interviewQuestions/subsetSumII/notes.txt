@@ -1,0 +1,45 @@
+Subsets II
+Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
+The solution set must not contain duplicate subsets. Return the solution in any order.
+Input: nums = [1,2,2]
+Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
+
+notes:- no base case needed in subset sum 11 when you use loop:- “I used loop-based backtracking because it handles duplicates
+naturally and avoids redundant recursion branches.
+
+why we need to store in every node:- “Because every partial path is a valid subset, so I collect results at each recursion step 
+instead of waiting for a base condition.”
+
+ask yourself:- “Is partial answer valid?”
+yes:- Store at every step (no need to wait for base case)
+No:- Wait for base case
+✅ Use Loop (preferred in interviews) when:
+Handling duplicates
+Need more control (Combination Sum II, Subsets II)
+
+Duplicate skipping logic works only in loop style
+
+no loop(two recusrion)	     Take / Not Take	     Binary tree
+Loop version(one recusrion)	 For-loop	             N-ary tree
+
+Start: [1,2]
+path = []
+
+👉 STORE []   ✅ (empty subset is also valid)
+
+             []
+          /        \
+      pick 1      skip 1
+       /              \
+   [1]                []
+👉 STORE [1]        👉 STORE []
+
+     /    \           /    \
+ pick 2  skip 2   pick 2  skip 2
+   /        \        /        \
+[1,2]     [1]     [2]        []
+👉 STORE  👉 STORE 👉 STORE  👉 STORE
+[]
+[1]
+[1,2]
+[2]

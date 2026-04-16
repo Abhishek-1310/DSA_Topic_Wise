@@ -1,0 +1,27 @@
+quick sort is a another divide and conquer algorithm, but unlike merge sort, it sorts in-place, making it more memory-efficient
+works by slecting "pivot" elemnts and rearrange the array so that all smaller elements are on its left and larger onces are on its right.
+
+smaller in the left larger in the right
+
+step to sort 1) first select pivot take first elemnt as pivot=arr[low]
+2) put pivot at its place how to do ! check below (with help of move smaller at left larger at right of pivot)
+with help of two pointer i=low and j=high with help of i check element is greater than pivot if you find stop
+then with help of j find element smaller than pivot then swap value of i and j do until i cross j after don't swap
+
+3) when smaller elemnt came left and larger at right   (smaller pivot larger)
+how you split it where pivot is place that is partition through partition we split smaller and larger 
+then recursively call quick sort on smaller and recursively call quick sort on right and do this further till one element in array
+
+qs(arr,low,partiotion-1) qs(arr,partition+1,high)
+
+how to find partition 
+take two pointer i=low and j=high with pivot =arr[low] always condtion is (i<j)
+find element which is greater than pivot using while loop and do i++ same with j--
+
+where to place pivot when condition fail place at place of j
+
+Partition Type	Recursion
+Lomuto	        p-1         pivot = arr[high]
+Hoare	        p           pivot = arr[low]
+
+

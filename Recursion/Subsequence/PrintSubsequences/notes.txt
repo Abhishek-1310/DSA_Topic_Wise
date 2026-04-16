@@ -1,0 +1,76 @@
+Subsequences 
+A subsequence is a sequence you get by removing some elements (or none) from an array/string without changing the order.
+Order must remain same, element do not need to be continuous.
+
+[1,2,3] path index
+two branches with this two recursive call one call take element other not take that elemnts so every time create two branch
+
+path.push(arr[index]);            take
+subseq(arr, index+1, path);
+
+path.pop();                        Not take
+subseq(arr, index+1, path);
+every time when index become 3 or arr.length it will print so in path element is removing and increaseing index value and go furture
+[1,2,3]
+                   [] index 0
+               /         \
+         [1]                []  index 1
+      /       \            /     \
+   [1,2]       [1]        [2]      []   index 2
+   /   \       /   \     /   \     /  \
+[1,2,3] [1,2] [1,3] [1] [2,3] [2] [3] [] index 3 print everything
+
+
+"why we need  sum -= arr[i] in one case but NOT in counting case?”
+In printing all sum you are modifying the same variable, sum += arr[index] modify same sum variable and pass
+in the counting sum==k you are passing a new value (copy) sum + arr[index] 👉 creates a NEW value (copy)
+
+if everywhere you want same then don't add in same varibale do like this in first case(directly pass sum+arr[index])
+    path.push(arr[index]);                   remove ❌ sum += arr[index] and pass sum in recursion no
+    subseq(arr, index + 1, path, sum+arr[index]);  add inside ✅ recusrion so it will not affect sum for other
+
+    path.pop();
+    subseq(arr, index + 1, path, sum);
+no need to subtract 
+
+Q) now lets print sum of subsequence
+in every iteration we have to add element in sum after push or remove that element before pop 
+path.push(arr[index]);       path.pop()
+    sum += arr[index]        sum -= arr[index]
+
+Q) return count of subsequence whose sum === k k=3
+
+[1,2,3] → sum = 6 ❌
+[1,2]   → sum = 3 ✅ count=1
+[1,3]   → sum = 4 ❌
+[1]     → sum = 1 ❌
+[2,3]   → sum = 5 ❌
+[2]     → sum = 2 ❌
+[3]     → sum = 3 ✅ count =2 
+[]      → sum = 0 ❌
+answer 2
+
+mistake i have done
+:- i am just increaseing the count in base case and returing the count from there but
+ i am was not capture that count in parent call and not capturing the count come from take subsequence and not take subsequence
+
+ one more mistake i was doing count++ when sum == k wrong
+ if we return 1 if we find sum==k and 0 when not find then its parrent call with capture in left and right variable
+  and return it to parent call then recursively all count will reach 
+
+ sol:- return sum===k?1:0 in base case
+
+ solution capture the count coming from take(left) and not take (right)
+          index
+         /     \
+     TAKE      NOT TAKE
+ count 1          count 1
+        \         /
+        total count = 2    sum it and return to parent call
+              ↓
+         return 2 (return left+right)
+
+important 
+Case	Sum
+TAKE	sum + arr[i]
+NOT TAKE ✅sum (unchanged)    ❌ don't subtract sum-arr[i]

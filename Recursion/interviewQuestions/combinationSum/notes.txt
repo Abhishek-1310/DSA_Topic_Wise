@@ -1,0 +1,58 @@
+Combination Sum
+Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations 
+of candidates where the chosen numbers sum to target. You may return the combinations in any order.
+->same elemnt can pick any number of time so this is not like all possible subsequence or subset problem 
+(main difference in in recursion call index+1 there but in this sol we have to do only index so we can pick same element many times)
+
+(in this question there will be two base case because it will pick same elemnt * time add condition when current elemnt > target stop there
+or sum>target)
+
+Input: candidates = [2,3,6,7], target = 7  Output: [[2,2,3],[7]]
+Explanation: 2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used multiple times. 7 is a candidate, and 7 = 7.
+These are the only two combinations.
+
+notes:- 
+mistake i have done:-
+base case incorrect(checking index==arr.length-1), function parameter mismatch (orignal fun and recursive call fun mismatch), 
+
+How to decide we have to return from base case or use global varible to store result?
+Ask yourself: "Does the parent need to combine the child's answer using math?"
+YES (Sum, Count, Min/Max) 
+ Return the value.
+NO (I just need to record what happened) 
+ Use a Global/Reference list.
+like this result.push([...path]); result is global varaible👉 Always push a copy, not original ❌ return path if you do like
+ this You end up pushing undefined also
+
+ In Combination Sum:
+👉 You can pick same element multiple times index + 1 ❌ Problem This makes it like subset problem, not combination sum
+When picking:  fun(arr, path, target, (index), sum + arr[index], result);
+
+
+candidates = [2, 3] target = 5
+base condition (// ❌ stop condition) 
+if (remaining === 0) {
+    result.push([...path]);
+    return;
+}
+if (remaining < 0 || index === candidates.length) {
+    return;
+}
+tree digram
+Start: index=0, remaining=5, path=[]
+
+                         []
+                   /              \
+             take 2              skip 2
+        (rem=3, i=0)          (rem=5, i=1)
+           /     \               /      \
+      take 2    skip 2     take 3     skip 3
+   (rem=1,i=0) (rem=3,i=1) (rem=2,i=1) (i=2)
+      /   \       /   \        /   \        |
+ take2  skip2  take3 skip3  take3 skip3   ❌
+(rem=-1)(rem=1)(rem=0)(i=2)(rem=-1)(i=2)
+   ❌      |       ✅       ❌      ❌
+         / \
+      take3 skip3
+    (rem=-2)(i=2)
+      ❌      ❌

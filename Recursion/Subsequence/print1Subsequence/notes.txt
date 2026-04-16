@@ -1,0 +1,39 @@
+only one subsequence answer how we can print !
+In base case
+   Condition satisfied 
+          Return true
+    ->  condition false 
+          Return false 
+
+Then in function call
+ If (f() == true)
+
+note:-  if not return false -> parent call get false not undefine
+
+we need return false at the end because when base case return false?
+and we are handling only true condition (if (subseq(arr, index + 1, path)) )  if we will not return false at the bottom parent will get undefine and final result also get undefine 
+so return false at the bottom is neccsary
+Parent → gets undefined
+Final result → undefined
+
+👉 ❌ WRONG (should be false)
+
+“I explored ALL possibilities from this point, and none worked”
+that is why at bottom we have to return false 
+
+          index
+         /     \
+     TAKE      NOT TAKE
+      ❌           ❌
+        \         /
+         BOTH FAILED
+              ↓
+         return false
+
+
+Q) print subsequence elemnts whose sum === k 
+
+mistake i have done i have return true everytime in base case if we got sum==k or not, wrong (we should not return true everytime)
+
+return true when you got (sum===k)  else return false (because at base case 2 possibilities either you got the sum or not)
+so tell with true and false :- true if sum==k else false when sum!=k

@@ -1,0 +1,71 @@
+combination sum
+        2
+      /   \
+   take   skip
+
+combination sum II
+        start=0
+     /   |   |   \
+    1    2   5    6
+
+Tree Structure (LEVEL by LEVEL)
+Recursion Tree (FOR-LOOP + SKIP DUPLICATES
+candidates = [10,1,2,7,6,1,5]
+target = 8
+start=0, remaining=8, path=[]
+
+Level 0:   for loop start with 0 
+i=0 → pick 1 → [1]
+i=1 → skip ❌ (duplicate 1)
+i=2 → pick 2 → [2]
+i=3 → pick 5 → [5]
+i=4 → pick 6 → [6]
+i=5 → pick 7 → [7]
+i=6 → pick 10 ❌ (>8 break)
+
+--------------------------------------------------
+
+Branch 1: pick 1 → path=[1], rem=7, start=1   for loop increseed to index 1 one index reduced 
+
+    i=1 → pick 1 → [1,1]
+    i=2 → pick 2 → [1,2]
+    i=3 → pick 5 → [1,5]
+    i=4 → pick 6 → [1,6]
+    i=5 → pick 7 → [1,7] ✅
+    i=6 → break
+
+    -------------------------
+
+    [1,1], rem=6, start=2
+        i=2 → pick 2 → [1,1,2]
+        i=3 → pick 5 → [1,1,5] ❌
+        i=4 → pick 6 → [1,1,6] ✅
+        i=5 → break
+
+    [1,2], rem=5, start=3
+        i=3 → pick 5 → [1,2,5] ✅
+        i=4 → break
+
+    [1,5], rem=2 → no valid
+    [1,6], rem=1 → no valid
+
+--------------------------------------------------
+
+Branch 2: pick 2 → path=[2], rem=6, start=3
+
+    i=3 → pick 5 → [2,5]
+    i=4 → pick 6 → [2,6] ❌
+    
+    [2,5], rem=1 → no valid
+
+--------------------------------------------------
+
+Branch 3: pick 5 → path=[5], rem=3 → no valid
+
+--------------------------------------------------
+
+Branch 4: pick 6 → path=[6], rem=2 → no valid
+
+--------------------------------------------------
+
+Branch 5: pick 7 → path=[7], rem=1 → no valid

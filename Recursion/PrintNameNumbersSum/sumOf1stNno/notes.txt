@@ -1,5 +1,5 @@
 what mistake i have done
-i have to count the sum of n number i though i have to make a variable and add sum in it no wrong [ let count=count+sum(n-1) ]
+i have to count the sum of n number i though i have to make a variable and add sum in it, no wrong [ let count=count+sum(n-1) ]
 
 sol:- correct is direct return no need of variable
 return n+sum(n-1)

@@ -4,8 +4,6 @@ just call function like Name(5) not inside console if fun is not returing anythi
 
 in base case don't return any value if it is not helping in calulation like in printing name no need to return any value just return is enough
 
-
-
 “Base case is the smallest valid input where recursion stops and returns a direct answer"
 
 Base case find

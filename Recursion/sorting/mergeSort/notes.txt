@@ -1,0 +1,37 @@
+merge sort :- is a divide & conquer sorting algo that produces a stable, sorted by repeatedly splitting an array into
+ two halves until each sub-array contain only one element and then merging those sub-array back together in correct order
+
+what mistake i have done 
+> in base case i was [ checking full array length, not subarray ] at base condition need to check subarray ❌ arr.length
+> wrong recursion splitting 
+👉 i was NOT actually slicing array
+👉 Both calls still use same array ❌
+> merge logic was wrong
+Merge sort needs two pointers, don't use for loop same length for both array and same index comparison (left = low, right=mid+1)
+
+we have to make two function one is for mergesort fun which will divide and split the array till one element left in the array
+another fun is for merge the array
+
+merge fun
+
+two condition seprated with && if one condition fail came out of the loop, we need this while checking
+if any subarray completed traverse we came out of the loop and handle other sepratly
+
+if any sub-array is not checked using while loop push all in result coz that sub-array already sorted
+
+Why i - low?
+Because:
+arr index:   2   3   4   5
+temp index:  0   1   2   3
+👉 Mapping:
+i = 2 → temp[0]  (2 - 2)
+i = 3 → temp[1]  (3 - 2)
+i = 4 → temp[2]  (4 - 2)
+i = 5 → temp[3]  (5 - 2)
+
+✔️ temp always starts at index 0
+✔️ arr starts at low
+✔️ So we shift using:
+
+low → high (inclusive) for(let i = low; i <= high; i++) ✅
+

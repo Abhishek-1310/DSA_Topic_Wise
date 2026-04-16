@@ -1,0 +1,26 @@
+Combination Sum II
+Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates
+where the candidate numbers sum to target. Each number in candidates may only be used once in the combination.
+duplicate like [1,1,6] [6,1,1] [1,6,1] sol:- arrange in assending order and select element.
+Note: The solution set must not contain duplicate combinations.
+like there are two 1 in array ok may be it will come [1,7], [1,7] this is duplicate select only one
+
+Input: candidates = [10,1,2,7,6,1,5], target = 8
+Output: [[1,1,6], [1,2,5], [1,7], [2,6]]
+
+notes:- combinationSum :- uses take / skip recursion -> stand at any index: Take it OR skip it
+        combination sum II:- loop + one recursive call -> stand at any index: Try ALL possible choices from here
+
+sort the array is must to remove duplicate.
+why here loop+one recursion call bcoz we have to skip duplicate 
+two condition
+1) if (i > start && candidates[i] === candidates[i - 1]) continue;       start is the level skip in duplicate in same level
+👉 This works ONLY in loop, if previous value is same skip it in same level, next recursive call it will allow once more then in next
+You cannot do this cleanly in take/skip recursion
+
+2) if (candidates[i] > remaining) break; array is sorted array = [1,2,5,6,7] remaining = 4
+i=2  candidates[2]>rem =>  5>4 no need to check further is if it is more than sum what is the use to check further forward
+ u will get increased value becoz array is sorted so break
+
+
+

@@ -1,0 +1,74 @@
+Template loop backtracking
+function backtrack(start, path) {
+    result.push([...path]); // store
+
+    for (let i = start; i < nums.length; i++) {
+
+        path.push(nums[i]);          // CHOOSE
+        backtrack(i + 1, path);     // EXPLORE
+        path.pop();                 // UNDO (backtrack)
+    }
+}
+[1,2,3]
+for loop backtracking                        (no More) means reached at last index after that no index is there.
+                        []
+                   /       |       \
+                 [1]      [2]      [3]
+               /    \        \        \
+          [1,2]   [1,3]     [2,3]     (no more)
+           /         \        \
+     [1,2,3]     (no more)   (no more)
+
+     Start: path = []
+
+👉 STORE []
+
+Level 0:
+i=0 → pick 1
+        path=[1]
+        👉 STORE [1]
+
+        Level 1:
+        i=1 → pick 2
+                path=[1,2]
+                👉 STORE [1,2]
+
+                Level 2:
+                i=2 → pick 3
+                        path=[1,2,3]
+                        👉 STORE [1,2,3]
+
+                🔙 backtrack → remove 3 → path=[1,2]
+
+        🔙 backtrack → remove 2 → path=[1]
+
+        i=2 → pick 3
+                path=[1,3]
+                👉 STORE [1,3]
+
+        🔙 backtrack → remove 3 → path=[1]
+
+🔙 backtrack → remove 1 → path=[]
+
+-----------------------------------
+
+i=1 → pick 2
+        path=[2]
+        👉 STORE [2]
+
+        Level 1:
+        i=2 → pick 3
+                path=[2,3]
+                👉 STORE [2,3]
+
+        🔙 backtrack → remove 3 → path=[2]
+
+🔙 backtrack → remove 2 → path=[]
+
+-----------------------------------
+
+i=2 → pick 3
+        path=[3]
+        👉 STORE [3]
+
+🔙 backtrack → remove 3 → path=[]
