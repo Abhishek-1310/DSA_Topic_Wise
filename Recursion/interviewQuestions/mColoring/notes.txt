@@ -1,0 +1,29 @@
+M-Coloring Problem
+You are given an undirected graph consisting of V vertices and E edges represented by a list edges[][], along with an 
+integer m. Your task is to determine whether it is possible to color the graph using at most m different colors such that no two adjacent vertices share the same color. Return true if the graph can be colored with at most m colors, otherwise return false.
+Note: The graph is indexed with 0-based indexing.
+Examples:
+Input: V = 4, edges[][] = [[0, 1], [1, 3], [2, 3], [3, 0], [0, 2]], m = 3
+Output: true
+Explanation: It is possible to color the given graph using 3 colors, for example, one of the possible ways vertices can be colored as follows:
+
+notes:- you will get node from 0 to V => one by one you have to color all node but adjacent color should not be same
+how we will check adjecent node have same color
+1) make one array of array where we store all adjacent node of current node [[1,2,3],[3],[1],[2,1]] like this node 0 have 1,2,3 adj node
+2) make one array where we store which color have put on given node if 4 node [1,2,2,3,1] node 0 have color 1 node 1 have color 2
+3) how to get color one by one so start for loop from color 1 to m
+4) so in recursive call we will give node+1 and color then we will make function which check in current node can we put this color
+5) how to check => with the given node we will take out all adjecent node and we will check which color is in every adjecent node
+if adjecent node color is same as given color return false else return true.
+
+
+first you have to make array array where you can store in o node how many joint node is there like
+[[1,3,2],[0,3],[3,0],[1,2,0]] node 0 has three neighbor and node 3 also have 3 join node 
+
+so after making this adjecent array 
+we need to use two array adjecent who tels list of neighbor node which should not have same color
+2 is colors array which store color in nodeid index
+
+we need isSafe function to check color is ok to use in current node.
+
+

@@ -1,0 +1,38 @@
+Permutations
+Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
+Example 1:
+Input: nums = [1,2,3]
+Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+notes:- 
+nums = [1,2,3]
+                         []
+              /            |            \
+            [1]           [2]           [3]
+         /      \       /      \      /      \
+     [1,2]    [1,3]  [2,1]   [2,3]  [3,1]   [3,2]
+      |          |      |        |      |        |
+ [1,2,3]   [1,3,2]   [2,1,3] [2,3,1]  [3,1,2]  [3,2,1]
+ 👉 For-loop recursion is NOT only for removing duplicates.
+It’s a general backtracking pattern used whenever you have multiple choices at each step.
+
+for (let i = start; i < n; i++) loop start with start not with 0:- We move forward (no reuse of previous elements) subsetsum11,combination sum11
+for (let i = 0; i < n; i++) loop start with 0 :- We can pick ANY unused element at ANY time:- permutations
+
+“In permutations, I iterate from 0 each time because I need to try all unused elements at every position, and I use a visited array to avoid reuse.”
+
+what new Here:- we have to create one array filled with false which tells no elemnts used
+used[i] = true  → nums[i] is already used in current path
+used[i] = false → nums[i] is still available
+
+in permutation We can pick ANY element at ANY level so we need to track “Which elements are already taken?”
+path = []
+used = [F, F, F]
+pick 1 (i==0)
+path = [1]
+used = [T, F, F] do till [t,t,t]
+in backtracking 
+path.pop();        // remove 3
+used[2] = false;   // make 3 available again => [1,2] =[t,t,f];
+
+what we are doing is when we find any element is used true we are using continue so it skip the push go to next iteration;

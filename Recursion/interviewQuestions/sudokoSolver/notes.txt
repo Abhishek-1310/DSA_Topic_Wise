@@ -1,0 +1,31 @@
+Sudoku Solver
+Write a program to solve a Sudoku puzzle by filling the empty cells.
+A sudoku solution must satisfy all of the following rules:
+
+Each of the digits 1-9 must occur exactly once in each row.
+Each of the digits 1-9 must occur exactly once in each column.
+Each of the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.
+The '.' character indicates empty cells.
+
+notes:-
+
+hwo to choose which digit we have to put
+1) we have to check that number should present in that row
+2) that number should not present in that column
+3) that snumber should not prent in that grid/box 
+
+after put digit move to next column
+this formula change 
+const boxId = Math.floor(r / 3) * 3 + Math.floor(c / 3);
+"map" a 9x9 grid into nine separate 3x3 boxes.
+
+1) we need to store all digit present in row  then all digit present in colmn  and all digit present in grid 
+ex:- 
+5 3 .
+6 . .
+. 9 8
+rows[0] = {5, 3}      cols[0] = {5, 6} so later we can check if that if current digit is already present in col, row or in grid
+rows[1] = {6}         cols[1] = {3, 9} if present then skip with continue
+rows[2] = {9, 8}      cols[2] = {8}
+boxes[0] = {5, 3, 6, 9, 8}
+

@@ -1,0 +1,77 @@
+Start:
+path = []
+used = [F, F, F]
+[1,2,3]
+Level 0:
+------------------------------------------------
+i=0 → used[0]=F → PICK 1
+path=[1], used=[T,F,F]
+
+    Level 1:
+    --------------------------------------------
+    i=0 → used[0]=T → ❌ SKIP
+    i=1 → used[1]=F → PICK 2
+    path=[1,2], used=[T,T,F]
+
+        Level 2:
+        ----------------------------------------
+        i=0 → used[0]=T → ❌ SKIP
+        i=1 → used[1]=T → ❌ SKIP
+        i=2 → used[2]=F → PICK 3
+        path=[1,2,3], used=[T,T,T]
+
+            ✅ BASE CASE HIT (length==3)
+            👉 STORE [1,2,3]
+            ⛔ STOP (return)
+
+        🔙 BACKTRACK
+        path=[1,2], used=[T,T,F]
+
+    i=2 → used[2]=F → PICK 3
+    path=[1,3], used=[T,F,T]
+
+        Level 2:
+        ----------------------------------------
+        i=0 → used[0]=T → ❌ SKIP
+        i=1 → used[1]=F → PICK 2
+        path=[1,3,2], used=[T,T,T]
+
+            ✅ STORE [1,3,2]
+            ⛔ STOP
+
+        🔙 BACKTRACK
+        path=[1,3], used=[T,F,T]
+
+    🔙 BACKTRACK
+    path=[1], used=[T,F,F]
+
+🔙 BACKTRACK
+path=[], used=[F,F,F]
+
+------------------------------------------------
+
+i=1 → PICK 2
+path=[2], used=[F,T,F]
+
+    Level 1:
+    --------------------------------------------
+    i=0 → PICK 1 → [2,1]
+    i=2 → PICK 3 → [2,3]
+
+        → [2,1,3] ✅
+        → [2,3,1] ✅
+
+🔙 BACKTRACK to []
+
+------------------------------------------------
+
+i=2 → PICK 3
+path=[3], used=[F,F,T]
+
+    Level 1:
+    --------------------------------------------
+    i=0 → PICK 1 → [3,1]
+    i=1 → PICK 2 → [3,2]
+
+        → [3,1,2] ✅
+        → [3,2,1] ✅

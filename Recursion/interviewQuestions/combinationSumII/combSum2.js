@@ -21,3 +21,6 @@ var combinationSum2 = function (candidates, target) {
     return result;
 };
 console.log(combinationSum2([10, 1, 2, 7, 6, 1, 5], 8))
+
+//  there is no base case in foor loop recursion so her you have to just skip or move with duplicate and break
+//  when current elemnt greater then target so no need to check furher bcz execeed th traget

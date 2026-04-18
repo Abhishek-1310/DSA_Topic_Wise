@@ -1,0 +1,36 @@
+Step-by-Step Logic Flow:
+Level 0 (Node 0): The loop starts at c=1. It's the first node, so Color 1 is always safe.
+Level 1 (Node 1):
+It starts its own loop at c=1. isSafe says No (Node 0 is already 1).
+It moves to c=2. isSafe says Yes. It calls the next node.
+Level 2 (Node 2):
+It starts its own loop at c=1. Even though Node 0 used 1, Node 2 can use 1 if they aren't connected (in your image, they are connected, so it would actually fail and try c=3).
+Correction for your specific image: Since 2 is connected to 0, it would fail c=1 and c=2 and pick c=3.
+Level 3 (Node 3):
+It starts its own loop at c=1. If neighbors (0, 1, 2) are using colors 1, 2, and 3, Node 3 will try c=1 (Fail), c=2 (Fail), c=3 (Fail).
+Backtrack: If all colors fail for Node 3, the code jumps back to Node 2, changes its color, and tries again.
+
+The Setup (Current State)
+Target: We want to color Node 3.
+Trial Color: Let's try to color Node 3 "Red" (Color 1).
+The Colors Array: colors = [1, 2, 0, 0]
+(Node 0 is Red(1), Node 1 is Green(2), Node 2 and 3 are uncolored(0))
+The Adj List for Node 3: From our previous step, we know adj[3] = [1, 2, 0].
+
+The isSafe(3, 1) Execution
+The code starts the loop: for (const neighbor of adj[3])
+
+Round 1: neighbor = 1
+Check: if (colors[1] === 1)
+Look up: colors[1] is 2 (Green).
+
+Result: 2 === 1 is False. (Safe so far!)
+Round 2: neighbor = 2
+Check: if (colors[2] === 1)
+Look up: colors[2] is 0 (Uncolored).
+Result: 0 === 1 is False. (Still safe!)
+
+Round 3: neighbor = 0
+Check: if (colors[0] === 1)
+Look up: colors[0] is 1 (Red).
+Result: 1 === 1 is True! 🚩 CONFLICT FOUND.

@@ -1,0 +1,84 @@
+how column help to choose safe place
+n=4
+why 2n-1 = give 7 while digonal is 4 no total digonal is 7 which cover all diognal see
+col[c]          // column
+
+diag1[row+col]  // ↘ diagonal these formula will cover all diagonal
+row+col = 0 → (0,0)
+
+row+col = 1 → (0,1), (1,0)
+
+row+col = 2 → (0,2), (1,1), (2,0)
+
+row+col = 3 → (0,3), (1,2), (2,1), (3,0)
+
+row+col = 4 → (1,3), (2,2), (3,1)
+
+row+col = 5 → (2,3), (3,2)
+
+row+col = 6 → (3,3)
+
+diag2[row-col+n-1] // ↙ diagonal these formula will cover all diagonal
+row-col = -3 → (0,3)
+
+row-col = -2 → (0,2), (1,3)
+
+row-col = -1 → (0,1), (1,2), (2,3)
+
+row-col = 0  → (0,0), (1,1), (2,2), (3,3)
+
+row-col = 1  → (1,0), (2,1), (3,2)
+
+row-col = 2  → (2,0), (3,1)
+
+row-col = 3  → (3,0)
+
+Example:- 
+We place queens like this:
+. Q . .
+. . . Q
+Q . . .
+. . . . <------ try to fill this an dcheck formula works or not
+🧠 Now try placing at row = 3
+We will test all columns in row 3:
+
+❌ Try (3,0)
+Column check:
+col[0] = true (queen at 2,0)
+
+👉 ❌ SAME COLUMN → NOT SAFE
+
+❌ Try (3,1)
+
+Check diagonal:
+
+diag1 (row+col):
+3+1 = 4
+
+diag1[4] = true (queen at 1,3)
+
+👉 ❌ SAME ↘ DIAGONAL
+
+❌ Try (3,2)
+
+Check diagonal:
+
+diag2 (row-col+n-1):
+3-2+3 = 4
+
+diag2[4] = true (queen at 2,0)
+
+👉 ❌ SAME ↙ DIAGONAL
+
+❌ Try (3,3)
+Column check:
+col[3] = true (queen at 1,3)
+
+👉 ❌ SAME COLUMN
+
+🚨 Result
+No valid position in row 3 ❌
+
+👉 So we:
+
+BACKTRACK (remove previous queen) will change place of previous one if not get valid place then bactrack again and change place

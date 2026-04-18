@@ -1,0 +1,80 @@
+N-Queens
+The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
+Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
+Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.
+
+ . Q . .      . . Q .
+ . . . Q      Q . . .
+ Q . . .      . . . Q
+ . . Q .      . Q . .
+
+in this question we have to  place all n queen at place where they can't attack each other 
+how they can attack same row and same column and diagonaly :- so can we do like this if we place any queen we will jump to next row
+bcoz can't place other queen and row should place with qeen so no need to check row we wil jump after queen placement 
+
+we will check column, or diagonals(2 diagonals) how to check if we place any queen we will make that column and diagonals true
+means can't place other queen 
+
+Instead of checking the whole board every time (slow ❌), we keep track of:
+Which column is already occupied
+Which diagonals are already occupied
+
+let col = new Array(n).fill(false); => col = [false, false, true, false]  true alreday occupied with queen
+
+col[c]      → “Is this column already used?”
+diag1[d]    → “Is this diagonal already used?” formula to fill right to bottom L diagonal 
+diag2[d]    → “Is this diagonal already used?” formula to fill left to bottom  R diagonal 
+what we will do we will check place is safe or not =? if safe place queen else skip or continue
+// ❌ not safe
+            if (col[c] || diag1[row + c] || diag2[row - c + n - 1]) continue;
+
+how to create N*N metrix with filled with '.'
+
+The Outer Layer (Array.from) decides how many "shelves" (rows) you are building.
+The Inner Layer (Array(n).fill('.')) builds a brand new "tray" (column set) and fills it with dots before sliding it onto the shelf.
+
+first see how to create single colmn filled with '.'
+
+let n = 4;
+let singleRow = Array(n).fill('.');
+console.log(singleRow);    // Output: [".", ".", ".", "."]
+
+then how to repeate this n time then it will become n*N
+Array.from(Object, function) 
+The Array.from() method creates a new, shallow-copied Array instance from an array-like or iterable object.
+
+complete code is
+let board = Array.from({ length: n }, () => Array(n).fill('.')); n=4
+Row 0 → ['.', '.', '.', '.']
+Row 1 → ['.', '.', '.', '.']
+Row 2 → ['.', '.', '.', '.']
+Row 3 → ['.', '.', '.', '.']
+
+two formula
+how to create aaray of length n fill with anything
+
+new Array(size).fill('anything')
+ex:- let board = new Array(n).fill('.'); => ['.','.','.','.'];
+
+
+set solution:- 
+Top-Left to Bottom-Right
+On a 4 × 4 board, the diagonal "names" (row - col values) are:
+
+-3: (0,3)
+-2: (0,2), (1,3)
+-1: (0,1), (1,2), (2,3)
+ 0: (0,0), (1,1), (2,2), (3,3)  ← Main diagonal
+ 1: (1,0), (2,1), (3,2)
+ 2: (2,0), (3,1)
+ 3: (3,0)
+
+Top-Right to Bottom-Left
+On a 4 × 4 board, the diagonal "names" (row + col values) are:
+0: (0,0)
+1: (0,1), (1,0)
+2: (0,2), (1,1), (2,0)
+3: (0,3), (1,2), (2,1), (3,0)
+4: (1,3), (2,2), (3,1)
+5: (2,3), (3,2)
+6: (3,3)

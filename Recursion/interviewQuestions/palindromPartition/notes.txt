@@ -1,0 +1,20 @@
+131. Palindrome Partitioning
+Given a string s, partition s such that every substring of the partition is a palindrome. Return all possible palindrome partitioning of s.
+
+Example 1:
+Input: s = "aab"
+Output: [["a","a","b"],["aa","b"]]
+
+notes:- 
+a|a|b cut 2 length is 3 so cut formula is cut = length - 1;
+substring(0,i+1) i+1 is in substring exclude end so we have to do +1
+
+we have to do partition of string one by one and check if that part is palindrom or not if palindrom then put that into array 
+for that
+1) make one palindrom function which will chcek part is palindrom or not 
+2) base condition is when string length become zero then push all stored palindrom part into result main array,
+ coz we can lost current stored part
+3) use for loop to cut the string into different part
+4) if part is not palindrom continue else
+-> we store in array then call recursion with with incresed cutting part i+1 and then pop is not palindrom
+

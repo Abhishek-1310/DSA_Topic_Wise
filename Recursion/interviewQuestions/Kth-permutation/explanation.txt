@@ -1,0 +1,26 @@
+n=4, k=17   n!= 4!=24
+(1,2,3,4)
+ 0,1,2,3
+
+ 1+ (2,3,4) ] 6 (0,5)   k-1= 16 coz index start with 0
+ 2+ (1,3,4) ] 6 (6-11)
+ 3+ (1,2,4) ] 6 (12-17)
+ 4+ (1,2,3) ] 6 (18-23)
+
+ no strat with 16/6 = 2 index value is 3 (1,2,3,4)    3, -, -, - sequence is laying in 3+ (1,2,4)] (12-17)
+ how to find out that sequence 16%6 = 4 4 sequence is the answer from (12-17)
+so find out 4 permutations from =>  n=3 (1,2,4) k=4
+
+1+ (2,4)] 2 (0-1)
+2+ (1,4)] 2
+4+ (1,2)] 2     
+no start 4/2 = 2      (1,2,4) 2 index value eis 4    3, 4, _, _
+hwo to find out sequence 4%2=0
+3,4,   (1,2)
+1+ (2)] 1 (0-1)
+2+ (1)] 1     0/1=1  k/n
+
+3,4,1,2
+
+if we have n=4 we have to find how factorial of (n-1) 3!
+and number to store all digits (1,2,3.4)

@@ -29,3 +29,6 @@ var combinationSum = function (candidates, target) {
 };
 
 console.log(combinationSum([2, 3, 6, 7], 7));
+
+// sort notes:- while push don't increse index after pop increse index and condition when remining < 0 don't go
+// further you will not get any thing
