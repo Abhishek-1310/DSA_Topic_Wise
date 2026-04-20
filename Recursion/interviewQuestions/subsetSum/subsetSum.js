@@ -2,19 +2,19 @@
 
 var subsets = function (nums) {
     let result = []
-    function sub(arr, path, index) {
-        if (index === arr.length) {
+    function sub( path, index) {
+        if (index === nums.length) {
             result.push([...path]);
             return
         }
 
-        path.push(arr[index]);
-        sub(arr, path, index + 1);
+        path.push(nums[index]);
+        sub(path, index + 1);
 
         path.pop();
-        sub(arr, path, index + 1);
+        sub(path, index + 1);
 
     }
-    sub(nums, [], 0);
+    sub( [], 0);
     return result
 };
