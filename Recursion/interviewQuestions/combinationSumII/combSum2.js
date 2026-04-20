@@ -1,15 +1,15 @@
 var combinationSum2 = function (candidates, target) {
     let result = [];
     candidates.sort((a, b) => a - b);
-    function comdSum2(start, path, remaning) {
+    function comdSum2(index, path, remaning) {
         if (remaning === 0) {
             result.push([...path]);
             return;
         }
-        for (let i = start; i < candidates.length; i++) {
+        for (let i = index; i < candidates.length; i++) {
 
             if (candidates[i] > remaning) break;
-            if (i > start && candidates[i] === candidates[i - 1]) continue;
+            if (i > index && candidates[i] === candidates[i - 1]) continue;
 
             let val = candidates[i];
             path.push(val);
