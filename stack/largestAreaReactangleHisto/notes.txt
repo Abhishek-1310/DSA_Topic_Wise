@@ -1,0 +1,30 @@
+Largest Rectangular Area in a Histogram
+You are given a histogram represented by an array arr[ ], where each element of the array denotes the height of the bars in the histogram. All bars have the same width of 1 unit.
+
+Your task is to find the largest rectangular area possible in the given histogram, where the rectangle can be formed using a number of contiguous bars.
+
+Examples:
+             width=take an ex:- 50        left smallest is 10 at 4 right no smallest so take n=7 with=right-left-1 =6-4-1= 2 
+Input: arr[] = [60, 20, 50, 40, 10, 50, 60]
+               [ 0,  1,  2,   3,  4,  5, 6]
+Largest-Rectangular-Area-in-a-Histogram
+Output: 100
+Explanation: We get the maximum by picking bars highlighted above in green (50, and 60). The area is computed (smallest height) * (no. of the picked bars) = 50 * 2 = 100.
+
+
+: largest contigeuse area in histogram
+Area = height[i] × width
+width = rightSmallerIndex - leftSmallerIndex - 1
+🧩 So we need 2 things:
+Previous Smaller Element (left boundary)
+Next Smaller Element (right boundary)
+
+how to find width
+width = nextSmallInd[i] - previousSmallInd[i] - 1
+this nextSmallInd & previousSmallInd both are function which will give me the index of next and previous smaller element so with
+that index we can find out width 
+that nextSmallInd & previousSmallInd code we have already done which is nearest smaller element on left and right.
+
+simple thing we have to do is 
+find width then current element and you will get area =
+area =  arr[i]*width every loop find Math.max(max,area)

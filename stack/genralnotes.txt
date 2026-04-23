@@ -1,0 +1,20 @@
+What is Stack?
+A linear data structure
+Works on LIFO (Last In First Out)
+👉 Last element inserted is removed first
+
+let stack = [];
+
+stack.push(10);
+stack.push(20);
+stack.push(30);
+
+stack look like 
+bottom            30 last in first out array follow same rule if you push it will add at last and if you pop it will remove from last
+ ↓                20 which follow first in first out array by defualy follow fifo
+[10, 20, 30]      10 
+         ↑         --
+        top      
+how to pick top=> stack[stack.length-1] stack[3-1] stack[2]=30;
+
+

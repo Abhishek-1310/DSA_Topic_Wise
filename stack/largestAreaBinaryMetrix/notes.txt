@@ -1,0 +1,25 @@
+Maximum Area Rectangle of 1s in a Binary Matrix
+Last Updated : 15 Sep, 2025
+Given a 2D binary matrix mat[][] consisting only of 0s and 1s, find the area of the largest rectangle sub-matrix that contains only 1s.
+
+Examples: 
+
+Input: mat[][] = [[0, 1, 1, 0],
+                  [1, 1, 1, 1],           1,1,1,1
+                  [1, 1, 1, 1],           1,1,1,1    4*2=8 ans
+                  [1, 1, 0, 0]]
+Output: 8
+Explanation: The largest rectangle with only 1's is from (1, 0) to (2, 3) which is
+
+notes:- divide matrix into different layer and treat every layer as a histogram and slove like max Area histogram and 
+with for loop divide metrix into different layer and from every layer find max area and from that find max area of all
+1) you need one histo array which store all height 
+histo will add hieght if current height is 1 all all previous layer height also but if 0 is there make whole height 0 
+
+for (let i = 0; i < n; i++) {
+            for (let j = 0; j < m; j++) {
+                hist[j] = mat[i][j] === 0 ? 0 : hist[j] + 1;
+            }
+            maxArea = Math.max(maxArea, this.mah(hist));
+        }
+        return maxArea;

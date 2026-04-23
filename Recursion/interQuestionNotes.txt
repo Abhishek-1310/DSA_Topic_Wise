@@ -1,0 +1,249 @@
+N-queen:- we have to place queen so queen can't attack each other
+
+1)  we move call Recursion row by row we need to worry about col,diag1,diag2
+We placed one queen in row and moved to next row
+->we need column, diagonal1 & diagonal2 to act as a memory to tell which Vertical line and diagonal is already occupied so we will not placed the queen 
+2) we need board array also to store current possible value 
+3) at last we store all possible value in result and return it
+4) We don't need to maintain row details because when we place any queen we move row+1 So it can't possible to place two queen in one row.
+Call Recursion by (row)
+5) row come from Recursion,  col will increase through for loop
+6) how to skip check if col, row-col,row+col present in set is yes then continue else push queen in board
+
+Column Matrix (col)
+Every vertical line has its own ID.
+
+[[0, 1, 2, 3],        \/
+ [0, 1, 2, 3],        \/
+ [0, 1, 2, 3],        \/
+ [0, 1, 2, 3 ]]       \/
+
+Diagonal 2 Matrix (row + col)
+This tracks the ✓ (Anti) diagonals. Notice how the same numbers run from top-right to bottom-left.
+
+[[0, 1, 2, 3],            /    
+ [1, 2, 3, 4],           /
+ [2, 3, 4, 5],          /
+ [3, 4, 5, 6 ]]        ~
+
+
+Diagonal 1 Matrix (row col)
+This tracks the (Main) diagonals. Notice how the same numbers run diagonally from top-left to bottom-right.
+
+[[0, -1, -2, -3],  \
+ [1,  0, -1, -2],   \
+ [2,  1,  0,  -1],   \
+ [3,  2,  1,  0]]     \
+
+
+So how do we know at any point diagonal and col is occupied 
+:- we use set to act as look-up table instead of scan whole table, we just check if that specific Lan is marked true
+Set.add()   set.delete()
+So when we place a queen we will mark This col, diagonal lane true 
+And when we backtrack we will mark false and make board '.' again 
+
+So we will know that which place is safe
+Note:- We need to update all col,diagonal when we place queen
+
+
+
+Rat_in_Maze
+Rat have to start from 1st index (0,0) and it have to reach at end n*n position ( 2d metrix) and path should be in lexicographically order in DLRU
+
+1) Condition Rat can move if index value is 1 
+If index value 0 it can't move 
+.. so starting index value must be 1 else don't call recursion 
+2) Rat can't go back if he visited that path eailer 
+Rat can't go in path which is already visited 
+-> you will get n by maze.length
+So we need any array which track of visited path 
+1) make visited path array of array assign with false
+2) condition when I, j reached at last index n,n push answer in result ( base case )
+3) make visited [i][j] true in every call
+-> call down backtracking 
+You need to check 3 condition to call backtrack
+.1) if down<n  down is (i+1)
+2) if next down maze is 1 or not
+3) that next path is visited or not 
+4) so the above call for left, right, down 4 different call with diffrenent condition 
+5) recursion(updated i, updated j, ans with direction)
+For up (i-1,j,ans+"u")
+
+
+
+
+Sudoku solver
+Fill all spot with unique number which not present in same row same column, same grid
+
+1) when we place any digit in current place 
+We need to check digit should not be in 
+-> same row,   -> same column, -> same grid 
+How to check 
+If we store all digit present in row, present in col, present in grid. Like in set of array then we can check we have to place the digit in current place or not
+
+Like row=[{5,3}                 row 0.     set(),
+                   {6,8,1,0}          row 1.     set(),
+                   {9}]                  row 2.     set()
+
+Same Like this for col, and grid(in grid we will use gridid as index 
+Gridid :- Which divide 9×9 into 9 separate 3*3 box give 9 separate id we will use this as index 
+How to find gridid there is formula 
+
+2) we will use 2 for loop to store all digit in row, in col, in grid
+3) we will use Recursion with row,col
+4) will use for loop (1 to 9) to select which digit we have put now
+5) if row, col, grid have the digit we will continue and move digit to next 
+6) backtrack we will remove digit we placed '.' And delete digit from row,col,grid 
+
+Notes:- we need to update row,col,grid when we put digit in current place so memory is updated 
+
+When to use take & skip recursion and when for loop recursion
+hen order doesn’t matter like subset, and combination problem use  take, skip(2 recursion technique)
+-> this have two branch and there have two branch it will go like this
+
+> when you need to remove duplicate and find permutation where order matter
+-> in this first it has n branch then next n-1 then it will go like this.
+
+
+
+
+M-coloring 
+U have undirected graph with given vertices and edges, with m(no of colors), u need find out is it possible to color all vertices with m color and adjacent vertices should not be same color.
+
+Vertices will give u nodes
+1) to fill node with color but adjacent node should not be same color -> so while coloring node 
+We need to check adjacent node colors if it matches with current color skip it 
+
+So how to find how adjacent node colors 
+1)> make adjacent array of array which store adjacent node data in array and index denote a node
+How to do
+:- from edge we will push both node to each other
+adj[c].push(n)
+adj[n].push(c)
+
+> And one color array which store every node color 
+At start fill with 0
+2) make one function ( isSafe ) will check node, color is face to put
+So with help of for loop > take out all adjacent node from adjacent arr, arr
+And check there color with color array if matches then not face to color
+3) when node increased till vertices return true
+4) use for loop recursion 
+Loop start with ( k=1 to m) k denote color
+If color and node is safe then updates color array with k
+And after backtrack make color array with 0
+5) increase the backtrack in condition and return true
+Recursion(node+1) 
+
+Here we have to just return true or false So no need to maintain result 
+
+
+
+
+
+Palindrome partition
+Given string s and partition that string such that every substring of partition is Palindrome 
+
+1) make one Palindrome function (2 pointer)
+2) base path:- when str length become 0 push all Palindrome substring  part in result
+3) use for loop recursion order is important 
+Loop start with index 0 to str.length
+4) cut string with substring that prefix give it to Palindrome function if return true add in current part
+Part.push(prefix)
+Backtrack(s.substring(i+1),part)
+Part.pop
+
+
+
+
+
+
+3) combination sum
+Return list of unique combination but you can pick same number many times and there sum is equal to target 
+
+Same number many time after push don't increase index after pop increase index
+
+1) need result array which store all current combination
+2) we can use index in recursion but here we can do in another way  we will.pass remaining 
+How we will update 
+Target - sum == remaining ==0 means sum = target
+Formula is (remaining - current value);
+So when remaining 0 we found sum.
+Push the path in result
+Path is current combination 
+3) two exit condition
+> When remaining is 0 =>store path
+> when remaining is < 0 & index === input_arr.size
+Just rerurn exit loop
+4) take >
+push the number in path 
+Call Recursion with(index, path, remaining-number)
+ Skip >
+Pop number (in backtrack)
+Call Recursion(index+1, path, remaining);
+
+
+
+
+
+
+4) combination sum 11
+
+Find all unique combination, each number should used once in the combination and sum should equal to target 
+> same we will remaining as Recursion loop when equal to 0 we got our path 
+1) now if we need to use number once means we have to skip all duplicate number 
+How to skip duplicates then
+> sort input array(which hold number)
+> use for loop recursion easily we can skip all dupli
+2) agin two condition
+> remaining === 0> push path in result
+> inside for loop (i=index to input_arr.length)
+Break loop when ( current_number > remaining)
+... if it is more than remaining means it exceed target
+Continue (skip) when ( i>index && current_num === previus_num)
+.... we are skip duplicate number 
+3) push the current number in path after skip and continue 
+>call Recursion(i+1, path,remaining-val)
+> pop current number 
+Don't call Recursion again because that is done with for loop
+
+Notes:- If we are using for loop Recursion no need to call two Recursion like take or skip.
+
+
+
+ 5) subset sum
+Input unique elements array -> return all possible subset, element which is part of input array like
+1, (2,3), 3 all......
+
+If we need all subset so we don't need check any condition to push the current elements 
+1) we will push the path in result when index === input_arr.length
+2) push (current_no)
+Resursion( path, index+1)
+Pop()
+Recursion (path, index+1)
+
+
+
+
+6) subset sum 11
+Input array may contain duplicate , return all possible subset which should unique not same with other subset
+
+Remove duplicate :- sort input array use for loop recursion and for loop recursion we need to call recursion at once only after push and after Recursion pop and no Recursion call after pop because that work is done by for loop.
+
+1) in for loop Recursion there are no condition in it 
+Only remove duplicate continue condition
+One recursion(path,index+1)
+
+Genral notes:- 
+A subset is just a "slice" of a larger group. It doesn't matter what order you pick the items(size may not be same)
+A permutation is a specific way of ordering or arranging a set of items.
+(Size always same)
+
+
+
+7) permutations 
+
+If all path size same just change order then we need to push the path in result when path.length()=== input_arr.length() condition 
+1) we need for loop recursion because we need all n branch possibility at node 1 
+2) we need one used array where we Will use which number is used so we will skip that number and go to next number 
+3) when we push current elements in path we have to make that used index true So next time we will skip this for unique combination
+4) then call Recursion(path, used) then pop and used[current_index] = false

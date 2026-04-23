@@ -1,0 +1,23 @@
+Q) Closest greater or same value on left side for every element in array
+Given an array arr[] of size n. For each element in the array, find the value wise closest element to its left 
+that is greater than or equal to the current element. If no such element exists, return -1 for that position.
+Examples:  
+Input : arr[] = [10, 5, 11, 6, 20, 12]
+Output : [-1, 10, -1, 10, -1, 20]
+Explanation: The first element has nothing on the left side, so the answer for first is -1. 
+Second, element 5 has 10 on the left, so the answer is 10. 
+Third element 11 has nothing greater or the same, so the answer is -1. 
+Fourth element 6 has 10 as value wise closest, so the answer is 10.
+Similarly, we get values for the fifth and sixth elements.
+
+
+notes:- same as nearest element on right
+difference is for loop start with left 
+same three condition
+1) remove all smaller element in stack using while loop 
+2) if stack length is 0 then result push -1;
+3) else push stack top element using stack[stack.length-1];
+4) push all element one by one in stack;
+
+
+

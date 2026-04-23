@@ -1,0 +1,4 @@
+nearest smaller to left/nearest smallest element
+arr=[1,3,2,4]  o/p = [-1,1,1,2]
+
+same as greater on left just while removing smaller you have to pop all greater element in stack

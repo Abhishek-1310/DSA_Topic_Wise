@@ -1,0 +1,29 @@
+Min Stack
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+Implement the MinStack class:
+
+MinStack() initializes the stack object.
+void push(int val) pushes the element val onto the stack.
+void pop() removes the element on the top of the stack.
+int top() gets the top element of the stack.
+int getMin() retrieves the minimum element in the stack.
+You must implement a solution with O(1) time complexity for each function.
+
+
+notes:- 
+how to encode prvious min
+2*val - this.min
+
+how to decode min 
+2*this.min - top
+
+instead to minStack = [] we have to use variable this.min=0;
+getMin return only = this.min
+1) push() :- if value is smaller than this.min don't push valu to this.stack encode it and then push on stack and 
+update this.min with val
+pop():- a pop directly from stack if pop val is smaller than this.min you have update this.min with encode value (decode)
+and store in this.min
+top():- if top value is less then this.min then you can't send top becuase it is encode so return this.min 
+else return top
+

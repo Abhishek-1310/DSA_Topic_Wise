@@ -1,0 +1,6 @@
+
+
+notes:
+
+👉 Use result[i] when you want output in the same order as input when you are going opposite side use resukt[i]
+👉 Use result.push() when order is naturally building left → right

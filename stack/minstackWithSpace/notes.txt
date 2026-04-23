@@ -1,0 +1,30 @@
+Min Stack
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+Implement the MinStack class:
+
+MinStack() initializes the stack object.
+void push(int val) pushes the element val onto the stack.
+void pop() removes the element on the top of the stack.
+int top() gets the top element of the stack.
+int getMin() retrieves the minimum element in the stack.
+You must implement a solution with O(1) time complexity for each function.
+
+
+
+important things 
+1) minStack is main Function where you will declare stack and minStack
+> declare variable with This.stack not let stack => if you make let stack it will not be access outside of the function when 
+you use this it will become property of the object.
+
+use stack for pop and push for all data in sequence and use minStack to maintain minvalue of stack
+
+2) push() :- we will push directly in stack but when we have to push in minStack we haveto check two condition if 
+minstack length is zero so we have to push the value or if the current value is less then min value in minStack
+
+3) pop() :- you can pop the value directly from stack but we have to pop the value from minStack only if the pop value 
+in stack is equal to Value in in minStack 
+
+4) top():- is related to stack only you have to show top of stack no need to do anything with m minStack 
+
+5) getMin():- is related to minStack only we have to return only top of the min Stack this is no relation with stack.
