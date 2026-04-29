@@ -1,0 +1,58 @@
+1) while creating set we don't need to give size like 
+let col = new Set();  no size needed; why:- javascript "Set is dynamic, not fixed-size it grows automatically."
+
+in result we should always push the value not overwrite it. wrong (result = board.map(...).) right (result.push(board.map(...)))
+
+2) Set gives O(1) fast lookup → set.has(value) [but in  Array needs index handling + initialization]
+Set = simple, no size, clean for checking conflicts
+
+set importnat methods:- 
+=> add/remove 1) set.add(value) → add element   2) set.delete(value) → remove element  3) set.clear() → remove all
+=> check 1) set.has(value) → true/false
+
+2.1)  every base case should stop recursion 
+When function expects a value
+You must return something
+Example: sum, count → return value
+When using side effects (like pushing to result array)
+You can just stop → return (or even omit if no further code)
+
+3) in N-queen :-
+-> In N-Queens, we place exactly one queen per row so recursion naturally moves row → row+1
+We only need to try all columns in that row so we need for loop for that.
+= Recursion controls row       = Loop controls column
+
+-> n-queens : set store value like which col, which diagonal => add that value with set.add(val) and deleet with set.delete(val)
+
+= we have to pass only col in recursion  when when 1 decision per row and try all column value.
+= we have to pass row & col in recursion when we have to move all direction 
+
+4) suduko solver 
+grid id formula:- box_index=⌊row/s​⌋×S+⌊col/s​⌋   s=\/n s is squre root of n  9*9 n=9 s=/9=3  id=Math.floor(row/3)*3+Math.floor(col/3);
+if we will not multiply with S it will create conflict for (0,1)(1,0) both will give 1 they unable to give unique value 
+
+at starting when we have to make array of stack to store digits at every index so we will not put same element in empty place
+so it will not match with same row, col, grid 
+(put the value only if digit is present, don't put '.' = if(board[r][c]!=='.')  )
+
+
+in suduko how row and col move is very important
+if(col === 9) → move to next row (before for loop)
+👉 (row+1, 0)
+imp:= we have to end the backtrack recursion by return true when (row===9) and we have to return false after 4 loop.
+imp:- when we return true or false in base consition we need to place recursion call(after add val) inside if() 
+if(board[row][col] !== ".") → skip filled cell (before for loop)
+👉 (row, col+1)
+After placing value → go to next column (inside for loop)
+👉 (row, col+1) inside if condition if(backtrac(...)) return true; → used when we want early stop after finding valid solution
+
+N-Queens → “Find all ways” → keep exploring   = All solutions → no if in recusrion call
+Sudoku → “Find one correct way” → stop when found   = One solution → use if(return true) to stop early
+
+
+5) rat in maze
+Lexicographically smallest path = smallest in dictionary order We define order of moves: Example: D, L, R, U
+
+visited is for mark current cell, not next cell  = visited[row][col] = true; at last visited[row][col] = false;
+Current → already safe
+Next → check before moving

@@ -1,0 +1,44 @@
+Visualization: dequeue() when Stack is [10, 20, 30]
+
+The "Unwinding" Phase (Popping down to the bottom)
+
+dequeue() Call 1:
+this.stack = [10, 20, 30]
+pop(30) → temp = 30
+Calling this.dequeue() recursively...
+
+dequeue() Call 2:
+this.stack = [10, 20]
+pop(20) → temp = 20
+Calling this.dequeue() recursively...
+
+dequeue() Call 3 (The Base Case):
+this.stack = [10]
+It sees length === 1
+pop(10) → res = 10
+This function returns 10
+
+The "Rebuilding" Phase (Function returns)
+
+Returning to dequeue() Call 2:
+Received res = 10
+Now, it must restore the stack:
+this.stack.push(temp)  (temp was 20)
+this.stack = [20]
+This function returns 10
+
+Returning to dequeue() Call 1:
+Received res = 10
+Now, it must restore the stack:
+this.stack.push(temp)  (temp was 30)
+this.stack = [20, 30]
+
+The main function returns 10
+
+Final Result:
+
+Queue Behavior:
+The oldest item (10) was successfully removed
+
+Stack State:
+The remaining items (20, 30) are back in their correct, original order

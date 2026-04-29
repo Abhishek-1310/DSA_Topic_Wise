@@ -1,0 +1,21 @@
+can treat a standard Array as a Queue.
+
+queue.push(x): Equivalent to enqueue (adds to the back).
+queue.shift(): Equivalent to dequeue (removes from the front).
+
+In JavaScript, .shift() is an array method that removes the first element from an array and returns that removed element.
+ It also shifts all subsequent elements to a lower index.
+ How it works:
+Removes: It takes the element at index 0.
+Shifts: It moves all remaining elements (index 1 becomes 0, index 2 becomes 1, etc.).
+Changes Length: It decreases the length of the array by 1.
+Returns: It returns the value that was removed.
+
+let queue = ["Alice", "Bob", "Charlie"];
+
+// Call shift
+let removedPerson = queue.shift();
+
+console.log(removedPerson); // Output: "Alice"
+console.log(queue);         // Output: ["Bob", "Charlie"]
+console.log(queue.length);  // Output: 2

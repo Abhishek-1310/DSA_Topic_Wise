@@ -1,0 +1,22 @@
+The Core Logic
+When you push a new element into the queue:
+
+Add it to the back: Like a normal queue (q.push(x)).
+Rotate: Take every element that was already in the queue (before the new one) and move them to the back, one by one.
+By the time you finish rotating, the element you just pushed will have "jumped" to the front of the line!
+
+Let's trace push(30) where the Queue is currently [10, 20]
+Step 1: this.q.push(30)
+We add the new item to the back, like a normal queue.
+Queue state: [10, 20, 30]
+
+Step 2: The Rotation Loop (for loop runs 2 times)
+We take the front item and move it to the back, over and over, until the new item (30) reaches the front.
+
+Iteration 1:
+
+shift() takes 10 out.
+
+push(10) puts 10 at the back.
+
+Queue state: [20, 30, 10]

@@ -1,0 +1,14 @@
+The Core Logic
+In this approach, we ensure that the newest element is always at the front of queue1.
+
+Push(x):
+
+Add the new element to queue2.
+
+Move all elements from queue1 to queue2 (so the new element is at the very front).
+
+Swap the names of queue1 and queue2.
+
+Pop():
+
+Since the newest element is at the front of queue1, just shift() it.

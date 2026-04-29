@@ -1,0 +1,21 @@
+
+in stack 
+You are adding a node to the front of the list.
+
+You need the new node to point to the current head (the rest of the stack).
+
+The Code: node.next = this.head; (You are setting the new node's pointer).
+In the Stack, the new node is the "active" one doing the work of connecting. That is why you write node.next = ...
+
+
+in queue
+You are adding a node to the back of the list.
+
+You are not changing the new node's pointer (it already points to null from the constructor).
+
+Instead, you need to change the previous last node (the rear) so that its .next points to your new node.
+
+The Code: this.rear.next = node;
+
+In the Queue, the rear node is the "active" one doing the work of connecting to the new person. That is why you write 
+this.rear.next = ...

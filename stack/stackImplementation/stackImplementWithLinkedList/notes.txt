@@ -1,0 +1,9 @@
+
+point top as = null = top is denote as head in code this.head = null;
+
+In a stack, you only ever interact with the top node.
+
+Push: You add a new node and make it the new "head" of the list.
+Pop: You remove the current "head" and make the "next" node the new "head."
+
+since linked list is dynamic in nature so no isFullmethod();

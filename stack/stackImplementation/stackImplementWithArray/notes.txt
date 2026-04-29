@@ -1,0 +1,15 @@
+Push/Pop here
+            |
+            v
+    |      30      |  <-- top (index 2)
+    |      20      |
+    |      10      |
+    |______________|
+
+we need only one pointer top why ?
+
+In a stack, you add and remove from the exact same end.
+Because the "entry" and "exit" are the same, you only need one pointer (top) to track that single position.
+Logic:
+Pushing (adding)? top moves up.
+Popping (removing)? top moves down.

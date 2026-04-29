@@ -1,0 +1,34 @@
+for enqeue directly push on s1;
+for dequeue => 
+check if s2 length is 0 then until s1 will length 0 push all s1 valule to s2 
+then return s2.pop();
+
+for front():- if s2 length is > 0 then return s2[s2.length-1]
+if s1 length>0 then return s1[0];
+
+Scenario 1: s2 is Not Empty
+State:
+s1 = [30] (30 is on top)
+s2 = [20, 10] (10 is on top)
+
+s1                s2
+|    |           | 30 | <-- FRONT (top of s2)
+|    |           | 10 |  
+|____|           | 20 |
+                 |____|
+Scenario 2: s2 is Empty (Elements only in s1)
+State:
+
+s1 = [10, 20, 30] (30 is on top, 10 is on the bottom)
+s2 = []
+s1                s2
+| 30 | (top)     |    |
+| 20 |           |    |
+| 10 |  <-- FRONT (bottom of s1)
+|____|           |____|
+
+
+
+
+
+size():= length s1 + length s2;

@@ -1,0 +1,10 @@
+❗ Smaller digit at LEFT matters more than big digit at RIGHT
+Remove the digit which is greater than next digit
+"I want the number to be as small as possible from the LEFTMOST side"
+Compare:
+
+9991 vs 1999
+
+👉 Even though both have 9s:
+
+1999 is much smaller because of first digit
