@@ -1,0 +1,100 @@
+Sum of Subarray Minimums
+Given an array of integers arr, find the sum of min(b), where b ranges over every (contiguous) subarray of arr. Since
+ the answer may be large, return the answer modulo 109 + 7.
+
+Example 1:
+
+Input: arr = [3,1,2,4]
+Output: 17
+Explanation: 
+Subarrays are [3], [1], [2], [4], [3,1], [1,2], [2,4], [3,1,2], [1,2,4], [3,1,2,4]. 
+Minimums are 3, 1, 2, 4, 1, 1, 2, 1, 1, 1.
+Sum is 17.
+
+notes:- 
+so we have to find out sum of Minimums from all subarray 
+so instead of find all subarray and take out min and sum it it is very complex problem right 
+so what we can do in o(n)
+Instead of:
+
+“find min of every subarray” ❌
+We do:
+“For each element, how many subarrays consider it as minimum?” ✅
+
+👉 arr[i] can only be minimum until a smaller element blocks it
+
+1) in every index take that element and find previous smallest element and next smallest element ( through thsi you will get 
+how many number is grater than the current number each time we will count and multiply with current element )
+how to count how many element is greater 
+
+left[i]
+Number of elements (including itself) :- how many time current elem in smaller in all subset inculde current in all subset on left.
+for 1
+[1]      (start at index 1)
+[3,1]    (start at index 0)
+count:- 2
+
+🔹 right[i]
+how many time current elem in smaller in all subset inculde current in all subset on right.
+[1]
+[1,2]
+[1,2,4]
+count:- 3
+
+how to find count no need to do anything just find smaller element on left and right you will get count;
+wha is left it content greater element on left include itself: right contain greaer elemnt on right include it self
+arr = [3, 1, 2, 4]
+index  0  1  2  3
+left = [1, 2, 1, 1] 
+right = [1, 3, 2, 1]
+
+| i | arr[i] | left | right | contribution |
+| - | ------ | ---- | ----- | ------------ |
+| 0 | 3      | 1    | 1     | 3            |
+| 1 | 1      | 2    | 3     | 6            |
+| 2 | 2      | 1    | 2     | 4            |
+| 3 | 4      | 1    | 1     | 4            |
+
+3 + 6 + 4 + 4 = 17
+
+example:- arr = [3, 1, 2, 4]
+For 1:
+left = 2 (covers [3,1], [1])
+right = 3 (covers [1], [1,2], [1,2,4])
+Contribution = 1 * 2 * 3 = 6
+
+add all contribution ans += arr[i] * left[i] * right[i]
+
+Missing MOD (LeetCode requirement)
+
+For large input:
+
+sum can overflow
+
+👉 Use:
+
+const MOD = 1e9 + 7;
+1e9 + 7 = 1000000007
+
+👉 It’s a large prime number
+
+🧠 Why do we use modulo at all?
+
+In problems like yours:
+
+sum += arr[i] * l[i] * r[i]
+
+👉 Values can become very large
+👉 Can overflow or lose precision in JavaScript
+so we use sum%mod
+
+
+sum += arr[i] * l[i] * r[i] % MOD;
+👉 Issue:
+
+Only arr[i] * l[i] * r[i] is moduloed
+But sum keeps growing without modulo
+
+👉 So sum can exceed JS safe integer range (Number.MAX_SAFE_INTEGER)
+sum = (sum + (arr[i] * l[i] * r[i]) % MOD) % MOD;
+

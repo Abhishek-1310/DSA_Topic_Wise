@@ -1,0 +1,39 @@
+Next Greater Element II
+Given a circular integer array nums (i.e., the next element of nums[nums.length - 1] is nums[0]), return the next greater number
+ for every element in nums. The next greater number of a number x is the first greater number to its traversing-order next in 
+ the array, which means you could search circularly to find its next greater number. If it doesn't exist, return -1 for this number.
+
+Example 1:
+
+Input: nums = [1,2,1]
+Output: [2,-1,2]
+Explanation: The first 1's next greater number is 2; 
+The number 2 can't find next greater number. 
+The second 1's next greater number needs to search circularly, which is also 2.
+
+
+Since this is a circular array trick, the loop runs twice:
+
+First pass → actual answers should be computed
+Second pass → only helps build the stack
+
+👉 But your code writes into result[i] in both passes, so:
+
+A correct answer from the first pass can get overwritten later with a wrong one
+
+
+notes:- 
+
+circular array acts as a double array 
+arr=[1,2,1]  circular acts as circular_Arr = [1,2,1][1,2,1]
+                                              0,1,2, 3,4,5    n=3
+                                            j=0          j=2*n-1 
+                                            j=0          j=5
+5 to 3 j>=n don't update result array because it act as a double array but reallity is its single only right so update stack 
+then when j<n fill result
+2 to 0 j<n  start filling result 
+
+mistake i have done
+1) i have start loop from (i=2*n-1 to i>0) but issue is i forgot 0 index it should be (i=2*n-1 to i>=0)
+2) i haven't pop elemnts when stack top is <= current elemnts, we should pop when equal value also
+ not just < this is correct:-  (while(stack.length>0 && stack[stack.length-1]<=nums[i]))
