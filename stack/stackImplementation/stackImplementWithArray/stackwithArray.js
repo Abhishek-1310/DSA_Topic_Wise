@@ -16,7 +16,7 @@ class myStack {
 
     push(x) {
         if (this.isFull()) {
-            return;
+            return; //Stack Overflow
         }
         this.top += 1;
         this.arr[this.top] = x;
@@ -31,48 +31,53 @@ class myStack {
 
     peek() {
         if (this.isEmpty()) {
-            return -1;
+            return -1; //Stack Underflow
         }
         return this.arr[this.top];
     }
 }
 
-//
+// without help of top;
 
 class myStack {
     constructor(n) {
-        this.size = n; // Store size as a property
-        this.arr = new Array(n); // Initialize array of size n
-        this.top = -1;
+        // Define Data Structures
+        this.stack = [];
+        this.size = n;
     }
 
     isEmpty() {
-        return this.top === -1;
+        return this.stack.length === 0;
+        // Check if stack is empty
     }
 
     isFull() {
-        return this.top === this.size - 1; // Top is index, so size-1
+        return this.stack.length === this.size;
+        // Check if stack is full
     }
 
     push(x) {
+        // Push x at the top of the stack
         if (this.isFull()) {
-            console.log("Stack Overflow");
             return;
         }
-        this.top++;
-        this.arr[this.top] = x;
+        this.stack.push(x);
     }
 
     pop() {
         if (this.isEmpty()) {
-            console.log("Stack Underflow");
-            return null;
+            return;
         }
-        return this.arr[this.top--]; // Return value then decrement
+        return this.stack.pop();
+        // Removes and element from the top of the stack
     }
 
     peek() {
-        if (this.isEmpty()) return null;
-        return this.arr[this.top];
+        if (this.isEmpty()) {
+            return -1;
+        }
+        return this.stack[this.stack.length - 1];
+        // Returns the top element of the stack
     }
 }
+

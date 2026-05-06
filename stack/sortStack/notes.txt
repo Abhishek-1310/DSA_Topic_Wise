@@ -1,0 +1,22 @@
+Sort a stack
+Given a stack of integers st[]. Sort the stack in ascending order (smallest element at the bottom and largest at the top).
+Examples:
+Input: st[] = [41, 3, 32, 2, 11]
+Output: [41, 32, 11, 3, 2]
+Explanation: After sorting, the smallest element (2) is at the bottom and the largest element (41) is at the top.
+
+notes:- 
+
+what to do
+1) Pop element
+2) Sort remaining stack (this we can do with recursion )
+3) Insert popped element in correct place  ( to place pop element at right place also need recursion ) so make other method for this
+
+pop element until it become 1 then return after that insert that thing in correct place
+
+in insert
+1) when last element pop :- definetly we have to push in stack element
+2) or if stack top is < = curr element then also push in stack element
+else 
+pop and call recursion with stack and element to place at correct position
+3) then after arrange all push pop element in stack at last

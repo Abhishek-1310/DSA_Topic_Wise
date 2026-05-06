@@ -20,6 +20,10 @@ Output: false
 
 
 notes:- 
+1) starting if open bracket come push in stack else starting  closing bracket come means stack empty then  return false 
+2) if close bracket come all bracet should match with top of stack then pop
+3) else bracket mismatch then return false
+4) last if stack is empty then valid else invalid 
 
 push bracket in stack if bracket is open
 else check stack top is match with curr bracet  (ch === ')' && stack[stack.length-1]==='(') 

@@ -5,6 +5,7 @@ Push/Pop here
     |      20      |
     |      10      |
     |______________|
+LIFO → Last In First Out [stack ]
 
 we need only one pointer top why ?
 
@@ -13,3 +14,30 @@ Because the "entry" and "exit" are the same, you only need one pointer (top) to 
 Logic:
 Pushing (adding)? top moves up.
 Popping (removing)? top moves down.
+
+with extra variable :- top = -1;
+with help of top we can check
+ empty this.top =-1 
+full this.top = this.size-1 ;
+push :- inc index top then on that index put value :- arr[++top]=x;
+pop:- decrese value :-  return arr[top--]
+peep:- arr[top];
+
+without extra variable 
+-----------
+push :- if (array is full you can push)  else -> simply you can push as array (no change) arr.push(x);
+pop:- if (array is empty you can pop ) else -> simply pop like array (no change ) arr.pop();
+peek:- i f(array is empty nothing is there what you will pick return -1) else -> simply return top element  arr[arr.length-1];
+isEmpty:- if arr.length === 0 means stack is empty
+isFull:-  if arr.length === n means stack is full 
+
+[ ] =>  [10] => [10, 20] => [10,20,30]
+          ↑           ↑             |
+        top           top          top
+         
+pop 30 => Before:
+[10, 20, 30]
+          ↑ top
+After:
+[10, 20]
+      ↑ top

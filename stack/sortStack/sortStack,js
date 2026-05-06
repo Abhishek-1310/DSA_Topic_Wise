@@ -1,0 +1,24 @@
+class Solution {
+    sortStack(st) {
+        if (st.length <= 1) return;
+
+        let rem = st.pop();
+
+        this.sortStack(st);
+
+        this.arrange(st, rem);
+    }
+
+    arrange(stack, element) {
+        if (stack.length === 0 || stack[stack.length - 1] <= element) {
+            stack.push(element);
+            return;
+        }
+
+        let temp = stack.pop();
+
+        this.arrange(stack, element);
+
+        stack.push(temp);
+    }
+}

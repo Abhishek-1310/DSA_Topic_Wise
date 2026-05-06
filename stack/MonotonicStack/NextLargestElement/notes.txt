@@ -12,7 +12,7 @@ so if we traverse from right when we reach at arr[i] we already have graeter ele
 2) we need result array to store all greater element from right;
 3) stack to store and pop element which is greater on right
 4) there are three condition
->remove all smaller element campare to current ele arr[i] pop all smaller element from stack
+>remove all smaller element if stack top is <=  current element arr[i] pop all smaller element from stack (and equal is important)
 >if there is no element in stack so store -1 in result because no element is greater on right
 >after remove all element smaller from stack if stack is not empty push that element in result
 5) every loop push current element in stack
