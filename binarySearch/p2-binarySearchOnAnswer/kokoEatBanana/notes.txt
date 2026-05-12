@@ -1,0 +1,32 @@
+875. Koko Eating Bananas
+Koko loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. The guards have gone and will 
+come back in h hours. Koko can decide her bananas-per-hour eating speed of k. Each hour, she chooses some pile of bananas
+ and eats k bananas from that pile. If the pile has less than k bananas, she eats all of them instead and will not eat 
+ any more bananas during this hour. Koko likes to eat slowly but still wants to finish eating all the bananas before the 
+ guards return. Return the minimum integer k such that she can eat all the bananas within h hours.
+
+Example 1:
+Input: piles = [3,6,7,11], h = 8
+Output: 4
+
+Example 2:
+Input: piles = [30,11,23,4,20], h = 5
+Output: 30
+
+sol:- 
+
+how to find max in javascript from array
+Math.max(...arr);
+
+intilised ans with r becasue :- r is the MAX possible valid answer (Koko eats entire biggest pile in 1 hour)
+
+1) intilised l=1 and r with max of pile coz answer should lie between pile only
+and hour should be inside l and r
+apply binary search to find time hour in log n
+2) then make one function where we pass array and one time check if that time koko eat all banana in given hour taken is less than given hour , if that time all exceed given hour
+if yes then update ans and go left sid eto find min time
+else go right side 
+
+piles = [3,  6, 7,  11]   4 time koko take to eat all in given time 
+ time    4 4+4 4+4 4+4
+         1  2  2  2 = total time is 8 <= given hour 8 

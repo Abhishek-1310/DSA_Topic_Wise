@@ -1,0 +1,55 @@
+Find Kth Rotation
+Given an increasing sorted rotated array arr[] of distinct integers. The array is right-rotated k times. Find the value of k.
+Let's suppose we have an array arr[] = [2, 4, 6, 9], if we rotate it by 2 times it will look like this:
+After 1st Rotation : [9, 2, 4, 6]
+After 2nd Rotation : [6, 9, 2, 4]
+
+Examples:
+
+Input: arr[] = [5, 1, 2, 3, 4]
+Output: 1
+Explanation: The given array is [5, 1, 2, 3, 4]. The original sorted array is [1, 2, 3, 4, 5]. We can see that the array was rotated 1 times to the right.
+Input: arr = [1, 2, 3, 4, 5]
+Output: 0
+Explanation: The given array is not rotated.
+
+
+sol:- ans is same as find min rotated sorted array here we have to just retunr index there we have to return value that is all
+
+why while(l<r)
+Because in this problem we are searching for:
+the exact minimum index
+And our logic keeps the minimum inside the range at all times.
+Eventually:
+l == r
+At that moment:
+we already FOUND the answer
+So no need to continue.
+
+
+Visual Example
+[4,5,1,2,3]
+Step 1
+l=0 r=4
+mid=2
+
+nums[mid]=1 < nums[r]=3 imp [r should not be mid - 1 if do it will miss min if mid < r it might be min right so do only r = mid ]
+So:
+r = mid
+Now:
+l=0 r=2
+Step 2
+mid=1
+nums[mid]=5 > nums[r]=1
+So:
+l = mid+1
+Now:
+l=2 r=2  when we found min why we again run that condition;
+Now:
+minimum found
+Loop should stop.
+
+why not l<=r why only l<r
+
+minimum is ALWAYS inside [l , r]
+We never remove the minimum accidentally.

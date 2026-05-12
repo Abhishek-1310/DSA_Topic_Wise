@@ -1,0 +1,46 @@
+Implement Upper Bound
+Difficulty: EasyAccuracy: 52.54%Submissions: 53K+Points: 2
+Given a sorted array arr[] and a number target, the task is to find the upper bound of the target in this given array.
+The upper bound of a number is defined as the smallest index in the sorted array where the element is greater than the given number.
+
+Note: If all the elements in the given array are smaller than or equal to the target, the upper bound will be the length of the array.
+
+Examples :
+
+Input: arr[] = [2, 3, 7, 10, 11, 11, 25], target = 11
+Output: 6
+Explanation: 6 is the smallest index in arr[], at which element (arr[6] = 25) is larger than 11.
+
+for upper bound also we need lowest index which fullfill condition arr[i]>n
+
+for lower bound ans should be 4 but for upper bound it 6
+notes:- code is same as lower bound just change in condition 
+
+for upper bound if(arr[mid]>target)
+for lowwer bound if(arr[mid]>=target)
+
+ex:- 
+Array:
+
+Index: 0 1 2 3 4 5 6
+Value: 1 2 4 4 4 5 6
+
+Target = 4
+Lower Bound
+Find first place where value becomes >= 4
+
+Arrow:
+
+1 2 | 4 4 4 5 6
+      ^
+
+Index = 2
+
+Upper Bound
+Find first place where value becomes > 4
+
+Arrow:
+
+1 2 4 4 4 | 5 6
+            ^
+Index = 5

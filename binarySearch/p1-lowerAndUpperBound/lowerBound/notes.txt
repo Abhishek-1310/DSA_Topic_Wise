@@ -1,0 +1,25 @@
+Implement Lower Bound
+Given a sorted array arr[] (following 0-based indexing) and a number target, find the lower bound of the target in this given 
+array. The lower bound of a number is defined as the smallest index in the sorted array where the element is greater than or 
+equal to the given number.
+Note: If all the elements in the given array are smaller than the target, the lower bound will be the length of the array. 
+
+Examples :
+Input:  arr[] = [2, 3, 7, 10, 11, 11, 25], target = 9
+Output: 3
+Explanation: 3 is the smallest index in arr[] where element (arr[3] = 10) is greater than or equal to 9.
+
+notes:- 
+we have to find lower bound :- lowest index which can fullfill the condition arr[i]>=target
+
+1) if we found arr[mid]>=target at this point it full fill the condition maybe we can found better lower index so 
+change right index = mid - 1;
+so when arr[mid]>=target  => right = mid -1;
+
+and everytime when condition meet update result index; 
+
+2) if we found arr[mid]<target not meet condition means we have to search right side so we will get larger value of arr[mid]
+so it meets the condition
+when arr[mid]<target => left = mid+1;
+
+when left surpass right then return result index;

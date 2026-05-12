@@ -1,0 +1,41 @@
+Find nth root of m
+You are given 2 numbers n and m, the task is to find n√m (nth root of m). If the root is not integer then return -1.
+
+Examples :
+Input: n = 3, m = 8
+Output: 2
+Explanation: 23 = 8
+Input: n = 3, m = 9
+Output: -1
+Explanation: 3rd root of 9 is not integer.
+
+sol:- math.pow(n,m) to find nth root of m
+
+normally how to find : 
+
+o(logm)
+function power(base, exp){
+
+    let ans = 1;
+
+    while(exp > 0){
+
+        if(exp % 2 === 1){
+            ans *= base;
+        }
+
+        base *= base;
+
+        exp = Math.floor(exp / 2);
+    }
+
+    return ans;
+}
+O(n)
+function power(base, exp){
+    let ans = 1;
+    for(let i = 0; i < exp; i++){
+        ans *= base;
+    }
+    return ans;
+}

@@ -1,0 +1,23 @@
+Find First and Last Position of Element in Sorted Array
+Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+If target is not found in the array, return [-1, -1].
+You must write an algorithm with O(log n) runtime complexity.
+Example 1:
+
+Input: nums = [5,7,7,8,8,10], target = 8
+Output: [3,4]
+
+Input: nums = [5,7,7,8,8,10], target = 6
+Output: [-1,-1]
+
+sol:- 
+
+first occurance we can easily find by lower bound and for last occurance we can find upper bound and -1;
+[5,7,7,8,8,10] tar:- 8   lower bound at 3 and upper bound at 5 
+ 0,1,2,3,4,5             first oocurance  = 3  last occurance = upper b -1 = 5-1 = 4
+
+ notes:- 
+ 1) if you don't find value in array which is equal to target then return -1 how to know 
+ when left pointer come to and end and that is not equal to target 
+ 2) return index always assign to n;
+ 

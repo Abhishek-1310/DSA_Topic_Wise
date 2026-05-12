@@ -1,0 +1,35 @@
+1482. Minimum Number of Days to Make m Bouquets
+You are given an integer array bloomDay, an integer m and an integer k.
+You want to make m bouquets. To make a bouquet, you need to use k adjacent flowers from the garden.
+The garden consists of n flowers, the ith flower will bloom in the bloomDay[i] and then can be used in exactly one bouquet.
+Return the minimum number of days you need to wait to be able to make m bouquets from the garden. If it is impossible to make
+ m bouquets return -1.
+ 
+Example 1:
+
+Input: bloomDay = [1,10,3,10,2], m = 3, k = 1
+Output: 3
+Explanation: Let us see what happened in the first three days. x means flower bloomed and _ means flower did not bloom in the garden.
+We need 3 bouquets each should contain 1 flower.
+After day 1: [x, _, _, _, _]   // we can only make one bouquet.
+After day 2: [x, _, _, _, x]   // we can only make two bouquets.
+After day 3: [x, _, x, _, x]   // we can make 3 bouquets. The answer is 3.
+
+Example 2:
+Input: bloomDay = [1,10,3,10,2], m = 3, k = 2
+Output: -1
+Explanation: We need 3 bouquets each has 2 flowers, that means we need 6 flowers. We only have 5 flowers so it is impossible
+ to get the needed bouquets and we return -1.
+
+ notes:- 
+ 1) edge case you have to handle is like m=3, k=2 means 3 bouque you have to make with 2 consicutive bloom means 
+ total how many bloom need 3*2 =  5 if arr(bloom arr) length is < = m*k then return -1 it can't give answer or fullfill criteria
+
+ 2) min day to bloom atleast one flower is starting range max day took to bloom flower is end range means answer should be 
+ inside that range.
+ let l = Math.min(bloomarr) and let r = Math.max(bloomarr)
+
+ 3) make helper class which tell current mid(the day) how many flower bloom and can it make bouque? yes then store in answer or check 
+ is lesser day can we make bouque
+
+ else increse teh day

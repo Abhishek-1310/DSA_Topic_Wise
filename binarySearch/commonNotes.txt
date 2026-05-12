@@ -1,0 +1,47 @@
+// one thing i have learned we know if input arr is sorted then we can use binary search in one case is there where input 
+arr is not sorted but we have to use binary search in minNoOfDayForMBouque and kokoEatbanana
+here you will get unsorted arr 
+1) what you have to do take a range like 1 to n that is sorted right then apply binary search on that
+but how to find range do you know the max value of input array is last and end of the range or 
+starting range can be start with 1 or min value of input array 
+take out left and right and apply binary search on that 
+
+some time we do while(left<=right) and in else right = mid
+and some times while(left<right) and in else right = mid -1;
+
+when to do when
+Ask ONE question:
+Can mid still be the answer?
+
+CASE 1
+Mid CANNOT be answer
+Then discard it.
+Use:
+while(l <= r)
+r = mid - 1
+l = mid + 1
+
+Why? Because: you completely eliminate mid
+Typical problems: Normal Binary Search /  Lower Bound / Upper Bound /Search Target
+
+CASE 2  // do case 2 when "Did my comparison prove mid cannot be answer?"
+Mid MAY still be answer
+Keep it
+Use
+while(l < r)
+r = mid
+or
+l = mid
+
+Why?
+Because:
+you are NOT sure mid is wrong
+Typical problems:
+Find Minimum /Find Peak /First Bad Version / Search Space Reduction
+
+Only discard mid when you are 100% sure
+mid cannot be the answer.
+
+
+how to find max in javascript from array
+Math.max(...arr);

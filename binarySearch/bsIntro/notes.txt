@@ -1,0 +1,19 @@
+Binary search first thing we need is st:- starting index ed:- end index if we have this we can find mid 
+so we can check if target is equal to mid return that index 
+else if target is smaller then mid then we will reduce search space mid left side   (st, mid-1)
+else target is greater then move you search space right side of mid  (mid+1,ed)  time complexity   every time search space is getting half lwe eliminate half of the remaining elements with every single step.
+Here is the breakdown of how we arrive at the complexity of $O(\log n)$.
+ Start: $n$ elements = 8
+Step 1: $n/2$ elements remaining = 4
+Step 2: $n/4$ elements remaining (which is $n/2^2$) = 2
+Step 3: $n/8$ elements remaining (which is $n/2^3$)  = 1 
+Step k:  n/2^k elements remaining 
+Start: n / 2^k = 1
+Multiply both sides by 2^k: n = 2^k
+Take the logarithm (base 2) of both sides: log2(n) = log2(2^k)
+Using log rules: k = log2(n)
+ In most programming languages, integers have a maximum limit.
+The formula mid = (st + ed) / 2 first calculates (st + ed).
+If st and ed are both very large, their sum exceeds the maximum limit, causing an overflow.
+Result: The number wraps around to a negative value, leading to an "Index Out of Bounds" error or a crash.
+Solution is  let mid = Math.floor(st + (ed - st) / 2);  

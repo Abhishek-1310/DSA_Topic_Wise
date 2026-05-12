@@ -1,0 +1,40 @@
+1011. Capacity To Ship Packages Within D Days
+A conveyor belt has packages that must be shipped from one port to another within days days.
+The ith package on the conveyor belt has a weight of weights[i]. Each day, we load the ship with packages on the conveyor belt
+ (in the order given by weights). We may not load more weight than the maximum weight capacity of the ship.
+Return the least weight capacity of the ship that will result in all the packages on the conveyor belt being shipped within days days.
+
+Example 1:
+Input: weights = [1,2,3,4,5,6,7,8,9,10], days = 5
+Output: 15
+Explanation: A ship capacity of 15 is the minimum to ship all the packages in 5 days like this:
+1st day: 1, 2, 3, 4, 5
+2nd day: 6, 7
+3rd day: 8
+4th day: 9
+5th day: 10
+Note that the cargo must be shipped in the order given, so using a ship of capacity 14 and splitting the packages into parts like (2, 3, 4, 5), (1, 6, 7), (8), (9), (10) is not allowed.
+
+Example 2:
+Input: weights = [3,2,2,4,1,4], days = 3
+Output: 6
+Explanation: A ship capacity of 6 is the minimum to ship all the packages in 3 days like this:
+1st day: 3, 2
+2nd day: 2, 4
+3rd day: 1, 4
+
+sol:- 
+this is binary search on answer question but there are so many twist in it 
+first of all when we are find range r=Math.max(...arr) no this is wrong now we have to find the weight we can put in conver belt
+so we can port all weight in given days 
+here we need weight which need sum of weights in arr Math.max won work here so what we will do is
+how to find range is 
+max weight we can put so all weight can port at once sum of all weight at once sum(...arr);
+least the max weight in weight arr so left is Math.max(...arr); least you can't say min else max weight can't port
+
+2) at starting day start as 1; day=1 sum=0 while increasing teh sum we have to chcek first 
+if sum is less than choose weight(mid) then we have to sum
+
+if (sum + weights[i] <= minW) {
+            sum += weights[i];
+        }
