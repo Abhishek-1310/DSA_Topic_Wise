@@ -23,7 +23,8 @@ Explanation: A ship capacity of 6 is the minimum to ship all the packages in 3 d
 2nd day: 2, 4
 3rd day: 1, 4
 
-sol:- 
+sol:- what is the min weight we will take so all weights port in given days max :- sum of all weight i can port in 1 day but
+ we have find min weight least can be max of arr but  we can't port in given days so these is range inside it we will get answer 
 this is binary search on answer question but there are so many twist in it 
 first of all when we are find range r=Math.max(...arr) no this is wrong now we have to find the weight we can put in conver belt
 so we can port all weight in given days 
