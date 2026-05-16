@@ -1,0 +1,51 @@
+Allocate Minimum Pages
+Difficulty: MediumAccuracy: 35.51%Submissions: 391K+Points: 4Average Time: 35m
+Given an array arr[] of integers, where each element arr[i] represents the number of pages in the i-th book. You also have an integer k representing the number of students. The task is to allocate books to each student such that:
+
+Each student receives atleast one book.
+Each student is assigned a contiguous sequence of books.
+No book is assigned to more than one student.
+All books must be allocated.
+The objective is to minimize the maximum number of pages assigned to any student. In other words, out of all possible allocations, find the arrangement where the student who receives the most pages still has the smallest possible maximum.
+
+Note: If it is not possible to allocate books to all students, return -1.
+
+Examples:
+
+Input: arr[] = [12, 34, 67, 90], k = 2
+Output: 113
+Explanation: Allocation can be done in following ways:
+=> [12] and [34, 67, 90] Maximum Pages = 191
+=> [12, 34] and [67, 90] Maximum Pages = 157
+=> [12, 34, 67] and [90] Maximum Pages = 113.
+The third combination has the minimum pages assigned to a student which is 113.
+
+Input: arr[] = [15, 17, 20], k = 5
+Output: -1
+Explanation: Since there are more students than total books, it's impossible to allocate a book to each student.
+
+sol:- 
+what is the min possible value answer so all student can hold  books
+[12,34,67,90] Suppose answer = 50. this is container 
+
+Can we give book 90 to someone? NO. because conatimer is 50 how can you give 90 :- and we have to give 
+that 90 page to someone right to min value is max of arr
+So minimum possible answer should be max(arr) 90 is: 
+
+and max you already now sum of all page:- max to max all books give to one person so conatiner should
+ be that much big
+
+1) if(sum of book page exceed mid which maybe a possible answer ) we will stop sum give it to next student
+we will do sum of page to one student until sum exceed mid
+how to give other student stident variable increse it by 1 and sum start from current number 
+if sum not excced mid then add current page to sum 
+
+in this process if student exceed k which is no of student we have to give books return false
+if 4 student we have to give book if 5 came then return false;
+
+else after loop return true
+
+2) now come to binary search find min and max run while to when min exceed max 
+we find possible ans using mid and send to helperfunction to check if this mid is possible find min one
+move right pointer to left r = mid-1;
+this way we will get max possible value;

@@ -1,0 +1,29 @@
+410. Split Array Largest Sum
+Given an integer array nums and an integer k, split nums into k non-empty subarrays such that the largest sum 
+of any subarray is minimized.
+Return the minimized largest sum of the split.
+A subarray is a contiguous part of the array.
+
+Example 1:
+Input: nums = [7,2,5,10,8], k = 2
+Output: 18
+Explanation: There are four ways to split nums into two subarrays.
+The best way is to split it into [7,2,5] and [10,8], where the largest sum among the two subarrays is only 18.
+
+Example 2:
+Input: nums = [1,2,3,4,5], k = 2
+Output: 9
+Explanation: There are four ways to split nums into two subarrays.
+The best way is to split it into [1,2,3] and [4,5], where the largest sum among the two subarrays is only 9.
+ 
+ sol:- same as binary search on answer with min(max) max(min);
+
+ step 1) first find range from where to where = and to find out that 
+ so min answer possible and max ans possible left is min ans right is max answer
+
+ with that we have to find mid that is our possible answer every time we will give mid to helper function
+ and is this answer possible if yes store it and go for better answer left or right according to the question.
+
+
+ in helper class if you need to find out max value condition should be <=mid do operation utilll this condition
+ if need to find min in if contion >=mid then refresh the opration 

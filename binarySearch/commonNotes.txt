@@ -1,3 +1,40 @@
+in normal binary serach we have to do condition is while(l<=r)  r= mid-1 l =mid+1 but 
+for decimal binary search it will not possible l will go larger then r not possible it will increse decimal value 
+
+so what condition we have to put
+while(r-l>1e-6) if difference between r and l exceed 10^6 then stop the condition
+
+so if range are in decimal so every . point matter so if you will add pr subtract 1 in 5 or 6 decimal number 
+it will create a big difference if you add 0.675436+1 it will create big difference so just do r=mid l = mid;
+
+
+
+Whenever a question asks you to "Maximize the Minimum" something, your brain should 
+immediately scream: Binary Search!
+
+Ask:
+
+“What does mid represent?”
+
+Examples:
+Problem	mid means
+Aggressive Cows	  minimum distance
+Allocate Pages	  max pages
+Split Array	      max partition sum
+Gas Station	      max allowed gap
+
+For every BS-on-answer problem:
+
+Before coding helper, say:
+Assume mid is the answer.
+Now how do I verify it?
+That sentence unlocks helper logic.
+
+in binary search how to find left and right then most the question we easly solve so
+1) see what result we have to give list in aggressive cow we have to give min distance and max of all possiblity 
+so make range of distance lowest possible distance what ? that is left largest possible distance is what that is right
+then apply bs on that;
+
 // one thing i have learned we know if input arr is sorted then we can use binary search in one case is there where input 
 arr is not sorted but we have to use binary search in minNoOfDayForMBouque and kokoEatbanana
 here you will get unsorted arr 
@@ -8,6 +45,13 @@ take out left and right and apply binary search on that
 
 some time we do while(left<=right) and in else right = mid
 and some times while(left<right) and in else right = mid -1;
+
+in min max or max min
+
+when we need max:- in helper class= we keep adding while staying INSIDE the limit <=mid keep adding
+
+Usually in problems where we are trying to achieve a MINIMUM target. we need to refresh coz distance should
+ be AT LEAST mid
 
 when to do when
 Ask ONE question:

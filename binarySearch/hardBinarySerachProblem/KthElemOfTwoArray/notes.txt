@@ -1,0 +1,60 @@
+K-th element of two Arrays
+Given two sorted arrays a[] and b[] and an element k, the task is to find the element that would be at the kth position of the combined sorted array.
+
+Examples :
+Input: a[] = [2, 3, 6, 7, 9], b[] = [1, 4, 8, 10], k = 5
+Output: 6
+Explanation: The final combined sorted array would be [1, 2, 3, 4, 6, 7, 8, 9, 10]. The 5th element of this array is 6.
+Input: a[] = [1, 4, 8, 10, 12], b[] = [5, 7, 11, 15, 17], k = 6
+Output: 10
+Explanation: Combined sorted array is [1, 4, 5, 7, 8, 10, 11, 12, 15, 17]. The 6th element of this array is 10.
+
+notes:- everything is same as median of two arr just take care of 2 things
+
+1) we don't need half here becasue we already no we have to partion k position 
+2) left and right range should ne different that is it
+
+explain:
+Because:  mid2 = k - mid1
+can become: negative  and greater than len2 which causes invalid partitions.
+
+Suppose:
+
+a = [2,3] b = [1] k = 3
+After swap: a = [1] b = [2,3]
+
+Now: len1 = 1 len2 = 2
+You use: l = 0 r = 1
+
+Try: mid1 = 0 mid2 = 3  b = [2,3]
+But: b[3] invalid.           0,1
+
+We must ensure:
+mid2 >= 0 mid2 <= len2
+l = Math.max(0, k - len2)  r = Math.min(k, len1)
+
+why this 
+a = [2,3] b = [1,4,5,6,7]  k = 5
+Need 5 elements on left side.
+>Can we take 0 from a?
+YES. Then: mid1 = 0 mid2 = 5
+Valid because b has 5 elements.
+> Can we take 1 from a? 
+YES. mid1 = 1 mid2 = 4
+Valid. 
+> Can we take 2 from a?
+YES. mid1 = 2 mid2 = 3
+Valid.
+> Can we take 3 from a?
+NO. Because: a only has 2 elements
+
+>Can we take negative from a?
+NO. So valid range becomes: 0 to 2
+
+l = Math.max(0, k - len2)  r = Math.min(k, len1)
+l = max(0, 5-5) = 0        r = min(5,2) = 2
+
+a = [2,3] b = [1] k = 3
+Can: mid1 = 0 ? Then: mid2 = 3 INVALID because b has only 1 element.
+We MUST take at least 2 from a
+k - len2 = 3 - 1 = 2
