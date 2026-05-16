@@ -13,12 +13,21 @@ The second 1's next greater number needs to search circularly, which is also 2.
 
 
 Since this is a circular array trick, the loop runs twice:
+1st from 0 to n then n to 2n
+here ww need to find next greater we will start from 2n ok but ij circular we assume that it is 2n size 
+but the result we have to return is n only
+so 
+from 2n to n :- first phase 
+we will update stack only no result computed or add value when
+we come to n from n to 0:- 2nd phase
+then we start puting value im result
+becuae that is the length we have to send
 
-First pass → actual answers should be computed
-Second pass → only helps build the stack
+if we put value in result from start only result length become 2n or overwrite the value if length is fixed
+
+
 
 👉 But your code writes into result[i] in both passes, so:
-
 A correct answer from the first pass can get overwritten later with a wrong one
 
 
@@ -26,6 +35,7 @@ notes:-
 
 circular array acts as a double array 
 arr=[1,2,1]  circular acts as circular_Arr = [1,2,1][1,2,1]
+formula is :- i%length of arr 3%3 = 0 see again start from 0 index that is circular
                                               0,1,2, 3,4,5    n=3
                                             j=0          j=2*n-1 
                                             j=0          j=5
