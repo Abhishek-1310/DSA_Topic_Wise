@@ -1,4 +1,4 @@
-function previousgreaterElement(arr) {
+function stockSpan(arr) {
     let result = [];
     let n = arr.length;
     let stack = [];
