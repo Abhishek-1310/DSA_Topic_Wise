@@ -16,13 +16,33 @@ So the sum of all ranges is 0 + 0 + 0 + 1 + 1 + 2 = 4.
 
 notes:- 
 want to find out 
+
+if you want to find out range of all subset range means in that subset max-min so sum of all max-min in all subset
+> with one for loop we can find max and min in all subset
+> easy way is if we find out all max from all subset and sum it then min from all subet and sum it and subtract max-min we will get the answer 
+
 Sum of Subarray Ranges = (Sum of Subarray MAX) − (Sum of Subarray MIN)
 For every subarray:
 range = max(subarray) - min(subarray)
 So total:
 Σ(max - min) = Σ(max) - Σ(min)
 
-what i have done wrong 
+but in single loop how you will find out how many time current value is max and min 
+in all subarray
+
+there is a way there ia formula to find out how many time current elem come as minimum in subarray and max in subarray that is called contribution
+
+1). Σ(min):-   formula for how many times current element is min in all subarray
+:- for this first find out previous smaller(left) and next smaller element(right) 
+:- formula is= (i-left)*(right-i) = total contribution as minimum
+-> find out for all elements total contribution as min
+2) Σ(max):-  now find total contribution as max for all element 
+formula= (i-left)*(right-i)
+but here left is previoua greater element right next greater element
+-> sum of all contribution as max for all elemnt 
+
+then simple formula is:- Σ(max - min) = Σ(max) - Σ(min)
+
 1) 
 For MAX you wrote:
 nums[stack[top]] > nums[i]   ❌ max is  nums[stack[top]] < nums[i] ✅ if stack top is small remove it becasue we need max value onnly 
