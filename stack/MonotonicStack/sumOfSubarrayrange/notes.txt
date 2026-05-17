@@ -34,10 +34,17 @@ there is a way there ia formula to find out how many time current elem come as m
 
 1). Σ(min):-   formula for how many times current element is min in all subarray
 :- for this first find out previous smaller(left) and next smaller element(right) 
-:- formula is= (i-left)*(right-i) = total contribution as minimum
+:- formula is= nums[i]*(i-left)*(right-i) = total contribution as minimum
+this i-left right-left for this make 2 seprate helper function which store in array then formula become
+total contribution=nums[i]*left[i]*right[i]
 -> find out for all elements total contribution as min
+Σ(min):nums[i]*left[i]*right[i]
+left[] store how many time current element is smaller on left side it will find smaller and equal elemnt index then do subtract:- i-smallerElemIndex
+do same for max
+
+
 2) Σ(max):-  now find total contribution as max for all element 
-formula= (i-left)*(right-i)
+formula= nums[i]*(i-left)*(right-i)
 but here left is previoua greater element right next greater element
 -> sum of all contribution as max for all elemnt 
 
