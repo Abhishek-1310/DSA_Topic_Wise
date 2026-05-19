@@ -1,5 +1,4 @@
 var findMin = function (nums) {
-    let result = Infinity;
     let l = 0;
     let r = nums.length - 1;
     while (l < r) {

@@ -10,6 +10,10 @@ Output: -1
 Explanation: 3rd root of 9 is not integer.
 
 sol:- math.pow(n,m) to find nth root of m
+approch:- 
+ binary search on answer space [1, m]. For each mid, check if mid^n === m. Math.pow()
+ small go right(l=mid+1)  big fo left(r=mid-1)
+
 
 normally how to find : 
 

@@ -20,3 +20,21 @@ in insert
 else 
 pop and call recursion with stack and element to place at correct position
 3) then after arrange all push pop element in stack at last
+
+sortStack([41,3,32,2,11])          ← pop rem=11
+│
+├─► sortStack([41,3,32,2])         ← pop rem=2
+│   │
+│   ├─► sortStack([41,3,32])       ← pop rem=32
+│   │   │
+│   │   ├─► sortStack([41,3])      ← pop rem=3
+│   │   │   │
+│   │   │   ├─► sortStack([41])    ← BASE CASE, return
+│   │   │   │
+│   │   │   └─► arrange(rem=3)     → [3, 41]
+│   │   │
+│   │   └─► arrange(rem=32)        → [3, 32, 41]
+│   │
+│   └─► arrange(rem=2)             → [2, 3, 32, 41]
+│
+└─► arrange(rem=11)                → [2, 3, 11, 32, 41]  ✓

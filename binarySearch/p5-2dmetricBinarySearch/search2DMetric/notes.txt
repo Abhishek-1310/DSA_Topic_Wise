@@ -16,7 +16,7 @@ Input: matrix = [[1, 3, 5, 7],
 Output: true
 
 notes:- same as search in 1d array with binary search here extra thing is 2d array 
-so make onr for loop on row and every col treat as 1d array and do operation.
+so make one for loop on row and every col treat as 1d array and do operation.
 
 we can optimsed thsi alsoExample:
 

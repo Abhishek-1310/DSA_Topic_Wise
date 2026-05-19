@@ -1,3 +1,5 @@
+stack.at(-1) = stack[stack.length - 1]
+
 var subArrayRanges = function (nums) {
     return sumMax(nums) - sumMin(nums);
 };

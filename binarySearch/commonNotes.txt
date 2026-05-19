@@ -1,3 +1,11 @@
+Use l <= r when:
+You're searching for an exact value (classic binary search)
+mid is eliminated immediately — you do r = mid - 1 or l = mid + 1
+
+Use l < r when:
+You're searching for a condition/position (peak, minimum, boundary)
+mid is not immediately eliminated — you keep it with r = mid
+
 in normal binary serach we have to do condition is while(l<=r)  r= mid-1 l =mid+1 but 
 for decimal binary search it will not possible l will go larger then r not possible it will increse decimal value 
 
@@ -7,7 +15,8 @@ while(r-l>1e-6) if difference between r and l exceed 10^6 then stop the conditio
 so if range are in decimal so every . point matter so if you will add pr subtract 1 in 5 or 6 decimal number 
 it will create a big difference if you add 0.675436+1 it will create big difference so just do r=mid l = mid;
 
-
+lower bound is smllest value which is greater than target  arr[mid]>=r
+upper bound is largest value which is greater than target  arr[mid]>=r
 
 Whenever a question asks you to "Maximize the Minimum" something, your brain should 
 immediately scream: Binary Search!

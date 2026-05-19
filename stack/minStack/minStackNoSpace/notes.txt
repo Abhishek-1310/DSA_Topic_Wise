@@ -27,3 +27,11 @@ and store in this.min
 top():- if top value is less then this.min then you can't send top becuase it is encode so return this.min 
 else return top
 
+
+explain:- When you push a new minimum, the old minimum gets overwritten (this.min = val). Later when you pop that
+value, how do you know what the minimum was before it? You need to somehow store the old minimum — but you can't
+use extra space.
+The trick:
+Instead of storing val directly, store encoded = 2 * val - this.min_before. This encoded value is always less 
+than the new minimum (since val < this.min_before), which is how getMin() and pop() know the stack has an encoded 
+value.

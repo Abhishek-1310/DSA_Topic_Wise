@@ -15,7 +15,7 @@ Example 2:
 Input: nums = [2,2,2,0,1]
 Output: 0
 
-notes:- removing ambiguity is not liek Search in Rotated Array II
+notes:- removing ambiguity is not like Search in Rotated Array II
 here we are 
 
 We are NOT trying to know:

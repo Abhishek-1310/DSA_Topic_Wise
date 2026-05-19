@@ -11,6 +11,17 @@ Output: 3
 Explanation: Since, 11 is not a perfect square, floor of square root of 11 is 3.
 
 sol:- 
+The function is called floorSqrt — it doesn't need an exact square root. It needs the largest number whose 
+square is ≤ n.
+-> so we store ans when mid*mid<n and go for best
+i=0, j=4, ans=0
+mid = 2 → 2*2 = 4  < 8  → ans=2, i=3
+mid = 3 → 3*3 = 9  > 8  → j=2
+loop ends (i=3 > j=2)
+return ans = 2  ✓
+
+
+
 simple sol:- return Math.floor(Math.sqrt(n));
 
 else with binary search we can solve

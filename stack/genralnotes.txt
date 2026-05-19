@@ -17,4 +17,6 @@ bottom            30 last in first out array follow same rule if you push it wil
         top      
 how to pick top=> stack[stack.length-1] stack[3-1] stack[2]=30;
 
+use recursion for sort the stack
+
 

@@ -1,0 +1,12 @@
+if you need to find out in 2d matrix and whole 2d matrix is sorted :- it means we can do binary serach so
+1) if binary search is there mid will be there for sure then you can convert that mid into row and col index 
+how: formula
+col=mid%col length   row=Math.floor(mid/col length)  col length you will get from matrix[0].length
+how to get mid you have range :- left=0   right=m*n-1 you will get mid if you got mid you will get row and col
+ if you got that what do you need just comapre with target move left and right.
+
+ 2) but what if row by row is sorted :- think to move bottom or left
+ we have to start with top right corner why"
+ left side is smaller down side is larger  :- so if current element is smaller than target go bottom down by r++
+  to find larger element  if current element is larger than traget to go left c-- to find smaller 
+

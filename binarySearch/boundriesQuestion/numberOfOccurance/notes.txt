@@ -1,5 +1,4 @@
 Number of occurrence
-Difficulty: EasyAccuracy: 59.34%Submissions: 396K+Points: 2Average Time: 20m
 Given a sorted array, arr[] and a number target, you need to find the number of occurrences of target in arr[]. 
 
 Examples :

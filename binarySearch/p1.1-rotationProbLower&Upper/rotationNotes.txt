@@ -1,0 +1,42 @@
+1) To find rotated array:- 
+imp things is how to eliminate the part where ans is not present
+in rotated question
+1.1) eliminate the sorted part other side is rotated    [5 7 9 1 2 3] 
+                                            rotated side <-  ^ sorted side ->
+1.2) how to find sorted side  if mid element < right element  arr[mid]<arr[right] mean right side sorted and current
+mid can be min element and answer (if mid is < right so maybe be mid is min ) go left (r = mid)
+if r-mid so for sure while don't add equal l<r
+why i haven't done r = mid - 1; becasue mid can be answer we can't skip 
+1.3) else go right (l=mid+1)
+
+two way of bs skip mid when you don't maintain ans else not skip mid r=mid
+
+mid can be the answer in first, last, upper, lower bound, min and max so in one condition don't skip mid
+
+when loop end your left pointer is at min value with there index place.
+
+2) duplicate in rotation:- 
+ok 2nd but now what if array contain duplicate value. [10,1,10,10,10] you can't say which side is sorted 
+condition will fail
+so what to do
+universal rule for duplication is shrink space with r-- or with l++ shrink it 
+so in duplicate if else will not work you need to add else if one more condition 
+if left side is sorted and go right = else if right side sorted go left = else equal shrink r -- coz 
+comparing with right index
+
+3) ok minimum is ok how to find target binary search is difficult now in rotated arr We cannot simply say:
+"remove sorted side" because target may be anywhere.
+New Goal
+
+Instead of asking: Which side has minimum? we ask: “Which side is sorted, and does target lie inside it?” 
+and eliminate
+check two condition everytime if left side sorted if target lie on left eliminate right side else eliminate left side
+else when right side sorted if target lie on right eliminate left else eliminate right. 
+
+Find Minimum in Rotated Sorted Array II: We compare nums[mid] with nums[r]; when they are equal, only the right boundary causes ambiguity, so we safely do r--.
+(in find minimum we don't care about one side so we are shrink one side)
+Search in Rotated Sorted Array II: We use nums[l], nums[mid], and nums[r] to identify the sorted half; when all are equal, both boundaries cause ambiguity, so we do l++ and r-
+
+4) in search in rotated sorted array II :- we we remove ambiguity by shrinking both side and continue that part skip
+then we do all
+ condition to remove (sorted does element there according to taht eliminate)

@@ -1,0 +1,128 @@
+Do I need the boundary itself? “Where?” → index when we need width so we need index to calculate right-left-1
+OR
+Do I need the distance/span? “How far?” → distance :- how many times thsi is smaller
+
+for SumOfSubArrayRange and SumOfSubArrayMinimum
+what to do is
+=> 1)  SumOfSubArrayRange:- from all possible contiguous subarray we need range
+SumOfSubArrayMinimum:- from all possible contiguous subarray we need minimum
+
+how to find range:- in that subset= what is max element - min element ex:- subset [1,2,3], range = 3 - 1 = 2 
+[1,3] = range=3-1=2
+
+how to find min:- in that subset= what is min element ex:- subset [1,2,3] , min=1
+
+SumOfSubArrayRange:- so we need sum of all range from all subset
+SumOfSubArrayMinimum:- so we need sum of all min from all subset
+
+Let’s carefully verify WHY.
+
+Array:
+
+[1,2,3]
+     ^
+     3
+
+We calculate contribution of 3.
+
+1. As Minimum
+We ask:
+In how many subarrays is 3 the minimum?
+Can we expand left?
+NO.
+Because: 2 < 3
+then minimum becomes 2.
+Can expand right?
+No elements.
+So only subarray: [3]
+Total: left = 1 right = 1
+Contribution: 3×1×1=3
+
+
+2. As Maximum
+Now ask:
+In how many subarrays is 3 the maximum?
+Can expand left?
+YES.
+Because: 1 < 3 2 < 3
+So valid starts: [3] [2,3] [1,2,3]
+Total left choices: 3
+Right choices: Only 1.
+So: left = 3 right = 1
+Contribution: 3×3×1=9
+
+1) SumOfSubArrayRange
+there is one sorcut we can find out range from all subset:- if we can find out In how many subarrays is currrent elem
+is min on left side and how many time on right side with this we can tell how many time current element is min in All
+subset min[i] = nums[i]*left[i]*right[i]   find for all element Σ(min) = Σnums[i]*left[i]*right[i]
+
+do it for max also and here is your answer:- 
+sumOfSubArrRange = Σ(max) - Σ(min)
+
+->) ok now you understood how to do it but how to find out left[] 
+left = contain how many time on left side current element is smaller include itself right so if we can find 
+out previous smaller element and we will subtract the index we will get how many time current element is 
+small on left  0,1,2
+two formula:- i+1 and i-left   for right i+1 and right-i
+ex:- case 1:- [1,2,3] take 3 as current element there is smaller element at 1:- i-smallerElemntIndex= 2-1=1
+means only 1 times 3 is smaller its means all the smaller than 3 , how 1 becuse we include 3 as well  
+case 2:- [5,4,3] take 3 as current element is there any smaller on left no then do :- i+1=2+1= 3
+means 3 times 3 is smller in all subset on left
+
+2) SumOfSubArrayMinimum
+there is sortcut to find min from all subset is 
+find how current element how many times is smaller on left and how many times on right we can get how many time 
+current element is smaller in all subset
+same as find previous smaller and next smaller with index range and you will get answer
+“How many subarrays can use this element as minimum?”
+[3,1,2,4]
+     ^
+     2
+We want: In how many subarrays is 2 the minimum?
+Step 1: Expand Left
+Can we include 1?
+NO.
+Because then minimum becomes 1.
+So left side stops before 1.
+Valid starts:
+start at 2 only Count: 1 choice
+
+Step 2: Expand Right
+Can include 4?
+YES.
+Because 4 > 2. Valid ends: end at 2 end at 4 Count: 2 choices
+=2*1*2= 4
+
+ex:- [3,1,2,4] do it for 2 :- left 2 times smaller and right 2 times smaller so =num[i]*left[i]*right[i]=2*1*2=4
+then do it for all element=(3×1×1=3)+(1×2×3=6)+(2×1×2=4)+(4×1×1=4) =  17 answer 
+
+
+Why Do We Use Modulo?
+Sometimes answers become HUGE.
+Example: n = 100000
+can become billions. And their sums can become MUCH larger than normal integer limits.
+So problems say: return answer modulo 1000000007
+
+so return your ans%mod = sum = (sum + arr[mid] * left * right) % MOD;  mod=1e9+7  10^9+7=1000000007
+
+
+= 2) in reactangle histogram
+we have to give max area cover by rectangle in given array each bar have 1 width so it we cover some area 
+how to find max we will tracverse whole array and find max array update max area when we will get max 
+
+but how to find area = with*height 
+height we will get from current index but problem is how to find width 
+so we need bar which is greater then current element on left ad right so current can make some already
+so if we find previous smaller index and next smaller index we can get width (rightindex-leftindex-1)*1
+ex:- Input: arr[] = [60, 20, 50, 40, 10, 50, 60]
+                    [ 0,  1,  2,   3,  4,  5, 6]
+take example of 40 left smaller at 1 right smaller at 4 formula= (right-left-1)*1=(4-1-1)*1= 2
+2*height = 2*40= 80 width how 40+40 from 50 total 80
+
+
+= 3) in largestAreain Metrix:-
+this is 2d metrix so we will traverse row by and make single array of i=histogram and solve as
+ same largest Area Reactangle Histogram
+ -> how to make single histogram so 
+ so if current element in row have value then sum of its privous one if o than assign 0 in current position
+ 

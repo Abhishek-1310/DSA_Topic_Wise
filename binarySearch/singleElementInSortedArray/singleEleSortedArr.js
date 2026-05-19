@@ -16,3 +16,9 @@ var singleNonDuplicate = function (nums) {
     }
     return -1;
 };
+
+// Input: nums = [1,1,2,3,3,4,4,8,8]    4%2==0 num[4](3)===num[mid-1](3)  r=mid-1;
+//                0,1,2,3,4,5,6,7,8
+
+// Input: nums = [3,3,7,7,10,11,11]     3%2==1 num[3](7)===nums[mid-1]   l = mid+1;
+//                0,1,2,3, 4, 5, 6

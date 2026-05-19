@@ -14,7 +14,8 @@ Explanation: The asteroid -6 makes the asteroid 3 and 5 explode, and then contin
 notes:- no need result=[] and  use stack=[] and retunr stack
 2) fro loop 0 to n 
 3) flag is important 
-4) inside while loop 3 condition 
+4) inside while loop 3 condition && while loop condition is current element shoudl be negative and 
+stack top is positive tehn this 3 condition
 . current arr[i] elemenate with flag = false
 . stack top removed with stack.pop()
 . both eliminate pop and flag= false
