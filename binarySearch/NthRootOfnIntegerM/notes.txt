@@ -42,6 +42,15 @@ function power(base, exp){
 | 3   | yes  | 32   | 16   |
 | 1   | yes  | 8192 | 256  |
 
+When exponent is odd: exp=2k+1
+why ans is updating when exp is odd
+Example: 13=2×6+1
+So:
+a13=a2*6+1=a*a2*6
+See that extra a ?
+That extra a cannot be paired.
+So we must take it into ans.
+
 3)
 O(n)
 function power(base, exp){
