@@ -15,7 +15,10 @@ Explanation: The floor of 8 in the array is 8, and the ceiling of 8 in the array
 
 sol:- 
 
-ceil is same a lower bound same answer but floor we have to just change the condition 
+ceil is same a lower bound but floor have diff it should return value less than target and lower and upper bound is for value is greater than target 
+change the condition  for floor 
+if you found lower value update ans and move to right.
+
 condition is when arr[i]<=target this floor  =>  arr[mid]<=target   index = mid;
 ceil is arr[i]>=target    => arr[mid]>=target   index = mid
 
