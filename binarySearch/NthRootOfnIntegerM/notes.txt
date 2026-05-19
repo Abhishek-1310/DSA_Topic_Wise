@@ -16,7 +16,7 @@ normally how to find :
 how to find pow:-
 1) Math.pow(base,exp)
 
-2)
+2)Binary Exponentiation.
 o(logm)
 function power(base, exp){
 
@@ -35,6 +35,13 @@ function power(base, exp){
 
     return ans;
 }
+| exp | odd? | ans  | base |
+| --- | ---- | ---- | ---- |
+| 13  | yes  | 2    | 2    |
+| 6   | no   | 2    | 4    |
+| 3   | yes  | 32   | 16   |
+| 1   | yes  | 8192 | 256  |
+
 3)
 O(n)
 function power(base, exp){
