@@ -13,6 +13,10 @@ sol:- math.pow(n,m) to find nth root of m
 
 normally how to find : 
 
+how to find pow:-
+1) Math.pow(base,exp)
+
+2)
 o(logm)
 function power(base, exp){
 
@@ -31,6 +35,7 @@ function power(base, exp){
 
     return ans;
 }
+3)
 O(n)
 function power(base, exp){
     let ans = 1;
