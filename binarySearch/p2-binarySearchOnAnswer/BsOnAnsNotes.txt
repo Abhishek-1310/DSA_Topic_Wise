@@ -7,3 +7,10 @@ if queation ask:-
 > find min capacity/speed/weight required to
 > find max items u can achive 
 
+
+how to solve bs on answer
+1) define search space (left & right)
+left :- min possible answer
+right:- max possible answer
+2) write check fun:- which check is mid is valid answer
+3) binray search apply normally find mid and check with helper funtion
