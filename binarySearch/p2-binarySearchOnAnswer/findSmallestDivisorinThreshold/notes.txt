@@ -15,5 +15,10 @@ Example 2:
 Input: nums = [44,22,33,11,1], threshold = 5
 Output: 44
 
-sol:- this question is same as koko and min day for M boouque input array is not sorted but we have to make one range from 
+sol:- important notes is
+while finding low and high :- keep in mind low should not be min of array , it should start with 1. why i will show u example
+nums=[5,8,10]. thresold=9 if low=5 it will miss 1,2,3,4 which can be answer 
+3 us answer but u missee it.
+
+this question is same as koko and min day for M boouque input array is not sorted but we have to make one range from 
 input array and range is always sorted we will apply binary search on that.
