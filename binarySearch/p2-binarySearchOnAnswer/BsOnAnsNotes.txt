@@ -1,0 +1,9 @@
+so if input is sorted we can know we can apply binray search
+but when input array is not sorted how do we know we have to 
+apply binray search in amswer
+
+if queation ask:-
+> minimize the maximum, maximize the minimum
+> find min capacity/speed/weight required to
+> find max items u can achive 
+
