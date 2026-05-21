@@ -14,29 +14,22 @@ Explanation: 0th and 2nd person both know 1st person and 1st person does not kno
 
 notes:- 
 -> if we use two pointer 1st pointer at 0 and 2nd pointer at n-1
--> move the pointer when index or pointer is eliminate
-how to know  pointer is eleminate 
-if arr[i][j]==1 means i know j  if you know someone you are not celebrity eliminate
-eliminate move i++ else if arr[j][i]==1 then j is eliminate;
+1) mat[i][j] === 1 means person i knows person j. A celebrity cannot know anyone. Therefore, i is eliminated as a celebrity candidate. We increment i++ to move to the next person.
+2) mat[i][j] === 0 means person i does not know person j. A celebrity must be known by everyone. Therefore, j is eliminated because someone (i) does not know them. We decrement j-- to move to the previous person.
 
-2) Case 1:
-mat[i][j] === 1   // i knows j
+so with help of eliminate person total how many person =mat.lenth 3 person
+with help of i and we eliminate 
+i=0. j=mat.lenth(3)
+at ene you will get one candidate
 
-👉 Then:
-
-i ❌ cannot be celebrity
-move i++
-Case 2:
-mat[i][j] === 0   // i does NOT know j
-
-👉 Then:
-
-j ❌ cannot be celebrity
-move j--
-
+at end of loop
+candidate = I
 3) after finding candidate
 
 make one for loop to check
-For every person k ≠ candidate:
+
+The while loop only finds a potential candidate. It does not guarantee they are a celebrity (for example, a matrix might have no celebrity at all). The for loop checks the entire row and column of that candidate to be absolutely sure.
+For every person k come from for loop:
+check with the candidate is actual celebrity
 1. Candidate should NOT know anyone
-mat[candidate][k] === 0
+mat[candidate][k] === 0 or else return -1
