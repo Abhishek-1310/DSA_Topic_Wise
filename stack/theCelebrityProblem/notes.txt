@@ -13,6 +13,10 @@ Output: 1
 Explanation: 0th and 2nd person both know 1st person and 1st person does not know anyone. Therefore, 1 is the celebrity person.
 
 notes:- 
+this problem solve in 2 step
+1) step find candidate for celebrity by eleminate other person
+2) after got candidate check with other person is iy actual celebrity.
+1st phase
 -> if we use two pointer 1st pointer at 0 and 2nd pointer at n-1
 1) mat[i][j] === 1 means person i knows person j. A celebrity cannot know anyone. Therefore, i is eliminated as a celebrity candidate. We increment i++ to move to the next person.
 2) mat[i][j] === 0 means person i does not know person j. A celebrity must be known by everyone. Therefore, j is eliminated because someone (i) does not know them. We decrement j-- to move to the previous person.
@@ -22,6 +26,7 @@ with help of i and we eliminate
 i=0. j=mat.lenth(3)
 at ene you will get one candidate
 
+2nd phase
 at end of loop
 candidate = I
 3) after finding candidate
