@@ -1,3 +1,25 @@
+// best answer
+
+class Solution {
+    rowWithMax1s(arr) {
+        // code here
+        let row = arr.length;
+        let col = arr[0].length;
+        let index = 0;
+        let i = 0, l = col - 1;
+        while (i < row && l >= 0) {
+            if (arr[i][l] === 1) {
+                index = i;
+                l--;
+            } else {
+                i++;
+            }
+        }
+        return index;
+    }
+}
+
+
 class Solution {
     rowWithMax1s(arr) {
         // code here

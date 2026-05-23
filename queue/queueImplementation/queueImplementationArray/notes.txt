@@ -1,4 +1,4 @@
-[ 10 | 20 | 30 | __ | __ ]
+      [ 10 | 20 | 30 | __ | __ ]
         ^              ^
         |              |
       front           rear
@@ -6,22 +6,36 @@
 Index:  0    1    2    3    4
 
 1) why we need 2 pointer in queue?
-In a queue, you add at the back and remove from the front. Since these two actions happen at opposite ends,
+In a queue, you add at the back(rear) and remove from the front. Since these two actions happen at opposite ends,
 one pointer is physically unable to track both ends of the data.
 
 2) why we need currentsize in queue?
 currentSize: This is a "helper" variable. Because we use circular motion (%), it is very difficult to tell if the queue is "Empty"
  or "Full" just by looking at the pointers. currentSize gives us a simple way to know exactly how many items are inside.
 
+3) for both enqueue and deqeue 
+why we need to use circular pointer 
+[10,  20,  30,  40,  50]         =>    removed 2 element   [ _,  _, 30, 40, 50]
+front=0             rear=4                                      front=2     rear=4
+
+now Add new element (60)
+👉 Where will you put it?
+rear is at 4 (last index)
+next index = 5 ❌ (out of bounds)   Queue looks “full” but actually it’s NOT   [ _,  _, 30, 40, 50]
+
+that is why we use circular queue :- 0 → 1 → 2 → 3 → 4 → back to 0 🔁
+
+
+
 Enqueue
 What it is: The process of adding a new element to the back(rear) of the queue.
 
-rear (The Insertion Point)
+rear (The Insertion Point) everytime we have to move pointer with circular formula  rear = (rear + 1) % size
 Purpose: It points to the last element that was added to the queue.
 Function: Whenever you perform an enqueue() operation, you don't just add an element anywhere; you add it at the position
 immediately after rear, and then update rear to point to this new last position
 
-Dequeue
+Dequeue   everytime we have to move pointer with circular formula   front = (front + 1) % size
 What it is: The process of removing an element from the front of the queue.
 
 front (The Removal Point)

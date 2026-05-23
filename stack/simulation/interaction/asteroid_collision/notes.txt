@@ -20,3 +20,10 @@ stack top is positive tehn this 3 condition
 . stack top removed with stack.pop()
 . both eliminate pop and flag= false
 5) push in stack everytime with flag condition
+
+we have to use break
+Current asteroid is destroyed
+
+and once current asteroid dies, there is NO further collision possible.
+
+That is why we break.

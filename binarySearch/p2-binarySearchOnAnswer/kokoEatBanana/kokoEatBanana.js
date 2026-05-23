@@ -5,8 +5,7 @@ var minEatingSpeed = function (piles, h) {
     let ans = r
     while (l <= r) {
         let mid = Math.floor((l + r) / 2);
-        let time = check(piles, mid);
-        if (time <= h) {
+        if (check(piles, h, mid)) {
             ans = mid;
             r = mid - 1;
         } else {
@@ -15,10 +14,10 @@ var minEatingSpeed = function (piles, h) {
     }
     return ans;
 };
-function check(arr, t) {
+function check(arr, t, s) {
     let time = 0;
     for (let i = 0; i < arr.length; i++) {
-        time += Math.ceil(arr[i] / t);
+        time += Math.ceil(arr[i] / s);
     }
-    return time;
+    return time <= t;
 }

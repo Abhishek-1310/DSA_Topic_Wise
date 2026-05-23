@@ -31,6 +31,8 @@ MinStack.prototype.top = function () {
     }
     return top;
 };
+// So when top() is called, if the stored value is less than this.min, it means that slot holds an encoded number
+//, not the actual value. The actual value IS this.min itself — because we only encode when val becomes the new minimum.
 
 MinStack.prototype.getMin = function () {
     return this.min;

@@ -11,6 +11,17 @@ Largest-Rectangular-Area-in-a-Histogram
 Output: 100
 Explanation: We get the maximum by picking bars highlighted above in green (50, and 60). The area is computed (smallest height) * (no. of the picked bars) = 50 * 2 = 100.
 
+notes:- why previous if you won't find put -1:
+For previous smaller:
+How far can rectangle expand LEFT?
+If no smaller exists on left:
+rectangle can go all the way to index 0
+
+why next if you won't find put n
+For next smaller:
+How far can rectangle expand RIGHT?
+If no smaller exists on right:
+rectangle can go till last index
 
 : largest contigeuse area in histogram
 Area = height[i] × width

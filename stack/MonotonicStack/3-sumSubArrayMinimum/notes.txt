@@ -21,7 +21,10 @@ Instead of:
 We do:
 “For each element, how many subarrays consider it as minimum?” ✅
 
-👉 arr[i] can only be minimum until a smaller element blocks it
+👉 arr[i] can only be minimum until a smaller element will come, so we will go left and find first smaller 
+on left and first smaller on right after this we will get range of subarray where all elment considure arr[i]
+minimum
+through this we will get contribution = arr[i]*left*right so and we do for all element and sum it.
 
 1) in every index take that element and find previous smallest element and next smallest element ( through thsi you will get 
 how many number is grater than the current number each time we will count and multiply with current element )

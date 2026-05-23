@@ -18,7 +18,7 @@ var maxSumMinProduct = function (nums) {
     const MOD = 1000000007n;
     return Number(maxres % MOD);
 };
-function pse(nums) {
+function pse(nums) { //left
     let result = [];
     let stack = [];
     for (let i = 0; i < nums.length; i++) {

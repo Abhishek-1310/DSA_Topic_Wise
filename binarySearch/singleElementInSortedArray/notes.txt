@@ -6,15 +6,22 @@ Your solution must run in O(log n) time and O(1) space.
 
 Example 1:
 Input: nums = [1,1,2,3,3,4,4,8,8]
+               0,1,2,3,4,5,6,7.8
 Output: 2
 
 Example 2:
 Input: nums = [3,3,7,7,10,11,11]
+               0,1,2,3, 4, 5, 6
 Output: 10
 
 sol:-
 notes is 
 elimination :- eliminate the part where your single element's not there 
+imp:- edge case when 1st element and last element is single return taht time only
+:- if mid is odd privous element is same then || or if mid is even and next element is same then
+==== move left to right side   l= mid+1
+else 
+==== move right to left side  r = mid-1
 
 PATTERN
 ---------

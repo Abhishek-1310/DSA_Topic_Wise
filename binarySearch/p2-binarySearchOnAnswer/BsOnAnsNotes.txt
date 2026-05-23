@@ -17,3 +17,33 @@ right:- max possible answer
 
 round value greater than or equal to = means ceil of current value
 2.25 to 3 and 0.75 to 1
+
+how to decide low:-
+"Can one element alone make the answer impossible?" means:
+Is there a single value in the array that, no matter what else you do, makes the answer invalid?
+
+Ship packages — YES
+weights = [3, 5, 8, 2], capacity = 4
+
+take weight 8 alone →
+no matter how you split the days,
+no matter how you arrange other packages,
+8 simply CANNOT fit on a ship of capacity 4
+one element alone = game over
+You can't fix it by changing days. You can't fix it by reordering. That one 8 makes capacity=4 permanently impossible.
+
+Koko — NO
+piles = [3, 5, 8, 2], speed = 1
+
+take pile 8 alone →
+speed 1 means it takes 8 hours for that pile
+slow? yes
+impossible? NO — just takes more hours
+No single pile makes speed=1 impossible. It just affects how many hours you need. You can always eat any pile at speed 1, just slowly.
+
+Bouquets — NO
+bloomDay = [3, 5, 8, 2], day = 1
+
+take flower with bloomDay=8 alone →
+on day 1 it hasn't bloomed yet
+impossible? NO — just means that flower isn't available yet

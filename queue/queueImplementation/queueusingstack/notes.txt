@@ -1,3 +1,7 @@
+enqueue is simple :- just push the x this.stack.push(x);
+dequeue is complex :- Use recursion to reach the bottom element then push one by one in stack so bottom elem come at top
+
+
 Visualization: dequeue() when Stack is [10, 20, 30]
 
 The "Unwinding" Phase (Popping down to the bottom)

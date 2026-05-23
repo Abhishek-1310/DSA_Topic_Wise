@@ -9,52 +9,35 @@ Input: a[] = [1, 4, 8, 10, 12], b[] = [5, 7, 11, 15, 17], k = 6
 Output: 10
 Explanation: Combined sorted array is [1, 4, 5, 7, 8, 10, 11, 12, 15, 17]. The 6th element of this array is 10.
 
-notes:- everything is same as median of two arr just take care of 2 things
+notes:- 
+                                                          left        right
+If we merged both arrays, the kth cut left will be ans  [1,2,3,4,6,  7,8,9,10]   
+                                                                 k                         
+but we can't merge arr :- we have to do with two variable :- how = with perfect cut 
+how to find perfect cut:-after cut when arr2 last val(4) <= arr1 first val(7)  same for arr1 last(6)<= arr2 last(8)
+see 4<7  and 6<8  this is perfect cut
+[2,3,6,|7,9]          cut both arr like this on left side we should have kth element                       
+[1,4,|8,10]           see this is perfect cut left side 5 element   ans=Math.max(l1,l2)(6,4)  ans = 6
+  
+so how to do with two variable(mid1,mid2) :- if you find correct cut you will get your ans
+how to do cut:- to do cut you need mid so with that you can seprate arr into two part
+so two arr need two mid, mid1 for arr1  and mid2 for arr2 :- after seprate exactly k element should be there on 
+left side(sum of arr1+arr2 on left side) === k
+if you find mid1 for arr1  you can easily find mid2 for arr2 
+if mid1 = Math.floor((l+r)/2)  then mid 2=k-mid2      so total mid1+mid2=k so we divide both array two part and
+now extactly k element on left side now you can easily find ans 
+l1:- arr1 end value of left side :- 6   l2:- arr2 end value of left side: 4   ans = max(l1,l2)
+so cut is ans means it come from mid :- if mid comes a 3 so cut in arr1 is 3 and arr2 cut is = k-mid
 
-1) we don't need half here becasue we already no we have to partion k position 
-2) left and right range should ne different that is it
+always do binary serach on smaller arr to less time :- how swap [a,b]=[b,a] if b is small
+how to select left and right for mid:=
+We restrict l and r so every mid partition remains valid and never forces another array out of bounds.
+We binary search how many elements to take from arr1.
 
-explain:
-Because:  mid2 = k - mid1
-can become: negative  and greater than len2 which causes invalid partitions.
+Minimum take from arr1 = k - len2
+because arr2 can contribute at most len2 elements.
 
-Suppose:
+Maximum take from arr1 = min(k, len1)
+because arr1 cannot contribute more than k elements or its own size.
 
-a = [2,3] b = [1] k = 3
-After swap: a = [1] b = [2,3]
-
-Now: len1 = 1 len2 = 2
-You use: l = 0 r = 1
-
-Try: mid1 = 0 mid2 = 3  b = [2,3]
-But: b[3] invalid.           0,1
-
-We must ensure:
-mid2 >= 0 mid2 <= len2
-l = Math.max(0, k - len2)  r = Math.min(k, len1)
-
-why this 
-a = [2,3] b = [1,4,5,6,7]  k = 5
-Need 5 elements on left side.
->Can we take 0 from a?
-YES. Then: mid1 = 0 mid2 = 5
-Valid because b has 5 elements.
-> Can we take 1 from a? 
-YES. mid1 = 1 mid2 = 4
-Valid. 
-> Can we take 2 from a?
-YES. mid1 = 2 mid2 = 3
-Valid.
-> Can we take 3 from a?
-NO. Because: a only has 2 elements
-
->Can we take negative from a?
-NO. So valid range becomes: 0 to 2
-
-l = Math.max(0, k - len2)  r = Math.min(k, len1)
-l = max(0, 5-5) = 0        r = min(5,2) = 2
-
-a = [2,3] b = [1] k = 3
-Can: mid1 = 0 ? Then: mid2 = 3 INVALID because b has only 1 element.
-We MUST take at least 2 from a
-k - len2 = 3 - 1 = 2
+but u can't take mid2 which is > arr2.length  how we can take care of this
