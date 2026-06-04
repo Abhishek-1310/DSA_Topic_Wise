@@ -5,7 +5,19 @@ Input: st[] = [41, 3, 32, 2, 11]
 Output: [2,3,11,32,41]
 Explanation: After sorting, the smallest element (2) is at the bottom and the largest element (41) is at the top.
 
-notes:- 
+notes:-
+how to arrange , u will get stack and one element you have to put that element in correct place how to do.
+
+we push that element in stack 
+1) if:- stack is not empty and stack top <= elemt [3,41] stack top 41<=31 elem
+if not else 
+2) pop stack element keep it and call arrange function again pop= 41 elem = 31 stack[3]
+
+3) arrange place 31 in stack =[3,31]
+
+4) now pop elemnt push in stack now =[3,31,41] 
+done this is
+arrange 
 
 what to do
 1) Pop element
