@@ -35,3 +35,43 @@ The trick:
 Instead of storing val directly, store encoded = 2 * val - this.min_before. This encoded value is always less 
 than the new minimum (since val < this.min_before), which is how getMin() and pop() know the stack has an encoded 
 value.
+
+how encode decode work to store min value
+
+encode 
+
+Step 1: Push 5
+It's the first element. We push it normally and set min_val. Stack: [5]. min val: 5
+
+Step 2: Push 7
+Is 7 less than min_val (5)? No. * Since it's not a new minimum, we just push it normally.        min_val stays 5.
+Stack: [5, 7] min_val: 5
+
+Step 3: Push 3
+Is 3 less than min_val (5)? Yes! We have a new minimum. Instead of pushing 3, we push the encoded value:
+
+Encoded = 2 × New Val - Old Min
+Encoded = 2×3-5-1
+We update min val to 3.
+Stack: [5, 7, 1] (Notice the top is 1, not 3!).       min_val: 3
+
+decode 
+
+
+Now our stack looks like [5, 7, 1] and min_val is 3, Let's pop elements one by one.
+
+Pop 1: Removing the 3
+
+We want to pop the top element. The top of the stack
+The Tripwire Check: Is the top element (1) less than min_vol (3)? Yes! This tells us two things instantly:
+
+1. The actual value the user pushed here was the current min_val (3).
+2. We need to restore the old minimum before we pop this.
+
+The Decoding Math:
+Old Min = 2 × min_val - Top Value
+Old Min = 2 ×3-1=5
+We update min_val back to 5 and pop the 1.
+Stack is now: [5, 7]
+
+min_val is now: 5 (Successfully restored!)
