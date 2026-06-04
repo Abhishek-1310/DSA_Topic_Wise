@@ -1,0 +1,21 @@
+q) Sort a linked list of 0s, 1s and 2s
+Given the head of a linked list where nodes can contain values 0s, 1s, and 2s only. Your task is to rearrange 
+the list so that all 0s appear at the beginning, followed by all 1s, and all 2s are placed at the end.
+
+Examples:
+Input: head = 1 → 2 → 2 → 1 → 2 → 0 → 2 → 2
+Output: 0 → 1 → 1 → 2 → 2 → 2 → 2 → 2
+Explanation: All the 0s are segregated to the left end of the linked list, 2s to the right end of the list, and
+ 1s in between. The final list will be:
+
+sol:- nive solution
+Tc o(2n);  
+in first loop:- count 0, 1, 2 occurence in diff variable with temp varible
+assign temp var = head again  start while loop(temp!=0); and move with temp = temp.next;
+we will check if o count and make assign it to temp
+ we add temp.data=0 and count0--;
+same with count1 and count2
+and everytime we will move temp=temp.next;
+
+
+better approch do with three pointer.

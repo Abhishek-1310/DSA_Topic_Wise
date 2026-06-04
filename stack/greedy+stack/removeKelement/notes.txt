@@ -12,6 +12,11 @@ Input: num = "10200", k = 1
 Output: "200"
 Explanation: Remove the leading 1 and the number is 200. Note that the output must not contain leading zeroes.
 
+notes:-
+larger digit before  is bad to make smaller number , before earlier should be small like  4 vs 3 3 should be correct
+
+so check if previous value is large pop is
+
 ❗ Smaller digit at LEFT matters more than big digit at RIGHT
 Remove the digit which is greater than next digit
 "I want the number to be as small as possible from the LEFTMOST side"

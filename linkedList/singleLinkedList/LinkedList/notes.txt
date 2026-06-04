@@ -1,0 +1,45 @@
+1) i always forgot to move curr do in while loop curr = curr.next then you can move to next node
+
+head          tail
+ ↓             ↓
+100 → 200 → 300 → null
+now we have to put 400       we have to do tail.next = node  300 -> 400 then point tail to 400 tail = node
+so both are important 1) this.tail.next = node (300->400) 2) this.tail = node (tail->400)
+
+head               tail
+ ↓                  ↓
+100 → 200 → 300 → 400 → null
+
+This is a very important linked list pattern.
+
+1) Use current !== null when you want to visit every node
+while(current !== null){
+    console.log(current.data);
+    current = current.next;
+}
+
+Example: 10 -> 20 -> 30 -> null
+Visits: 10 20 30
+Used for: Count nodes , Print list, Search a value, Sum values
+
+2) Use current.next !== null when you need to stop at the last node
+while(current.next !== null){
+    current = current.next;
+}
+
+Example: 10 -> 20 -> 30 -> null
+Execution:
+
+current = 10
+current = 20
+stop at 30
+
+Notice: after the loop, current is the last node.
+
+Used for: Finding the last node, Appending in a head-only linked list
+
+3) delete:- In JavaScript, once there are no references to an object, the garbage collector eventually frees
+ its memory automatically.
+
+ and if you need to remove kth element so you have to stop at k-1 position so you can remove the refresnce of kth element
+ pos < k-1 ;

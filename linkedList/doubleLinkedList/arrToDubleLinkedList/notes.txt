@@ -1,0 +1,12 @@
+Doubly Linked List from an Array
+Given an array arr[] of integers, the goal is to create a Doubly Linked List (DLL) where each element of the 
+array is represented as a node. The nodes must be linked in the same sequence as the array, maintaining both
+ forward (next) and backward (prev) connections. Return the head of the constructed doubly linked list.
+
+Examples:
+Input: arr[] = [1, 2, 3, 4]
+Output: 1 <-> 2 <-> 3 <-> 4
+Explanation: Each array element becomes a node in the doubly linked list. Node 1 connects forward to 2, and 
+node 2 connects back to 1, and so on.
+
+sol:- i have wrongly put previous we should do node.prev = this.tail     x i did this.tail.prev = this.tail

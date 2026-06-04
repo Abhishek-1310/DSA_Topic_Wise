@@ -1,0 +1,12 @@
+Reverse a Doubly Linked List
+Given the head of a doubly linked list. You have to reverse the doubly linked list and return its head.
+
+Note: The driver code will print the returned list in both forward and backward directions.
+
+Examples: 3 4 5
+Input:
+Output: 5 4 3
+3 4 5
+Explanation: After reversing the given doubly linked list the new list will be 5 <-> 4 <-> 3.
+
+sol:- you need to just swap pointers  and move current and this time you are swapping pointer so move curr to prev not next

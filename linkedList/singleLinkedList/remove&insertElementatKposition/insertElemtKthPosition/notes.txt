@@ -1,0 +1,16 @@
+Insertion at a Given Position in a Linked List
+Difficulty: EasyAccuracy: 49.92%Submissions: 13K+Points: 2
+You are given the head of a Singly Linked List, a position pos and value val. Insert the val data at the given position (1-based index) of the LinkedList and return the head of the modified Linked List.
+
+Examples:
+
+Input: pos = 3, val = 4,
+    
+Output: 1 -> 3 -> 4
+Explanation: After inserting 4 at position 3 we'll get our linked list as - 
+    
+Input: pos = 2, val = 5,
+    
+Output: 1 -> 5 -> 2 -> 9
+Explanation: After inserting 5 at position 2 we'll get our linked list as -
+    

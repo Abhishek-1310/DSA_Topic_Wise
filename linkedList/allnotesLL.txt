@@ -1,0 +1,42 @@
+One-line rule
+Delete position x → move to x-th node → pos < x
+Insert at position x → move to (x-1)-th node → pos < x-1
+Insert after p-th node → move to p-th node → pos < p
+
+That's the pattern you'll use for singly linked lists and doubly linked lists alike.
+
+Which node do I need before performing the operation?
+
+Delete x-th node → reach x-th node.
+Insert at x → reach (x−1)-th node.
+Insert after p-th node → reach p-th node.
+
+
+✅ Check needed when accessing a property of a pointer
+
+curr.next.prev
+curr.next.next
+curr.prev.next
+
+Note: "Before using . on a node, ensure the node is not null."
+
+Easy One-Liner
+
+If I use node.next as a value → no check. If I use node.next.something → check required.
+
+Examples:
+
+prev.next = curr.next;      // No check
+curr.next.prev = curr.prev; // Check curr.next
+curr.prev.next = curr.next; // Check curr.prev
+DLL Deletion Note
+if(curr.prev) curr.prev.next = curr.next;
+if(curr.next) curr.next.prev = curr.prev;
+
+Reason: First/last node may have prev or next as null.
+
+Interview Shortcut
+
+Check for null only when dereferencing (.) a node that might not exist. 🚀
+
+This one sentence is usually enough to remember the rule.

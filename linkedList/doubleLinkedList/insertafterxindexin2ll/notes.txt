@@ -1,0 +1,17 @@
+Insertion at doubly linked list
+Difficulty: EasyAccuracy: 47.13%Submissions: 190K+Points: 2Average Time: 20m
+Given the head of a doubly-linked list, a position p, and an integer x. Add a new node with value x at the position just after pth node in the doubly linked list and return the head of the updated list.
+
+Note: The position is 0-based indexed.
+
+Examples:
+
+Input: p = 2, x = 6
+
+Output: 2 <-> 4 <-> 5 <-> 6
+Explanation: Insert a node of value 6 after the 2nd node.
+
+sol:- check always first we have to insert after or before index
+after index is easy solution;
+
+1) first point node next and previous then update curr next node then update current

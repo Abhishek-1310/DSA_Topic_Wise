@@ -1,0 +1,29 @@
+203. Remove Linked List Elements
+
+Given the head of a linked list and an integer val, remove all the nodes of the linked list that has
+ Node.val == val, and return the new head.
+
+
+Example 1:
+Input: head = [1,2,6,3,4,5,6], val = 6
+Output: [1,2,3,4,5]
+
+Example 2:
+Input: head = [], val = 1
+Output: []
+
+Example 3:
+Input: head = [7,7,7,7], val = 7
+Output: []
+
+sol:- 
+
+1) u always have to check next node element is equal to value or not (easy to remove the node with this) =
+ but how we will check first elem there are no previous element = two way u can do it
+ => I) create dummy node make it first node and start search II) handle with seprate condition 
+2) so if curr.next value is not null then we check it curr.next.val is equal to val if yes then remove next node 
+ how -> curr.next =curr.next.next
+ else move curr forward :- curr =curr.next
+now we use curr.next.next so we have to check if that is not null or else it will fail condition 
+curr.next!==null
+  

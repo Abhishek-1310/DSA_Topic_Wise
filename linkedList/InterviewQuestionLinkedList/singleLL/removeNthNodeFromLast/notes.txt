@@ -1,0 +1,4 @@
+sol:- 
+nive solution is 
+traverse ll and count length and do=  length-nth = 5-2=3
+go to 3rd node and make next pointer to next.next;
