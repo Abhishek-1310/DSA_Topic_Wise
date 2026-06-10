@@ -1,0 +1,5 @@
+Min Heap (Priority Queue).
+What is a Min Heap?
+Think of it as a box where: The smallest element is always on top.
+
+Insert (Push)  heap.push(5)  need min :- heap.top()  remove :-heap.pop()

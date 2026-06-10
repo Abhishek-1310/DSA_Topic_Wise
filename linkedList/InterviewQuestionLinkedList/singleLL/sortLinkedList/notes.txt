@@ -1,0 +1,15 @@
+48. Sort List
+Given the head of a linked list, return the list after sorting it in ascending order.
+
+Example 1:
+
+
+Input: head = [4,2,1,3]
+Output: [1,2,3,4]
+
+:- sol:-
+nive solution is :- tc:- n+nlogn+n  sc:- o(n)
+add all value from linked list stor eto arr and sort that arr then update current linked list va;ue with arr value
+
+best approch :- tc:- 
+divide the list into half from middle until it have one value then we will merge according to value and add in temp at last we will return temp as a head

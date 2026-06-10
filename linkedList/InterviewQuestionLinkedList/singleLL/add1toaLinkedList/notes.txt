@@ -1,0 +1,19 @@
+Add 1 to a Linked List Number
+You are given head of a linked list where each node contains a single digit. The digits together represent a
+number formed by concatenating the node values in order. Add 1 to this number and return the head of the modified
+linked list.
+Examples :
+
+Input: Head: 4->5->6
+Output: 457
+
+sol:- 
+nive solution is  ex:- 4->5->6        6+1 = 7        no carry 
+1) reverse a linked list  6->5->4     add 1 noumber  7->5->4     but value is in reverse oder so so 4->5->7 is ans
+2) and start adding 1 number to linked list value keep carry move to next number and change value like this.
+3) value is in reverse we have to again revser and return the head 
+
+if carry left after adding carry left reverse the add ll first 
+1) make node with carry value and point to current head and return new node as haed and return
+
+best approch is with recusrion

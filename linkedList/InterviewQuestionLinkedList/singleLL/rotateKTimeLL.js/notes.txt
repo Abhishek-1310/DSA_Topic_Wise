@@ -1,0 +1,42 @@
+Rotate List
+Given the head of a linked list, rotate the list to the right by k places.
+
+Example 1:
+Input: head = [1,2,3,4,5], k = 2
+Output: [4,5,1,2,3]
+
+sol:- 
+Take:
+1 -> 2 -> 3 -> 4 -> 5
+k = 2
+1. Find length
+length = 5
+2. Reduce k
+k = k % length   // you can ask why k%length if they ask you to rotate 5 no change in linked list , if you do come to the sam eposition
+  = 2 % 5    // what if they told you to do 10 rotattion again come to same position so if you do k%lenth = 5%5= 0 10%5=0 0 rotation we have to do 
+  = 2   // this way we can find out how many time roation have to do
+
+example 13 roation you don't need to do 13 time 13%5 =  3 time you have to do becuse 5(no change)+5(no change) +3 this we have to do)
+3. Make circular list
+
+Connect tail to head:
+
+1 -> 2 -> 3 -> 4 -> 5
+^                   |
+|___________________|
+4. Find new tail
+
+Formula:  newTailIndex = length - k - 1
+                        = 5 - 2 - 1
+                        = 2
+
+Index 2 (0-based) is node 3:
+
+0  1  2  3  4
+1  2  3  4  5
+      ^
+   newTail
+
+So: newHead = newTail.next = 4
+5. Break the circle
+Set: 3.next = null      Result: 4 -> 5 -> 1 -> 2 -> 3

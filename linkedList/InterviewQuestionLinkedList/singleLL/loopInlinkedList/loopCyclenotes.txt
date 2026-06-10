@@ -1,0 +1,11 @@
+1) to detect a cycle 
+we will just move slow by 1 and fast by 2  if slow and fast collide or meet at any point then this is loop/cycle
+
+2) how to find length of loop 
+we will move slow and fast by 1 & 2 when both meet 
+-> we move any one and we will keep one varible count and increase and when slow again meet fast the count is
+ the length of loop
+
+ 3) how to find first node of loop 
+ same we wil move slow and fast when they meet
+ -> we will point slow to head and move both slow and fast by 1 step when they mmeet that is first node of loop
