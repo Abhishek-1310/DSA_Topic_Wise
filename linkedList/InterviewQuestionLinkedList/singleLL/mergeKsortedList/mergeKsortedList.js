@@ -15,6 +15,22 @@ var mergeKLists = function (lists) {
     }
     return lists[0];
 };
+
+
+//easy way
+var mergeKLists = function(lists) {
+    if (!lists || lists.length === 0) return null;
+    let root = lists[0];
+    
+    let i = 1;
+    while (i < lists.length) {
+        let curr = lists[i];
+        root = merge2ll(root, curr);
+        i++;
+    }
+    return root || null;
+};
+
 function merge2ll(l1, l2) {
 
     let dummy = new ListNode(0);
