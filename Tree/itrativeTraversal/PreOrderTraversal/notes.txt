@@ -1,0 +1,30 @@
+Preorder Traversal
+Given the root of a binary tree, your task is to return its Preorder traversal.
+Note: A preorder traversal first visits the node, then visits the left child (including its entire subtree), and 
+finally visits the right child (including its entire subtree).
+
+Examples:
+
+Input: root = [1, 4, N, 4, 2]
+   
+Output: [1, 4, 4, 2]
+Explanation: The preorder traversal of the given binary tree is [1, 4, 4, 2]
+
+sol:- 
+root left right;
+        1
+      /   \
+     2     3
+    / \   / \
+   4   5 6   7
+
+o/p:- 1 2 4 5 3 6 7
+
+notes:- 
+stack[root];
+1) pop node from stack
+2) push in result
+3) check right is present -> then put in stack
+4) check left is present  ->  then put in stack
+4) do this all step until stack become empty
+

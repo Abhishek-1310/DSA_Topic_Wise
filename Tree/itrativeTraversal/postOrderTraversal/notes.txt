@@ -1,0 +1,46 @@
+145. Binary Tree Postorder Traversal
+Given the root of a binary tree, return the postorder traversal of its nodes' values.
+
+
+Example 1:
+Input: root = [1,null,2,3]
+Output: [3,2,1]
+Explanation:
+
+Example 2:
+Input: root = [1,2,3,4,5,null,8,null,null,6,7,9]
+Output: [4,6,7,5,2,9,8,3,1]
+
+
+        1
+      /   \
+     2     3
+    / \   / \
+   4   5 6   7
+o/p:- 4 5 2 6 7 3 1
+notes:- 
+
+st[root]
+1) run loop until stack become empty
+2) pop val from stack
+3) push in result 
+3) go left if present -> push in stack
+4) go right if present => push in stack do this untill all stack val pop
+at last reverse the stack that is answer
+
+
+Preorder = Root Left Right
+Push right, then left
+Postorder = Left Right Root
+Generate Root Right Left
+Reverse the result at the end
+
+
+Because Postorder visits the root last:
+Left → Right → Root
+But a stack processes a node when you pop it.
+In your code:
+let node = stack.pop();
+result.push(node.val);
+The moment you pop a node, you immediately add it to the result.
+So the root gets added first, not last.
