@@ -7,6 +7,10 @@ Examples:
              width=take an ex:- 50        left smallest is 10 at 4 right no smallest so take n=7 with=right-left-1 =6-4-1= 2 
 Input: arr[] = [60, 20, 50, 40, 10, 50, 60]
                [ 0,  1,  2,   3,  4,  5, 6]
+left=[-1,-1,1,1,-1,4,5] not get-1
+right=[1,4,3,4,7,7,7]  not get n
+width=right-left-1
+
 Largest-Rectangular-Area-in-a-Histogram
 Output: 100
 Explanation: We get the maximum by picking bars highlighted above in green (50, and 60). The area is computed (smallest height) * (no. of the picked bars) = 50 * 2 = 100.

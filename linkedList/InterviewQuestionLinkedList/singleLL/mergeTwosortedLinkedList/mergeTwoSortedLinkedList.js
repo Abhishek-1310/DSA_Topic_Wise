@@ -29,4 +29,27 @@ var mergeTwoLists = function (list1, list2) {
 
 
 // best solution
+var mergeTwoLists = function (list1, list2) {
+    let dummy = new ListNode(0);
+    let temp = dummy;
+    let t1 = list1;
+    let t2 = list2;
+    while (t1 && t2) {
+        if (t1.val < t2.val) {
+            temp.next = t1;
+            temp = temp.next;
+            t1 = t1.next;
+        } else {
+            temp.next = t2;
+            temp = temp.next;
+            t2 = t2.next;
+        }
+    }
+    if (t2) {
+        temp.next = t2;
+    } else {
+        temp.next = t1;
+    }
+    return dummy.next;
+};
 

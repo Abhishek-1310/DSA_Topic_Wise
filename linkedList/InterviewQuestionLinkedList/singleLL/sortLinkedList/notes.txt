@@ -9,7 +9,7 @@ Output: [1,2,3,4]
 
 :- sol:-
 nive solution is :- tc:- n+nlogn+n  sc:- o(n)
-add all value from linked list stor eto arr and sort that arr then update current linked list va;ue with arr value
+put all ll value from linked list to arr and sort that arr then update current linked list value with arr value
 
 best approch :- tc:- 
 divide the list into half from middle until it have one value then we will merge according to value and add in temp at last we will return temp as a head
