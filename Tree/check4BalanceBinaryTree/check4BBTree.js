@@ -1,16 +1,22 @@
 // Tc:- o(n) sc:- o(n)
 
+
+// A Balanced Binary Tree is a tree in which for every node, the difference between the heights of its left and right subtrees 
+// is at most 1.
+// Formula: |height(left) - height(right)| <= 1
+
 var isBalanced = function (root) {
-    let ans = true;
-    function height(root) {
+    function heightCheck(root) {
         if (!root) return 0;
 
-        let left = height(root.left);
-        if (left == -1 && right == -1) return -1;
-        let right = height(root.right);
-        if (Math.abs(left - right) > 1) ans = false;;
-        return 1 + Math.max(left, right);
+        let lh = heightCheck(root.left);
+        if (lh === -1) return -1;
+        let rh = heightCheck(root.right);
+        if (rh === -1) return -1;
+
+        if (Math.abs(lh - rh) > 1) return -1;
+
+        return 1 + Math.max(lh, rh);
     }
-    height(root);
-    return ans;
+    return heightCheck(root) !== -1;
 };

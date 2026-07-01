@@ -14,6 +14,17 @@ Example 3:
 Input: root = []
 Output: true
 
+        1
+       / \
+      2   3
+     / \
+    4   5
+
+Heights:
+
+Node 2: left = 1, right = 1 → diff = 0 ✅
+Node 1: left = 2, right = 1 → diff = 1 ✅
+
 sol:- balance BT => for every Node:- abs(height(left) - height(right)) <= 1;
 we can say tree is balance bt:- where the height of left and right subtree of every node diff by atmost 1
 

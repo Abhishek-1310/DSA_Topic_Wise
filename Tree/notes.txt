@@ -1,0 +1,84 @@
+1. DFS/BFS and Recursion/Iteration are NOT the same
+Concept	Meaning
+DFS / BFS	Traversal strategy (How to visit nodes)
+Recursion / Iteration	Implementation method (How to write the code)
+
+
+2. DFS (Depth First Search)
+Idea: Go as deep as possible before coming back.
+Traversal examples:
+
+Preorder  : Root → Left → Right
+Inorder   : Left → Root → Right
+Postorder : Left → Right → Root
+Can be implemented in two ways
+
+Recursive
+dfs(node)
+
+Iterative
+Stack
+
+3. BFS (Breadth First Search)
+Idea: Visit nodes level by level.
+
+Level 0
+Level 1
+Level 2
+Implementation
+
+Uses a Queue.
+queue.push()
+queue[front++]
+There is no natural recursive BFS because recursion uses a stack, not a queue.
+
+
+4. Why recursion naturally becomes DFS?
+Recursion uses the Call Stack.
+A stack is LIFO (Last In, First Out).
+LIFO naturally performs DFS.
+
+5. Why BFS uses Queue?
+Queue is FIFO (First In, First Out).
+Queue
+FIFO naturally processes nodes level by level.
+
+6. When to choose DFS?
+Use DFS when the answer depends on going deep into one branch.
+Examples
+Maximum Depth
+Minimum Depth (DFS version)
+Diameter
+Balanced Tree
+Path Sum
+Root to Leaf Path
+Lowest Common Ancestor
+Think: "I need to explore a path."
+
+7. When to choose BFS?
+Use BFS when the answer depends on levels.
+Examples
+Level Order Traversal
+Zigzag Traversal
+Top View
+Bottom View
+Minimum Depth (BFS version)
+Average of Levels
+
+Think: "I need to compare nodes on the same level."
+
+
+One-Line Memory Trick ⭐
+DFS = Go Deep = Path Problems = Recursion/Stack
+BFS = Go Wide = Level Problems = Queue
+Recursion is an implementation of DFS, not BFS
+Queue is an implementation of BFS
+Columns (Top/Bottom/Vertical) require tracking horizontal distance; Top/Bottom are naturally handled by BFS, while Vertical Traversal needs all nodes plus sorting.
+
+
+Problem	Best Approach
+Top View	✅ BFS
+Bottom View	✅ BFS
+Right Side View	✅ DFS (Right → Left) (or BFS)
+Left Side View	✅ DFS (Left → Right) (or BFS)
+Vertical Traversal	✅ DFS + Sort (or BFS + maps)

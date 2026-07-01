@@ -1,0 +1,14 @@
+Left View of Binary Tree
+Difficulty: EasyAccuracy: 33.74%Submissions: 608K+Points: 2Average Time: 20m
+Given the root of a binary tree. Your task is to return the left view of the binary tree. The left view of a binary tree is the set of nodes visible when the tree is viewed from the left side.
+
+Note: If the tree is empty, return an empty list.
+Examples :
+
+Input: root = [1, 2, 3, 4, 5, N, N]
+     1
+   2   3
+  4  5
+  
+
+Output:[1, 2, 4]
