@@ -1,0 +1,73 @@
+imp:- If both nodes are on the same side, keep going. If they split, the current node is the LCA.
+
+235. Lowest Common Ancestor of a Binary Search Tree
+Medium
+Topics
+premium lock icon
+Companies
+Given a binary search tree (BST), find the lowest common ancestor (LCA) node of two given nodes in the BST.
+
+According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+
+ 
+
+Example 1:
+
+
+Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+Output: 6
+Explanation: The LCA of nodes 2 and 8 is 6.
+
+sol:- Current node = 6
+
+                6
+              /   \
+             2     8
+            / \
+           0   4
+              / \
+             3   5
+
+Check:
+p = 3 < 6
+q = 5 < 6
+Both are smaller.
+That means both nodes must be in the left subtree.
+
+So:
+return lowestCommonAncestor(root.left, p, q);
+Now recursion goes to node 2.
+Step 2
+Current node = 2
+
+             2
+            / \
+           0   4
+              / \
+             3   5
+
+Check:
+3 > 2
+5 > 2
+Both are greater.
+
+So both must be in the right subtree.
+return lowestCommonAncestor(root.right, p, q);
+Now recursion goes to node 4.
+
+Step 3
+Current node = 4
+
+             4
+            / \
+           3   5
+
+Check:
+3 < 4
+5 > 4
+Now one node is on the left and the other is on the right.
+This means 4 is exactly where their paths split.
+
+Return: return root;
+
+Answer: LCA = 4

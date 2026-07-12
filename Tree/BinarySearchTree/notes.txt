@@ -1,0 +1,29 @@
+                 50
+               /    \
+             30      70
+            /  \    /  \
+          20   40  60   80
+         / \          \
+       10  25         65
+
+BST Property
+For every node:  Left Subtree  <  Root  <  Right Subtree       
+
+all subtree also should be BST
+
+
+Important BST Interview Facts
+✅ Left subtree values are smaller than the node.
+✅ Right subtree values are greater than the node.
+✅ Inorder traversal of a BST is always sorted.
+✅ Search, insert, and delete all take O(h) time, where h is the tree height.
+✅ Duplicate keys are usually not allowed (or are handled consistently by placing them all on one side, depending on the implementation).
+✅ Minimum = leftmost node.
+✅ Maximum = rightmost node.
+✅ Inorder successor = smallest node in the right subtree.
+✅ Inorder predecessor = largest node in the left subtree.
+✅ A balanced BST has height O(log n), while a skewed BST has height O(n).
+
+it will take only o(logn) to serach in bst but it will take o(n) in BT
+
+

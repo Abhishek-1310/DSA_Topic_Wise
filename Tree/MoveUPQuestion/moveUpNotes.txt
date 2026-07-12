@@ -1,0 +1,8 @@
+How we can move up also in tree:- when we don't have pointer to go to parent only we have go right and left in down tree
+
+-> then first we have to manually build the upward paths first
+: first we have to make parent mapping :- traverse the tree and use map and key is child node and value is parent node so now 
+every node have there parent node refrence so you can go to now left , right, parent 
+
+-> one problem now u can move in three direction :- how to avoid infinity loop (u can stuck on bouncing between parent and child )
+sol :- use visited set before moving to left, right, parent checj if you have already been there.

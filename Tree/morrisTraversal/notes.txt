@@ -1,0 +1,7 @@
+morris traversal :- use threaded binary tree 
+normal traversal take tc:- o(n) &  sc:- o(n)
+Morris Traversal (Thread Creation)
+
+onorder
+
+when you find last node of tree go back to root 

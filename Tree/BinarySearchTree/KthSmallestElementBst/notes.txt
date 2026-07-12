@@ -1,0 +1,22 @@
+if you want to find kth smallest :- first traverse tree store value in arr => sort that array => return kth poition value from array
+but problem is tc:- o(n+nlogn) and sc:- o(n)
+
+how to reduce it do you know imp:- 
+
+notes:- Inorder(left root right) of any binary search tree :- is always sorted 
+but in this also to traverse tree space complexity is :- o(n) how to reduce it 
+
+there is one way what if we have count variable when we print some value we increse count and when count===k return that value
+
+230. Kth Smallest Element in a BST
+Given the root of a binary search tree, and an integer k, return the kth smallest value (1-indexed) of all the values of the 
+nodes in the tree.
+
+Example 1:
+        3
+       / \
+      1   4
+       \
+        2
+Input: root = [3,1,4,null,2], k = 1
+Output: 1
