@@ -28,7 +28,8 @@ while (curr) {
             prev = prev.right;
         }
         prev.right = curr.right;
-        curr.right = curr.next;
+        curr.right = curr.left;
+        curr.left = null;
     }
     curr = curr.right;
 }
