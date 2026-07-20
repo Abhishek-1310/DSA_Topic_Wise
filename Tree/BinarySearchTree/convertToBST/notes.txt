@@ -1,6 +1,22 @@
-Given a Binary Tree, the task is to convert it to a Binary Search Tree. The conversion must be done in such a way that keeps the original structure of the Binary Tree. 
+Given a Binary Tree, the task is to convert it to a Binary Search Tree. The conversion 
+must be done in such a way that keeps the original structure of the Binary Tree. 
 
 // 1) do inorder traversal and put in arr all value then 
 2) sort that arr 
 3) then comapre with tree and change the value.
 these step will take  tc:- o(2n+nlogn) sc:- o(n)
+
+better way to this is using swap
+1) find out inorder of binray tree 
+now in that array we have swap to sort 
+2) two case swap node which is adjecent
+  2nd swap node which is not adjcent
+
+one more think we don't need to create a array of inorder we can do swap while traversing tree 
+so we maintain prev variable and compare with prev if array is sorted always prev element is smaller then curr so if we found anything we habe to mark that prev value fault1 and cur fault2 until found fault2
+
+when u found 2nd fault we stop the traverse amd 
+we will swap the value 
+[fault1, fault2]=[fault2,fault1]
+
+then this become binary serach tree.
