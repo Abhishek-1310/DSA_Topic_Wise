@@ -1,3 +1,5 @@
+Given a Binary Tree, the task is to convert it to a Binary Search Tree. The conversion must be done in such a way that keeps the original structure of the Binary Tree. 
+
 // 1) do inorder traversal and put in arr all value then 
 2) sort that arr 
 3) then comapre with tree and change the value.
