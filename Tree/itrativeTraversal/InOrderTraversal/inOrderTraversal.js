@@ -2,18 +2,16 @@ var inorderTraversal = function (root) {
     if (!root) return [];
     let result = [];
     let stack = [];
-    let curr = root
 
-    while (curr || stack.length) {
-
-        while (curr) {
-            stack.push(curr);
-            curr = curr.left;
+    while (root || stack.length) {
+        while (root) {
+            stack.push(root);
+            root = root.left;
         }
 
-        curr = stack.pop();
-        result.push(curr.val);
-        curr = curr.right;
+        root = stack.pop();
+        result.push(root.val);
+        root = root.right;
     }
     return result;
 };
