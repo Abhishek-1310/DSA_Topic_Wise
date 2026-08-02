@@ -4,8 +4,8 @@ class Solution {
         if (first === arr.length || arr[first] != target) {
             return 0;
         }
-        let last = this.upper(arr, target) - 1;
-        return last - first + 1;
+        let last = this.upper(arr, target);
+        return last - first;
 
     }
     lower(arr, target) {

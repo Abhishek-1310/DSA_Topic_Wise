@@ -2,27 +2,26 @@
 class Solution {
     inOrder(root) {
         let inOrder = [];
-        let curr = root;
-        while (curr) {
-            if (curr.left === null) {
-                inOrder.push(curr.data);
-                curr = curr.right;
+        // We use the parameter 'root' directly as our moving pointer
+        while (root) {
+            if (root.left === null) {
+                inOrder.push(root.data);
+                root = root.right;
             } else {
-                let prev = curr.left;
-                while (prev.right && prev.right != curr) {
+                let prev = root.left;
+                while (prev.right && prev.right !== root) {
                     prev = prev.right;
                 }
-                if (prev.right == null) {
-                    prev.right = curr;
-                    curr = curr.left
+                if (prev.right === null) {
+                    prev.right = root;
+                    root = root.left;
                 } else {
                     prev.right = null;
-                    inOrder.push(curr.data);
-                    curr = curr.right;
+                    inOrder.push(root.data);
+                    root = root.right;
                 }
             }
         }
         return inOrder;
-
     }
 }

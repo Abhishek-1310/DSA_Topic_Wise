@@ -3,7 +3,6 @@
 // whether we've already seen its complement.
 var findTarget = function (root, k) {
     let set = new Set();
-    let result = false;
     function dfs(root) {
         if (!root) return false;
         if (set.has(k - root.val)) return true;
