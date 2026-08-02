@@ -1,0 +1,29 @@
+Directed Graph Cycle
+Given a Directed Graph with V vertices (Numbered from 0 to V-1) and E edges, check whether it contains any cycle or not.
+The graph is represented as a 2D vector edges[][], where each entry edges[i] = [u, v] denotes an edge from vertex u to v.
+
+Examples:
+0 ───► 1
+▲      │
+│      ▼
+2 ◄────┘
+│
+▼
+3
+Input: V = 4, edges[][] = [[0, 1], [1, 2], [2, 0], [2, 3]]
+
+Output: true
+Explanation: The diagram clearly shows a cycle 0 → 1 → 2 → 0
+0 ───► 1
+│       │
+│       ▼
+└────► 2 ───► 3
+Input: V = 4, edges[][] = [[0, 1], [0, 2], [1, 2], [2, 3]]
+
+Output: false
+Explanation: no cycle in the graph
+
+
+sol:- if on the same path, node has to be visited again then we can say it is cycle 
+
+we can't use same algo as undirected :- it will giev wrong ans.

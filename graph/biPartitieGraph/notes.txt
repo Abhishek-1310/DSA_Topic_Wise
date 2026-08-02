@@ -1,0 +1,15 @@
+What is a Bipartite Graph?
+
+A graph is bipartite if you can divide all vertices into 2 groups such that:
+
+No two vertices in the same group are connected.
+Every edge connects a vertex from Group A to Group B.
+
+which can be a bipartirie graph
+1) liner graph is always bipartitie graph
+2) any graph with even cycle lenegth also a bipartitie graph
+
+odd length cycle len is not bipartitie graph.
+
+-1 :- not colored
+0:- and 1:- is colored  no adjecent node is same color.

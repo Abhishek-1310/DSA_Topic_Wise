@@ -1,0 +1,65 @@
+Topological Sort
+Given a Directed Acyclic Graph (DAG) of V (0 to V-1) vertices and E edges represented as a 2D list of edges[][], where each entry edges[i] = [u, v] denotes a directed edge u -> v. Return the topological sort for the given graph.
+Topological sorting for Directed Acyclic Graph (DAG) is a linear ordering of vertices such that for every directed edge u -> v, vertex u comes before v in the ordering.
+Note: As there are multiple Topological orders possible, you may return any of them. If your returned Topological sort is correct then the output will be true else false.
+
+Examples:
+Input: V = 4, E = 3, edges[][] = [[3, 0], [1, 0], [2, 0]]
+
+Output: true
+Explanation: The output true denotes that the order is valid. Few valid Topological orders for the given graph are:
+[3, 2, 1, 0]
+[1, 2, 3, 0]
+[2, 3, 1, 0]
+Input: V = 6, E = 6, edges[][] = [[1, 3], [2, 3], [4, 1], [4, 0], [5, 0], [5, 2]]
+
+Output: true
+Explanation: The output true denotes that the order is valid. Few valid Topological orders for the graph are:
+[4, 5, 0, 1, 2, 3]
+[5, 2, 4, 0, 1, 3]
+
+What is Topological Sort?
+It is an ordering of the vertices such that:
+For every directed edge
+u → v
+
+u appears before v in the ordering.
+Example
+Graph:
+
+5 ───► 2 ───► 3 ───► 1
+│
+└────► 0
+
+4 ───► 0
+│
+└────► 1
+
+One valid topological ordering is:
+5 4 2 3 1 0
+Is the ordering unique?
+No.
+For the graph above, these are both valid:
+4 5 2 3 1 0
+and
+5 4 2 3 0 1
+Many valid orders can exist.
+When is Topological Sort possible?
+Only in a Directed Acyclic Graph (DAG).
+
+If there is a cycle:
+0 → 1 → 2 → 0
+No ordering is possible because:
+
+0 before 1
+1 before 2
+2 before 0
+
+Impossible.
+
+
+notes:- only exist dag :- directed acyclic graph 
+any liner ordering of vertices such that if there is and edge between u & v is apperas before v in that ordering
+
+no cycle and no undirected graph else u can't do topological sort algo.
+directed acyclic graph :- possible for topological sort.
