@@ -28,53 +28,39 @@ var ladderLength = function (beginWord, endWord, wordList) {
     return 0;
 };
 
-// other way
-while (queue.length) {
-    let [word, step] = queue.shift();
-    if (word == endWord) return step;
-    for (let i = 0; i < word.length; i++) {
-        let arr = word.split('');
-        for (let code = 97; code <= 122; code++) {
-            let ch = String.fromCharCode(code);
-            if (ch == word[i]) continue;
-            arr[i] = ch;
-            let newword = arr.join('');
-            if (set.has(newword)) {
-                set.delete(newword);
-                queue.push([newword, step + 1])
-            }
-        }
-        arr[i] = word[i];
-    }
-}
+// easy way
+function ladderLength(beginWord, endWord, wordList) {
+    const set = new Set(wordList);
+    if (!set.has(endWord)) return 0; // Optimization: Early exit if endWord is missing
 
-// way
-var ladderLength = function (beginWord, endWord, wordList) {
-    let st = new Set();
-    for (let it of wordList) {
-        st.add(it);
-    }
-    if (!st.has(endWord)) return 0;
-    const q = [];
-    let count = 0;
-    q.push(beginWord);
-    while (q.length > 0) {
-        let len = q.length;
-        for (let k = 0; k < len; k++) {
-            let node = q.shift();
-            for (let i = 0; i < node.length; i++) {
-                for (let j = 0; j < 26; j++) {
-                    let ch = String.fromCharCode(97 + j);
-                    let temp = node.slice(0, i) + ch + node.slice(i + 1);
-                    if (st.has(temp)) {
-                        q.push(temp);
-                        st.delete(temp);
-                    }
-                    if (node == endWord) return count + 1;
+    // Queue stores pairs: [current_word, current_step_count]
+    let queue = [[beginWord, 1]];
+
+    while (queue.length) {
+        let [word, step] = queue.shift();
+
+        if (word === endWord) return step; // Found the shortest path
+
+        // Split outside the loop to avoid recreating the array 26 times per letter
+        let arr = word.split(''); 
+
+        for (let i = 0; i < word.length; i++) {
+            let originalChar = arr[i]; // Remember original character to reset later
+
+            for (let code = 97; code <= 122; code++) {
+                let ch = String.fromCharCode(code);
+                if (ch === originalChar) continue;
+
+                arr[i] = ch;
+                let newword = arr.join('');
+
+                if (set.has(newword)) {
+                    set.delete(newword); // Mark as visited so we don't process it again
+                    queue.push([newword, step + 1]);
                 }
             }
+            arr[i] = originalChar; // Reset character back to normal for the next index loop
         }
-        count++;
     }
-    return 0;
-};
+    return 0; // No path found
+}
