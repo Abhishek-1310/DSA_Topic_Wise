@@ -32,3 +32,34 @@ console.log(combinationSum([2, 3, 6, 7], 7));
 
 // sort notes:- while push don't increse index after pop increse index and condition when remining < 0 don't go
 // further you will not get any thing
+// 2nd option 
+var combinationSum = function (candidates, target) {
+    let result = [];
+
+    function combSum(index, path, currentSum) {
+        // Base Case: Found a valid combination
+        if (currentSum === target) {
+            result.push([...path]);
+            return;
+        }
+
+        // Base Case: Exceeded target or ran out of candidates
+        if (currentSum > target || index === candidates.length) {
+            return;
+        }
+
+        let val = candidates[index];
+
+        // TAKE: Include the current number, sum increases
+        path.push(val);
+        combSum(index, path, currentSum + val);
+        path.pop(); // Backtrack
+
+        // SKIP: Move to the next number without including it
+        combSum(index + 1, path, currentSum);
+    }
+
+    // Start with an index of 0, an empty path, and a sum of 0
+    combSum(0, [], 0);
+    return result;
+};
