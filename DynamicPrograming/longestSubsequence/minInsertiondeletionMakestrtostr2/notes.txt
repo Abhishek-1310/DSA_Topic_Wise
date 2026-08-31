@@ -1,0 +1,57 @@
+Transform using Minimum Insert and Delete
+Solved
+Given two strings s1 and s2. The task is to remove or insert the minimum number of characters from/in s1 to transform it into s2. It could be possible that the same character needs to be removed from one point of s1 and inserted into another point.
+
+Examples :
+
+Input: s1 = "heap", s2 = "pea"
+Output: 3
+Explanation: 'p' and 'h' deleted from heap. Then, 'p' is inserted at the beginning.
+Input : s1 = "geeksforgeeks", s2 = "geeks"
+Output: 8
+Explanation: 8 deletions, i.e. remove all characters of the string "forgeeks".
+
+sol:- here how to make s1 to s2 :- if we delete s1 and add all s2 in s1 we can make s1 == s2 but there are so many 
+insertion and deletion
+
+what we can do to do min insertion and deletion 
+
+min insertions + deletions to make s1 to s2       l1 = len of s1           l2 = len of s2
+= l1 + l2 - 2 × LCS
+
+s1 = "abc"
+s2 = "acd"
+l1 = 3
+l2 = 3
+LCS = "ac" → 2
+
+Therefore:
+
+3 + 3 - (2 × 2)
+= 6 - 4
+= 2
+Why 2?
+
+LCS is:
+
+abc
+↑ ↑
+a c
+
+acd
+↑ ↑
+a c
+
+Keep "ac".
+From s1:
+abc
+  ↑
+ delete b
+Now:
+ac
+Then convert to s2:
+ac
+  ↑
+insert d
+Result:
+acd So: 1 deletion + 1 insertion = 2

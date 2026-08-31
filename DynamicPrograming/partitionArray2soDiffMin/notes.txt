@@ -1,0 +1,78 @@
+2035. Partition Array Into Two Arrays to Minimize Sum Difference
+You are given an integer array nums of 2 * n integers. You need to partition nums into two arrays of length n to minimize the absolute difference of the sums of the arrays. To partition nums, put each element of nums into one of the two arrays.
+
+Return the minimum possible absolute difference.
+
+
+Example 1:
+
+example-1
+Input: nums = [3,9,7,3]
+Output: 2
+Explanation: One optimal partition is: [3,9] and [7,3].
+The absolute difference between the sums of the arrays is abs((3 + 9) - (7 + 3)) = 2.
+Example 2:
+
+Input: nums = [-36,36]
+Output: 72
+Explanation: One optimal partition is: [-36] and [36].
+The absolute difference between the sums of the arrays is abs((-36) - (36)) = 72.
+Example 3:
+
+example-3
+Input: nums = [2,-1,0,4,-2,-9]
+Output: 0
+Explanation: One optimal partition is: [2,4,-9] and [-1,0,-2].
+The absolute difference between the sums of the arrays is abs((2 + 4 + -9) - (-1 + 0 + -2)) = 0.
+
+
+
+sol:- 
+1) Split the array into two equal halves so we can handle subsets of each half separately.
+
+2) [3, 9]
+How many different subsets can we make?
+{}          → choose nothing
+{3}         → choose 3
+{9}         → choose 9
+{3,9}       → choose both
+That's 4 subsets.
+Now we group these subsets based on how many elements they contain.
+
+3) For [3, 9]
+There are 2 elements, so:
+2² = 4 subsets
+We use masks:
+00
+01
+10
+11
+Think of:
+0 = don't take
+1 = take
+So:
+00 → don't take 3, don't take 9
+01 → take 3, don't take 9
+10 → don't take 3, take 9
+11 → take both
+
+For every subset:
+
+count = how many numbers did I select?
+sum = what is their total?
+
+getSum give A = [
+    [0],       // 0 elements
+    [3, 9],    // 1 element
+    [12]       // 2 elements
+]
+
+=> We are generating and grouping all possible subset sums for the left half and right half.
+
+4) Take some elements from the left, then find the best possible elements from the right so that the total selected 
+sum is as close as possible to total / 2.
+
+we sort b coz we have to do binary search on b;
+
+5) lo and hi are the two closest right-side sums to our target,
+so we try both and keep whichever gives the smaller partition difference.

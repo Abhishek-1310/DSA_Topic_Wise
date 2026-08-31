@@ -1,0 +1,77 @@
+Q) 0 - 1 Knapsack Problem
+Given two arrays, val[] and wt[], where each element represents the value and weight of an item respectively, and an integer
+ W representing the maximum capacity of the knapsack (the total weight it can hold).
+Put the items into the knapsack such that the total value obtained is maximum without exceeding the capacity W.
+Note: You can either include an item completely or exclude it entirely — fractional selection of items is not allowed. Each item is available only once.
+
+Examples :
+
+Input: W = 4, val[] = [1, 2, 3], wt[] = [4, 5, 1]
+Output: 3
+Explanation: Choose the last item, which weighs 1 unit and has a value of 3.
+Input: W = 3, val[] = [1, 2, 3], wt[] = [4, 5, 6] 
+Output: 0
+Explanation: Every item has a weight exceeding the knapsack's capacity (3).
+Input: W = 5, val[] = [10, 40, 30, 50], wt[] = [5, 4, 2, 3] 
+Output: 80
+Explanation: Choose the third item (value 30, weight 2) and the last item (value 50, weight 3) for a total value of 80
+
+// 2d dp approch
+0/1 Knapsack — 2D DP Short Notes
+
+Goal: For every item, we have 2 choices:
+
+Take the current item
+Don't take the current item
+DP meaning
+dp[i][w] = maximum value using the first i items with capacity w.
+For each item
+If current item's weight wt[i-1] <= w:
+1. Don't take current item :- we are not taking current element so with my current weight if i am not taking current value 
+we will check with this same weight can i take anything from previous arr
+dp[i-1][w]
+We simply use the answer from the previous row.
+2. Take current item
+Take its value, then check:
+"After taking the current item, how much weight is remaining, and what is the best value I can get from the previous items with that remaining weight?"
+val[i-1] + dp[i-1][w - wt[i-1]]
+Then choose the better:
+dp[i][w] = max(
+    don't take,
+    take
+)
+
+// 1d dp
+
+What does i represent?
+i = which item we are currently considering.
+For example:
+i = 0 → item 0
+i = 1 → item 1
+i = 2 → item 2
+i = 3 → item 3
+
+What does w represent?
+w = current knapsack capacity.
+If:
+W = 5
+then w goes:
+5 → 4 → 3 → 2 → ...
+
+What does dp[w] represent?
+dp[w] = maximum value we can get with knapsack capacity w using the items processed so far.
+
+But WHY backward?
+This is the most important part of 1D 0/1 Knapsack.
+Suppose:
+item weight = 2
+item value  = 30
+When processing this item, we want:
+30 + OLD dp[w - 2]
+The old dp[w - 2] means:
+result before using this item
+Going backward ensures we haven't already modified dp[w - 2].
+If you go forward:
+for (let w = wt[i]; w <= W; w++)
+then dp[w - wt[i]] may already contain the same item, allowing you to take it multiple times.
+

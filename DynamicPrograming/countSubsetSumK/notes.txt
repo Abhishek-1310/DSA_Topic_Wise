@@ -1,0 +1,23 @@
+This:
+
+dp[s] = dp[s] + dp[s-val];
+
+means:
+
+Old ways to make s + new ways to make s by taking val.
+
+For example:
+
+val = 3
+s = 3
+
+dp[3] = dp[3] + dp[0]
+       = old ways + ways to make 0 and then take 3
+
+
+dp[3] = dp[3] + dp[3-2]
+      = 0 + dp[1]
+      = 1
+how to make 3 now currenlty we have val 2  so to make 3 if we have target 3 and val is 2 how much more we need in 2 to make 3 
+target-val = need if that need is present in dp then we can make 3
+liek dp[3] = dp[3] + dp[3-2] means dp[1] 1 is there in sp then we can make 3 

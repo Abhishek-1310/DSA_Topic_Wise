@@ -1,0 +1,112 @@
+Suppose:
+weight = 2
+value = 5
+capacity = 6
+So we have one item:
+
+item = (weight 2, value 5)
+Case 1: 0/1 Knapsack
+The item can be used only once.
+We start:
+dp = [0, 0, 0, 0, 0, 0, 0]
+       0  1  2  3  4  5  6
+We process the item right → left:
+for (let w = 6; w >= 2; w--) {
+    dp[w] = Math.max(dp[w], 5 + dp[w - 2]);
+}
+
+Let's see what happens.
+
+w = 6
+dp[6] = 5 + dp[4]
+      = 5 + 0
+      = 5
+dp = [0, 0, 0, 0, 0, 0, 5]
+w = 5
+dp[5] = 5 + dp[3]
+      = 5 + 0
+      = 5
+w = 4
+dp[4] = 5 + dp[2]
+      = 5 + 0
+      = 5
+w = 3
+dp[3] = 5 + dp[1]
+      = 5 + 0
+      = 5
+w = 2
+dp[2] = 5 + dp[0]
+      = 5
+Final:
+dp = [0, 0, 5, 5, 5, 5, 5]
+Notice something important:
+When we calculated dp[4]:
+
+dp[4] = 5 + dp[2]
+dp[2] was still:
+0
+It had not been updated by this item yet.
+So:
+dp[4] = 5 + 0
+      = 5
+We didn't accidentally do:
+5 + 5 = 10
+Therefore the item is used only once.
+
+
+But now we go left → right:
+for (let w = 2; w <= 6; w++) {
+    dp[w] = Math.max(dp[w], 5 + dp[w - 2]);
+}
+Start:
+
+dp = [0, 0, 0, 0, 0, 0, 0]
+w = 2
+dp[2] = 5 + dp[0]
+      = 5
+Now:
+dp = [0, 0, 5, 0, 0, 0, 0]
+w = 3
+dp[3] = 5 + dp[1]
+      = 5
+w = 4
+Now the magic happens.
+dp[4] = 5 + dp[2]
+But look:
+dp[2] = 5
+We already updated dp[2] using the SAME item!
+Therefore:
+dp[4] = 5 + 5
+      = 10
+
+
+"When I calculate dp[w], do I want dp[w-weight] from BEFORE processing this item or AFTER processing this item?"
+
+what inner and outter loop
+Outer loop → WHAT are we processing?
+for (let i = 0; i < n; i++)
+The outer loop says:
+"Which item/number/element am I processing now?"
+
+Inner loop → HOW can I use the current item?
+for (let w = ...)
+The inner loop says:
+"For the current item, which capacities/states am I updating?"
+And its direction can control whether the current item can be reused.
+
+
+⭐ Fixed Cheat Sheet
+
+When you see a 1D DP problem:
+
+STEP 1
+↓
+What does dp[x] represent?
+Then:
+STEP 2
+↓
+What am I processing?
+Then:
+STEP 3
+↓
+Can I reuse the current thing?

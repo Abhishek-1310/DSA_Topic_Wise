@@ -1,0 +1,11 @@
+Ask this:
+
+Can I describe the problem as "from this state, what choices can I make next?"
+
+If yes, recursion/memoization is usually very natural.
+
+Ask:
+
+Can I clearly start from the smallest state and build the answer forward?
+
+Example: Fibonacci:

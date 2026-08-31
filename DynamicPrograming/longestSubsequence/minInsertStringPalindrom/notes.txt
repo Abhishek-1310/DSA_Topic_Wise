@@ -1,0 +1,63 @@
+1312. Minimum Insertion Steps to Make a String Palindrome
+Given a string s. In one step you can insert any character at any index of the string.
+
+Return the minimum number of steps to make s palindrome.
+
+A Palindrome String is one that reads the same backward as well as forward.
+
+Example 1:
+
+Input: s = "zzazz"
+Output: 0
+Explanation: The string "zzazz" is already palindrome we do not need any insertions.
+Example 2:
+
+Input: s = "mbadm"
+Output: 2
+Explanation: String can be "mbdadbm" or "mdbabdm".
+Example 3:
+
+Input: s = "leetcode"
+Output: 5
+Explanation: Inserting 5 characters the string becomes "leetcodocteel".
+
+notes:- to make any string plaindrom make a reverse string and add in given string it will become palindrom
+but what if we have to add min char to string to make palindrome 
+in given string some char already there to make palindrom if we revser it and add it it will not be in char to add to make panlidrom
+
+sol:- Minimum Insertions = n - Longest Palindromic Subsequence (LPS)
+And LPS is a very good/simple way to solve this problem.
+📝 Example
+s = "abcaa"
+n = 5
+
+Longest Palindromic Subsequence:
+"aca"
+Length:
+LPS = 3
+Therefore:
+Minimum insertions
+= n - LPS
+= 5 - 3
+= 2
+Why 2?
+abcaa
+↑
+Keep "aca"
+We need to make:
+abcaa → a b c a b c a? 
+
+A clearer example:
+s = "abc"
+LPS = "a"   → length 1
+n = 3
+Minimum insertions = 3 - 1 = 2
+
+We can make:
+abc
+↓
+abcb   (insert b)
+↓
+abcba  (insert a)
+"abcba" → palindrome
+

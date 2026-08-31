@@ -1,0 +1,96 @@
+Distinct Subsequences
+Count how many different ways t can be formed as a subsequence of s.
+Important: We are counting ways, not finding the longest subsequence.
+Example
+s = "babgbag"
+t = "bag"
+There are 5 different ways to form "bag" from "babgbag".
+You can choose different positions for:
+b → a → g
+Even though the resulting string is the same "bag", different index selections count as different ways.
+
+question:- 
+115. Distinct Subsequences
+Hard
+Topics
+premium lock icon
+Companies
+Given two strings s and t, return the number of distinct subsequences of s which equals t.
+
+The test cases are generated so that the answer fits on a 32-bit signed integer.
+
+ 
+
+Example 1:
+
+Input: s = "rabbbit", t = "rabbit"
+Output: 3
+Explanation:
+As shown below, there are 3 ways you can generate "rabbit" from s.
+rabbbit
+rabbbit
+rabbbit
+Example 2:
+
+Input: s = "babgbag", t = "bag"
+Output: 5
+Explanation:
+As shown below, there are 5 ways you can generate "bag" from s.
+babgbag
+babgbag
+babgbag
+babgbag
+babgbag
+
+
+sol:- 
+
+diff in LCS
+Question:
+What is the LONGEST subsequence?
+Match:
+dp[j] = 1 + prev
+Not match:
+dp[j] = max(dp[j], dp[j-1])
+You're choosing the best length.
+
+Distinct Subsequences
+Question:
+How MANY ways can I form t?
+Match:
+dp[j] = prev + dp[j]
+Not match:
+dp[j] stays same
+You're counting ways.
+
+
+1d dp notes1️⃣ Why dp[0] = 1 here?
+Because this problem is counting ways to form t.
+dp[0] means:
+Number of ways to form an empty target.
+There is exactly 1 way:
+Choose nothing.
+Example: s = "abc" t = ""
+
+2️⃣ Why prev = dp[0] instead of prev = 0?
+Because prev represents the old diagonal:
+cause at starting dp[0] is 1 so you can't make prev = 0 at starting eaither do prev = dp[0]/1; anything use 1 cauze 
+like ho wmany way we can make empty "" 1 way so dp[0] = 1 so as prev = 1 or dp[0]
+
+3️⃣ Why prev + dp[j] instead of 1 + prev?
+This is the biggest difference from LCS.
+In Distinct Subsequences, we're counting ways.
+When:
+s[i-1] == t[j-1]
+we have two choices:
+
+                 match
+                  ↓
+             s[i-1] == t[j-1]
+                /       \
+             TAKE       SKIP
+              ↓           ↓
+          prev         dp[j]
+
+So we add both possibilities:
+dp[j] = prev + dp[j];

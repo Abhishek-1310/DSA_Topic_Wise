@@ -1,0 +1,98 @@
+518. Coin Change II
+You are given an integer array coins representing coins of different denominations and an integer amount representing a total 
+amount of money. Return the number of combinations that make up that amount. If that amount of money cannot be made up by any 
+combination of the coins, return 0. You may assume that you have an infinite number of each kind of coin.
+The final answer is guaranteed to fit into a signed 32-bit integer.
+
+Example 1:
+
+Input: amount = 5, coins = [1,2,5]
+Output: 4
+Explanation: there are four ways to make up the amount:
+5=5
+5=2+2+1
+5=2+1+1+1
+5=1+1+1+1+1
+Example 2:
+
+Input: amount = 3, coins = [2]
+Output: 0
+Explanation: the amount of 3 cannot be made up just with coins of 2.
+Example 3:
+
+Input: amount = 10, coins = [10]
+Output: 1
+
+
+sol:- 
+Coin Change II
+Find the number of different combinations of coins that make the amount.
+Example:
+coins = [1, 2, 5]
+amount = 5
+Combinations are:
+5
+2 + 2 + 1
+2 + 1 + 1 + 1
+1 + 1 + 1 + 1 + 1
+So the answer is:
+4
+imp notes:- combinations, not permutations
+These are considered the same:
+1 + 2 + 2
+2 + 1 + 2
+2 + 2 + 1
+They all represent the same combination:
+1 + 2 + 2
+
+
+notes:- 
+1. target → coin = BACKWARD
+Example: 0/1 Knapsack / Count Subsets / Target Sum
+
+for (let num of nums) {
+    for (let sum = target; sum >= num; sum--) {
+        dp[sum] += dp[sum - num];
+    }
+}
+
+Why backward?
+Because each num can be used only once.
+You want:
+current dp[sum]
+      ↓
+old dp[sum - num]
+Going backward means dp[sum - num] has not been updated with the current number yet.
+So:
+
+0/1 item → BACKWARD
+2. coin → target = FORWARD
+Example: Coin Change II
+
+for (let coin of coins) {
+    for (let sum = coin; sum <= target; sum++) {
+        dp[sum] += dp[sum - coin];
+    }
+}
+
+Why forward?
+Because the coin can be used unlimited times.
+For:
+coin = 2
+when calculating:
+dp[4]
+we want to be able to use:
+2 + 2
+
+
+coins = [1, 2, 5]
+amount = 5
+2 can be used twice:
+2 + 2 + 1
+But there's an important distinction:
+Using the same coin denomination multiple times is allowed. But we don't count different orders as different combinations.
+So:
+
+2 + 1 + 2
+1 + 2 + 2
+2 + 2 + 1

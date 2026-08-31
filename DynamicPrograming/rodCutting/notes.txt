@@ -1,0 +1,39 @@
+step to solve 1d dp
+1) First understand the question
+Suppose:
+price = [2, 5, 7, 8]  rod len is 4 price.length
+This means:
+length 1 → price 2
+length 2 → price 5
+length 3 → price 7
+length 4 → price 8
+2) Now decide what dp[i] means
+This is the MOST important step.
+Define: dp[i] = maximum money we can get from a rod of length i
+3) 
+
+Your problem is that you haven't asked:
+
+What does i represent?
+
+Instead, do this every time:
+
+Step 1
+Write:
+dp[x] = ?
+For Rod Cutting:
+dp[len] = maximum money for rod of length len
+
+Step 2
+Ask:
+What am I calculating?
+Answer:
+rod length
+Therefore outer loop = rod length.
+
+Step 3
+Ask:
+What choices do I have?
+Answer:
+possible cut lengths
+Therefore inner loop = cut length.

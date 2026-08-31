@@ -1,0 +1,317 @@
+how we need 1d arr instead of one metrix
+
+Imagine the matrix:
+
+ROW 0 → [ A B C D ]
+             ↓
+ROW 1 → [ E F G H ]
+             ↓
+ROW 2 → [ I J K L ]
+
+We don't store:
+[A B C D]
+[E F G H]
+[I J K L]
+We only keep:
+[A B C D]
+then overwrite it:
+[E F G H]
+then overwrite it:
+[I J K L]
+
+So:
+2D DP:
+[A B C D]
+[E F G H]
+[I J K L]
+
+1D DP:
+[A B C D]
+     ↓
+[E F G H]
+     ↓
+[I J K L]
+
+That's what space optimization means.
+
+
+current cell needs:
+
+       previous row
+           ↓
+      [ previous ]
+           +
+        current
+
+
+real example
+Sure. Let's use a real matrix with numbers and see exactly how a 2D DP becomes a 1D array.
+
+We'll use your Min Path Sum because it's the easiest to understand.
+
+Matrix
+1   2   3
+4   5   6
+7   8   9
+
+We want to calculate the minimum path from top-left to bottom-right.
+
+Step 1: First row
+
+We start with:
+
+table = [1, 2, 3]
+
+This represents:
+
+1   2   3
+
+For the first row:
+
+1
+1 + 2 = 3
+3 + 3 = 6
+
+So actually:
+
+table = [1, 3, 6]
+
+Our 1D array now represents the DP values for row 0:
+
+1   3   6
+Step 2: Process row [4, 5, 6]
+
+Before processing:
+
+table = [1, 3, 6]
+
+Think of it as:
+
+previous row
+   ↓
+[ 1, 3, 6 ]
+j = 0
+
+Cell = 4.
+
+Only way to reach it is from above:
+
+1
+↓
+4
+
+So:
+
+table[0] = table[0] + 4;
+table = [5, 3, 6]
+
+Notice something important:
+
+[5, 3, 6]
+ ↑
+new value
+
+j = 1
+
+Cell = 5.
+
+We need:
+
+3   ← above
+↓
+5
+
+and:
+
+5 ← from left
+
+So:
+
+table[1] = 5 + Math.min(table[1], table[0]);
+
+At this moment:
+
+table[1] = 3  ← old above       [5, 3, 6]  j[i] is from up and j[i-1] is from left two way we can come choose min one 
+table[0] = 5  ← new left
+
+Therefore:
+5 + min(3,5)
+= 8
+Now:
+
+table = [5, 8, 6]
+j = 2
+Cell = 6.
+
+We need:
+6 ← above  8 ← left
+So:
+6 + min(6,8) = 12
+
+Now: table = [5, 8, 12]
+The entire second row's DP is now represented by: [5, 8, 12]
+
+
+
+maximumYes 👍 Let's do exactly the same number-by-number dry run for Maximum Path Sum.
+
+Use:
+
+1   2   3
+4   5   6
+7   8   9
+
+We use top → bottom and one table.
+
+Step 1: First row
+table = [...mat[0]];
+
+So:
+
+table = [1, 2, 3]
+
+This represents:
+
+1   2   3
+Step 2: Process row [4, 5, 6]
+
+Before:
+
+table = [1, 2, 3]
+j = 0 → value 4
+
+Possible previous cells:
+
+1
+↓
+4
+
+There is no diagonal-left.
+
+So:
+
+4 + 1 = 5
+
+Update:
+
+table = [5, 2, 3]
+j = 1 → value 5
+
+Previous cells:
+
+1   2   3
+    ↓
+    5
+
+For 5, we need:
+
+diagonal-left = 1
+above         = 2
+diagonal-right= 3
+
+So:
+
+5 + max(1,2,3)
+= 5 + 3
+= 8
+
+Update:
+
+table = [5, 8, 3]
+j = 2 → value 6
+
+Previous cells:
+
+    2   3
+        ↓
+        6
+
+We need:
+
+diagonal-left = 2
+above         = 3
+
+No diagonal-right.
+
+So:
+
+6 + max(2,3)
+= 9
+
+Now:
+
+table = [5, 8, 9]
+
+So the DP values for row 1 are:
+
+5   8   9
+Step 3: Process row [7, 8, 9]
+
+Start:
+
+table = [5, 8, 9]
+j = 0 → 7
+
+Only:
+
+5
+↓
+7
+7 + 5 = 12
+table = [12, 8, 9]
+j = 1 → 8
+
+Previous row:
+
+5   8   9
+    ↓
+    8
+8 + max(5,8,9)
+= 17
+table = [12, 17, 9]
+
+
+how to choose outter an dinner loop
+
+Simple rule
+Ask yourself: "What am I processing one by one?"
+
+1. If each amount/state is the thing you're building → amount outer
+Example: Coin Change (minimum coins)
+
+for (let amount = 1; amount <= target; amount++) {
+    for (let coin of coins) {
+        ...
+    }
+}
+Because:
+For each amount, try every coin.
+amount → try choices
+
+2. If each item/number must be used only once → array outer
+Example: Target Sum / Count Subsets
+
+for (let num of nums) {
+    for (let sum = target; sum >= num; sum--) {
+        ...
+    }
+}
+
+Because:
+Process each number once, then update possible sums.
+
+item → update states
+The cheat rule 🧠
+COUNT / SELECT items (0/1)
+        ↓
+items outer
+sum    inner BACKWARD
+BUILD minimum/maximum amount
+        ↓
+amount outer
+items  inner
+
+But the more fundamental rule is:
+If an item can be used only once → process item once and move sum backward.
+If an item can be reused → sum can move forward.
+

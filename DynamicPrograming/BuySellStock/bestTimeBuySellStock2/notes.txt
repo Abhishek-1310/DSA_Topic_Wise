@@ -1,0 +1,43 @@
+122. Best Time to Buy and Sell Stock II
+You are given an integer array prices where prices[i] is the price of a given stock on the ith day.
+
+On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of the stock at any time. However, you can sell and buy the stock multiple times on the same day, ensuring you never hold more than one share of the stock.
+
+Find and return the maximum profit you can achieve.
+
+Example 1:
+
+Input: prices = [7,1,5,3,6,4]
+Output: 7
+Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+Total profit is 4 + 3 = 7.
+Example 2:
+
+Input: prices = [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+Total profit is 4.
+Example 3:
+
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: There is no way to make a positive profit, so we never buy the stock to achieve the maximum profit of 0.
+
+
+sol:- 
+1) u are current index and start position :- u can only buy st staring  we need flag to  o means can't buy 1 means can buy  :-
+so st starting flag is 1 :- (with this we can follow one rule you can't buy again if u buy already eailer. u can sell if u buy earlier )
+
+2) there 2 things 
+-> 1) buy  = there are 2 things here
+    -> take(buy stock) from your account -ve deduct money so ==  -prices[ind]+helper(ind+1,0) = 0 means next can't buy
+    -> don't take (not buy stock) :- nothing deduct money == 0+helper(ind+1,1)
+    return max profit to get profit
+-> 2) sell there are 2 things here
+    -> take (sell) from u account +ve credit money so == +prices[ind]+helper(ind+1,1) = 1 now next u can buy
+    -> don't take (not sell yet) :- nothing credit money = 0+helper(ind+1,0)
+    return max profit to get profit
+
+3) base case what if you at the end market closed :- if you buy but didn't sell nothing will happen at the end not deduct and credit
+so if(i==n) return 0 nothing you get or remove

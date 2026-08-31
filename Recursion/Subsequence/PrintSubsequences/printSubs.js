@@ -13,6 +13,23 @@ function subseq(arr, index, path) {
 
 subseq([1, 2, 3], 0, []);
 
+// print subsequnce but not adjencent
+function subseq(arr, index, path) {
+    if (index >= arr.length) { // if we jump 2 and exceed index this condition will stop that time when index reach at end and exceed
+        console.log(path);
+        return;
+    }
+
+    // Take current element
+    path.push(arr[index]);
+    subseq(arr, index + 2, path);  // if we pick current element we have to skip next one so jump 2 
+
+    // Don't take current element
+    path.pop();
+    subseq(arr, index + 1, path);
+}
+
+subseq([1, 2, 3], 0, []);
 
 //print sum of all subsequence elemnts
 function subseq(arr, index, sum) {
@@ -20,7 +37,7 @@ function subseq(arr, index, sum) {
         console.log(sum);
         return;
     }
-    
+
     sum += arr[index]
     subseq(arr, index + 1, sum);
 

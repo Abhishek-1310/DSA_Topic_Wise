@@ -1,0 +1,132 @@
+Edit Distance
+Edit Distance = minimum number of operations needed to convert s1 into s2.
+There are 3 operations:
+Insert a character
+Delete a character
+Replace a character
+
+Example
+s1 = "cat"
+s2 = "cut"
+Change:
+cat
+ ↓
+cut
+Replace a with u.
+So:
+
+Edit Distance = 1
+Another example
+s1 = "horse"
+s2 = "ros"
+One possible conversion:
+horse
+ ↓ replace h -> r
+rorse
+ ↓ remove r
+rose
+ ↓ delete e
+ros
+
+
+idea:- 
+If characters match:
+    dp[i][j] = dp[i-1][j-1]  motch match no operations required just move ahead
+
+If they don't:
+    choose minimum of:                                                                 
+                                i    j    insert  i(insert s i still in it's place)      delete  i(e delete i move left)
+    INSERT  → dp[i][j-1]    horse  ros        horses    ros (j move to left s done)           hors  ros
+    DELETE  → dp[i-1][j]    
+    REPLACE → dp[i-1][j-1]        replace both done move both i an dj left
+
+base case when s1 exhausted i<0  so where ever is j is add j+1 because we have to insert all j char so 0 based indexing (j+1)
+base case when s2 exhausted j<0  so we need delete operation of i retrun i+1 operation
+
+
+
+The easiest way is: look at what the DP is asking. That's the whole difference.
+1)      why 
+LCS("", "a")  = 0
+LCS("", "ab") = 0
+Therefore: dp = [0, 0, 0, ...]
+
+but in edit dist is 
+"" → ""     = 0 operations
+"" → "a"    = 1 insertion
+"" → "ab"   = 2 insertions
+Therefore: dp = [0, 1, 2, ...]
+
+1. LCS asks: "How much can I KEEP?"
+s1 = ""
+s2 = "abc"
+There is nothing in s1 to match with "abc".
+so LCS("", "abc") = 0
+Therefore:
+dp = [0, 0, 0, 0]
+It doesn't matter that "abc" has 3 characters, because we are counting common characters, not operations.
+2. Edit Distance asks: "How many operations do I NEED?"
+s1 = ""
+s2 = "abc"
+To convert: "" → "abc"
+we need:
+
+"" → "a"   = 1 insertion
+"a" → "ab" = 1 insertion
+"ab" → "abc" = 1 insertion
+
+Total: 3 operations
+
+
+2) why dp[0] = i is inside for loop and why i
+
+Why is dp[0] = i inside the outer loop?
+Because dp[0] changes for every new i.
+Remember:
+dp[0] = minimum operations to convert
+        first i chars of word1 → "" 
+So if: word1 = "abc"
+Then:
+i = 0 → ""    → "" = 0 operations
+i = 1 → "a"   → "" = 1 deletion
+i = 2 → "ab"  → "" = 2 deletions
+
+Earlier in Distinct Subsequences: dp[0] = 1 was always 1, so it could stay outside.  coz common from all a,ab,abc to '' empty is 0 only nothing  is common
+
+In LCS
+dp[0] means:
+Length of LCS with empty target  = LCS("abc", "") = 0 So: dp[0] = 0
+
+In Distinct Subsequences
+dp[0] means: Number of ways to form an empty target
+s = "abc" t = ""
+How many ways can we form ""? 1 way to choose nothing from abc so dp[0] = 1 1 way nothing choose
+
+now got it when dp[o]=1, dp[0]=0, dp[0]=i  yes
+
+3) why we need prev(diagonal)  == we can store up and left in 1d dp to store diagonal we need prev 
+
+        ""   x   y
+      ┌────┬────┬────┐
+ ""   │ 0  │ 1  │ 2  │
+      ├────┼────┼────┤
+ a    │ 1  │ ?  │ ?  │
+      ├────┼────┼────┤
+ b    │ 2  │ ?  │ ?  │ ← previous row
+      ├────┼────┼────┤
+ c    │ 3  │ ?  │ ?  │ ← current row
+
+ when to go diagonal When characters match: word1[i-1] == word2[j-1]
+👉 Go DIAGONAL dp[i][j] = dp[i-1][j-1] Because no operation is needed.
+
+LEFT  → don't keep/use word2[j-1]
+        → INSERT
+UP    → don't keep/use word1[i-1]
+        → DELETE
+DIAGONAL → REPLACE    and in genral question diagonal is used when char match then take previous match char then we go to diagonal
+
+assume you are at i=3 and you are storing previous prev = i-1 = 3-1= 2 prev =2 see we are showing you this 2d but this prev helpful in 1d dp
+now j=1 char matches now go to diagonal no opeartion need how you will get diagonal value 
+curretly u have up left but diagonal u can't store in 1d array right that is why we maintain prev as diagonal 
+
+so prev = i-1 at [b][''] = 2 

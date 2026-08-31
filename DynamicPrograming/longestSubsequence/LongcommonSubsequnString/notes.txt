@@ -1,0 +1,135 @@
+Yes. Longest Common Subsequence (LCS) is another very important DP problem.
+
+Given two strings:
+
+s1 = "abcde"
+s2 = "ace"
+
+We want the longest sequence that appears in both strings in the same order, but not necessarily continuously.
+Answer:
+"ace"
+Length = 3.
+
+q) 1143. Longest Common Subsequence
+Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.
+A subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.
+For example, "ace" is a subsequence of "abcde".
+A common subsequence of two strings is a subsequence that is common to both strings.
+
+ 
+
+Example 1:
+
+Input: text1 = "abcde", text2 = "ace" 
+Output: 3  
+Explanation: The longest common subsequence is "ace" and its length is 3.
+Example 2:
+
+Input: text1 = "abc", text2 = "abc"
+Output: 3
+Explanation: The longest common subsequence is "abc" and its length is 3.
+Example 3:
+
+Input: text1 = "abc", text2 = "def"
+Output: 0
+Explanation: There is no such common subsequence, so the result is 0.
+ 
+
+
+
+notes:-   What does dp[j] store? At any point: dp[j] = LCS length between the characters processed so far from text1 and text2[0...j-1]
+
+
+Suppose before the current row starts:
+
+dp = [0, 1, 1]
+
+This entire array is the OLD row.
+
+index:  0  1  2
+        ↓  ↓  ↓
+OLD:   [0, 1, 1]
+
+Now we're calculating a new row from left to right.
+
+Step 1: j = 1
+
+We calculate the new value at index 1.
+
+Before calculation:
+
+OLD:   [0, 1, 1]
+          ↑
+        j = 1
+
+dp[1] is old.
+
+After calculation, we overwrite it:
+
+NEW:   [0, 1, 1]
+          ↑
+       now NEW
+
+So index 1 has changed from old → new.
+
+Step 2: j = 2
+
+We move right.
+
+Now:
+
+        already done
+             ↓
+NEW:   [0, 1, 1]
+          ↑  ↑
+          |  |
+        new  old
+             ↑
+            j=2
+
+Why is dp[1] new?
+
+Because we already calculated it.
+
+
+
+
+LCS 1D DP
+
+MATCH:
+    dp[j] = 1 + prev     why we check diagonal coz diagonal will tell if both char is match or not   
+                    ↑                                                                                
+               old diagonal
+text1 = "abc"
+text2 = "ac"         so [b][a] you can see 1 you can ask why there is 1 so we ab a we leave b still we have 1 a common
+        ""   a   c
+      ┌────┬────┬────┐      come to [c][c] both char match so 1+previous diagonal if they have longest sub so 1(a) total 2 
+ ""   │ 0  │ 0  │ 0  │
+      ├────┼────┼────┤     
+ a    │ 0  │ 1 ↖│ 1  │
+      ├────┼────┼────┤
+ b    │ 0  │ 1  │ 1  │
+      ├────┼────┼────┤
+ c    │ 0  │ 1  │ 2 ↖│
+      └────┴────┴────┘
+NOT MATCH:
+    dp[j] = max(dp[j], dp[j-1])
+                  ↑       ↑
+                old     current
+              skip T1   skip T2
+assume text1=ab text2=ac                                                 a=a at 1 
+when i=1 means a  and we run for loop on text2   start with tex2 a  dp=[0,1,0]
+when i=2 means b and run with all text2   so j is text2  so if u don't want text2 j=2 just take prvious j-1 right coz that time j=2 was not there
+if you don't want text1 b :- simply take dp[2] which is currenly hold i=1 value 
+
+                    j
+                    ↓
+        ┌───────────┬───────────┬───────────┐
+dp      │  CURRENT  │    OLD    │    OLD    │   dp alway contain i-1 data  and current -> previous conatin j-1 data 
+        └───────────┴───────────┴───────────┘
+              ↑          ↑
+           j - 1         j
+              │          │                    if you are at dp[j] before updating it conatin i-1 data and previous one is i data but j-1 cause that is already updated
+              │          └── skip TEXT1
+              │
+              └───────────── skip TEXT2
