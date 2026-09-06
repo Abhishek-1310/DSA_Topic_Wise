@@ -65,8 +65,9 @@ var longestCommonSubsequence = function (text1, text2) {
             let temp = dp[j];
             if (text1[i - 1] == text2[j - 1]) {  // to get current char from text we need to do i-1 coz 0 based indexing
                 dp[j] = 1 + prev;
+            } else {
+              dp[j] = Math.max(dp[j], dp[j - 1]);
             }
-            dp[j] = Math.max(dp[j], dp[j - 1]);
             prev = temp; // if char is not match there is a change they will update the current dp j value but we need 
             // dp[j] of state coz when char match 1+previous best state store in prev
         }
