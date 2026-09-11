@@ -20,35 +20,6 @@ class Solution {
     }
 }
 
-function minPathSum(grid) {
-    let m = grid.length;
-    let n = grid[0].length; // size of col
-
-    // 1) Make dp of size col (n)
-    let dp = new Array(n).fill(0);
-
-    // Initialize the base case (first cell)
-    dp[0] = grid[0][0];
-
-    // Initialize the first row (can only come from the left)
-    for (let j = 1; j < n; j++) {
-        dp[j] = dp[j - 1] + grid[0][j];
-    }
-
-    // Loop through the rest of the rows
-    for (let i = 1; i < m; i++) {
-        // Update the first column of the current row (can only come from above)
-        dp[0] = dp[0] + grid[i][0];
-
-        // Update the rest of the columns in the current row
-        for (let j = 1; j < n; j++) {
-            dp[j] = grid[i][j] + Math.min(dp[j], dp[j - 1]);
-        }
-    }
-
-    // Return the bottom-right corner value
-    return dp[n - 1];
-}
 
 // 1d dp
 // Time: O(row × col)
