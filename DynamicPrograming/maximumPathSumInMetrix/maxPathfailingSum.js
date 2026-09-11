@@ -27,27 +27,27 @@ class Solution {
 
 class Solution {
     maximumPath(mat) {
-        // code here
         let m = mat.length;
         let n = mat[0].length;
 
+        // Pre-allocate both arrays ONCE outside the loops
         let table = [...mat[0]];
+        let curr = new Array(n); 
 
         for (let i = 1; i < m; i++) {
-            let curr = new Array(n);
             for (let j = 0; j < n; j++) {
                 let best = table[j];
 
-                if (j > 0) {
-                    best = Math.max(best, table[j - 1]);
-                }
-                if (j < n - 1) {
-                    best = Math.max(best, table[j + 1]);
-                }
+                if (j > 0)     best = Math.max(best, table[j - 1]);
+                if (j < n - 1) best = Math.max(best, table[j + 1]);
 
                 curr[j] = mat[i][j] + best;
             }
+            
+            // Reference Swap: Swap the identities of table and curr
+            let temp = table;
             table = curr;
+            curr = temp; // curr now safely points to the old table array to be reused!
         }
         return Math.max(...table);
     }
