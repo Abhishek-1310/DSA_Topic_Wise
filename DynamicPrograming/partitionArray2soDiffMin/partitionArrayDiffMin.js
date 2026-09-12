@@ -16,6 +16,37 @@ var minimumDifference = function (nums) {
     return helper(0, 0);
 };
 
+// 1d dp
+function minSubsetSumDiff(arr) {
+    const totalSum = arr.reduce((acc, num) => acc + num, 0);
+    // Target half of the total sum (use Math.floor for integers)
+    const K = Math.floor(totalSum / 2);
+    
+    // --- YOUR MASTERED 1D DP SUBSET SUM CODE ---
+    const dp = new Array(K + 1).fill(false);
+    dp[0] = true; // Sum 0 is always possible
+    
+    for (let num of arr) {
+        // Walk backwards to prevent duplicate spending!
+        for (let j = K; j >= num; j--) {
+            dp[j] = dp[j] || dp[j - num];
+        }
+    }
+    // -------------------------------------------
+    
+    // Walk backwards from K to find the closest reachable sum
+    for (let j = K; j >= 0; j--) {
+        if (dp[j] === true) {
+            return Math.abs(totalSum - 2 * j);
+        }
+    }
+    
+    return 0;
+}
+
+// Example usage:
+console.log(minSubsetSumDiff([1, 6, 11, 5])); // Output: 1
+
 // Meet in the Middle
 
 var minimumDifference = function (nums) {
