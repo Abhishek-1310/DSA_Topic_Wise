@@ -4,8 +4,7 @@ var minimumDifference = function (nums) {
 
     function helper(ind, sum1) {
         if (ind === nums.length) {
-            let sum2 = sum - sum1;
-            return Math.abs(sum1 - sum2);
+            return abs(sum - 2 * sum1)
         }
 
         let take = helper(ind + 1, sum1 + nums[ind]);
