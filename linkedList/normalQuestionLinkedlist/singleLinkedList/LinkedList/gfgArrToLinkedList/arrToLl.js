@@ -19,6 +19,13 @@ class Solution {
     }
 }
 
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
 // other way to do it 
 class Solution {
     arrayToList(arr) {
