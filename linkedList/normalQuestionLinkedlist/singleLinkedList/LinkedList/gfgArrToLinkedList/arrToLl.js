@@ -1,23 +1,26 @@
-class Solution {
-    constructor() {
-        this.head = null;
-        this.tail = null;
-    }
-    arrayToList(arr) {
-        for (let num of arr) {
-            let n = new Node(num);
-            if (this.head == null) {
-                this.head = n;
-                this.tail = n;
-            } else {
-                this.tail.next = n;
-                this.tail = n;
-            }
-        }
-        return this.head;
-
+class ListNode {
+    constructor(val, next = null) {
+        this.val = val;
+        this.next = next;
     }
 }
+
+function arrayToLinkedList(arr) {
+    if (!arr.length) return null;
+
+    const head = new ListNode(arr[0]);
+    let current = head;
+
+    for (let i = 1; i < arr.length; i++) {
+        current.next = new ListNode(arr[i]);
+        current = current.next;
+    }
+    return head;
+}
+
+// How to run:
+const list2 = arrayToLinkedList([10, 20, 30]);
+
 
 class Node {
     constructor(data) {
