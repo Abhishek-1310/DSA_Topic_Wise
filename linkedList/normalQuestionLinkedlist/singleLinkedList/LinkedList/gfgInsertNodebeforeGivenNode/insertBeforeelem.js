@@ -4,24 +4,29 @@ class Node {
         this.data = data;
         this.next = next;
     }
-    insertNodeBeforeGivenNode(data, Bdata) {
-        let node = new Node(data);
-        if (Bdata === this.head.data) {
-            node.next = this.head;
-            this.head = node;
-            return;
-        }
-        let curr = this.head;
-        while (curr.next != null) {
-            if (curr.next.data == Bdata) {
-                node.next = curr.next;
-                curr.next = node;
-                return;
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null;
+    }
+
+    insertBefore(data, target) {
+        let dummy = new Node(null, this.head);
+        let curr = dummy;
+
+        while (curr.next) {
+            if (curr.next.data === target) {
+                curr.next = new Node(data, curr.next);
+                break;
             }
             curr = curr.next;
         }
+
+        this.head = dummy.next;
     }
 }
+
 
 let head = new Node(10);
 head.next = new Node(20);
