@@ -59,10 +59,10 @@ var reverseBetween = function (head, left, right) {
     let curr = prev.next;
 
     for (let i = 0; i < right - left; i++) {
-        let front = curr.next;
-        curr.next = front.next;
-        front.next = prev.next;
-        prev.next = front;
+        let front = temp.next;
+        temp.next = prev;
+        prev = temp;
+        temp = front;
     }
     return dummy.next;
 };
